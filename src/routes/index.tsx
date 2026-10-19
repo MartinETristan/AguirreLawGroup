@@ -12,6 +12,7 @@ function Home() {
         Edit <code>src/routes/index.tsx</code> to get started.
       </p>
       <Button className="mt-6">shadcn/ui</Button>
+      <div className="mt-[9000px] mb-5">Este es el final de la pagina</div>
     </div>
   )
 }
