@@ -2,10 +2,13 @@ import ReactDOM from 'react-dom/client'
 import { RouterProvider, createRouter } from '@tanstack/react-router'
 import { routeTree } from './routeTree.gen'
 
+import './i18n'
+
 const router = createRouter({
   routeTree,
   defaultPreload: 'intent',
-  scrollRestoration: true,
+  // El scroll lo controla Lenis en __root (vuelve arriba en cada navegación)
+  scrollRestoration: false,
 })
 
 declare module '@tanstack/react-router' {

@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AbogadoRouteImport } from './routes/abogado'
+import { Route as AreasRouteImport } from './routes/areas'
+import { Route as ContactoRouteImport } from './routes/contacto'
+import { Route as FirmaRouteImport } from './routes/firma'
+import { Route as TestimoniosRouteImport } from './routes/testimonios'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AbogadoRoute = AbogadoRouteImport.update({
+  id: '/abogado',
+  path: '/abogado',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasRoute = AreasRouteImport.update({
+  id: '/areas',
+  path: '/areas',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactoRoute = ContactoRouteImport.update({
+  id: '/contacto',
+  path: '/contacto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FirmaRoute = FirmaRouteImport.update({
+  id: '/firma',
+  path: '/firma',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimoniosRoute = TestimoniosRouteImport.update({
+  id: '/testimonios',
+  path: '/testimonios',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/abogado': typeof AbogadoRoute
+  '/areas': typeof AreasRoute
+  '/contacto': typeof ContactoRoute
+  '/firma': typeof FirmaRoute
+  '/testimonios': typeof TestimoniosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/abogado': typeof AbogadoRoute
+  '/areas': typeof AreasRoute
+  '/contacto': typeof ContactoRoute
+  '/firma': typeof FirmaRoute
+  '/testimonios': typeof TestimoniosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/abogado': typeof AbogadoRoute
+  '/areas': typeof AreasRoute
+  '/contacto': typeof ContactoRoute
+  '/firma': typeof FirmaRoute
+  '/testimonios': typeof TestimoniosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/abogado' | '/areas' | '/contacto' | '/firma' | '/testimonios'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/abogado' | '/areas' | '/contacto' | '/firma' | '/testimonios'
+  id:
+    | '__root__'
+    | '/'
+    | '/abogado'
+    | '/areas'
+    | '/contacto'
+    | '/firma'
+    | '/testimonios'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AbogadoRoute: typeof AbogadoRoute
+  AreasRoute: typeof AreasRoute
+  ContactoRoute: typeof ContactoRoute
+  FirmaRoute: typeof FirmaRoute
+  TestimoniosRoute: typeof TestimoniosRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/abogado': {
+      id: '/abogado'
+      path: '/abogado'
+      fullPath: '/abogado'
+      preLoaderRoute: typeof AbogadoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas': {
+      id: '/areas'
+      path: '/areas'
+      fullPath: '/areas'
+      preLoaderRoute: typeof AreasRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacto': {
+      id: '/contacto'
+      path: '/contacto'
+      fullPath: '/contacto'
+      preLoaderRoute: typeof ContactoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/firma': {
+      id: '/firma'
+      path: '/firma'
+      fullPath: '/firma'
+      preLoaderRoute: typeof FirmaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonios': {
+      id: '/testimonios'
+      path: '/testimonios'
+      fullPath: '/testimonios'
+      preLoaderRoute: typeof TestimoniosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AbogadoRoute: AbogadoRoute,
+  AreasRoute: AreasRoute,
+  ContactoRoute: ContactoRoute,
+  FirmaRoute: FirmaRoute,
+  TestimoniosRoute: TestimoniosRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
