@@ -26,6 +26,7 @@ const en: Translation = {
     openMenu: 'Open menu',
     menu: 'Menu',
     language: 'Language',
+    login: 'Log in',
   },
   hero: {
     eyebrow: 'Brownsville, Texas',
@@ -155,6 +156,14 @@ const en: Translation = {
         'We opened your email with the request ready. If it didn’t open, write to us at {{email}}.',
       mailSubject: 'Consultation request — {{name}}',
     },
+  },
+  login: {
+    eyebrow: 'System access',
+    title: 'Log in',
+    email: 'Email',
+    password: 'Password',
+    submit: 'Log in',
+    unavailable: 'System access is not available yet.',
   },
   cta: {
     title: 'Facing a charge or recovering from an injury?',

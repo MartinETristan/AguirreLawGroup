@@ -11,7 +11,7 @@ export function ValuesStrip() {
   return (
     <section aria-label={t('values.label')} className="border-b border-border">
       <Container className="py-5">
-        <Stagger className="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <Stagger className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center">
           {words.map((word, i) => (
             <Fragment key={word}>
               <StaggerItem className="font-heading text-2xl text-foreground">

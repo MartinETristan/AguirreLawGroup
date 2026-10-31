@@ -24,6 +24,7 @@ const es = {
     openMenu: 'Abrir menú',
     menu: 'Menú',
     language: 'Idioma',
+    login: 'Iniciar sesión',
   },
   hero: {
     eyebrow: 'Brownsville, Texas',
@@ -153,6 +154,14 @@ const es = {
         'Abrimos tu correo con la solicitud lista. Si no se abrió, escríbenos a {{email}}.',
       mailSubject: 'Solicitud de consulta — {{name}}',
     },
+  },
+  login: {
+    eyebrow: 'Acceso al sistema',
+    title: 'Inicia sesión',
+    email: 'Correo electrónico',
+    password: 'Contraseña',
+    submit: 'Iniciar sesión',
+    unavailable: 'El acceso al sistema todavía no está disponible.',
   },
   cta: {
     title: '¿Enfrentas un cargo o sufriste una lesión?',

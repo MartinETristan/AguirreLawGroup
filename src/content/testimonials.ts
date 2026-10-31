@@ -12,34 +12,34 @@ export type Testimonial = {
 
 // TODO: reemplazar por testimonios reales (p. ej. reseñas de Google) con permiso del cliente.
 export const testimonials: Array<Testimonial> = [
-  {
-    id: 't1',
-    name: '[Nombre del cliente]',
-    area: 'criminal-law',
-    quote: {
-      es: '[Testimonio real de un cliente, dos o tres líneas.]',
-      en: '[A real client testimonial, two or three lines.]',
-    },
-    placeholder: true,
-  },
-  {
-    id: 't2',
-    name: '[Nombre del cliente]',
-    area: 'personal-injury',
-    quote: {
-      es: '[Testimonio real de un cliente, dos o tres líneas.]',
-      en: '[A real client testimonial, two or three lines.]',
-    },
-    placeholder: true,
-  },
-  {
-    id: 't3',
-    name: '[Nombre del cliente]',
-    area: 'dwi',
-    quote: {
-      es: '[Testimonio real de un cliente, dos o tres líneas.]',
-      en: '[A real client testimonial, two or three lines.]',
-    },
-    placeholder: true,
-  },
+  // {
+  //   id: 't1',
+  //   name: '[Nombre del cliente]',
+  //   area: 'criminal-law',
+  //   quote: {
+  //     es: '[Testimonio real de un cliente, dos o tres líneas.]',
+  //     en: '[A real client testimonial, two or three lines.]',
+  //   },
+  //   placeholder: true,
+  // },
+  // {
+  //   id: 't2',
+  //   name: '[Nombre del cliente]',
+  //   area: 'personal-injury',
+  //   quote: {
+  //     es: '[Testimonio real de un cliente, dos o tres líneas.]',
+  //     en: '[A real client testimonial, two or three lines.]',
+  //   },
+  //   placeholder: true,
+  // },
+  // {
+  //   id: 't3',
+  //   name: '[Nombre del cliente]',
+  //   area: 'dwi',
+  //   quote: {
+  //     es: '[Testimonio real de un cliente, dos o tres líneas.]',
+  //     en: '[A real client testimonial, two or three lines.]',
+  //   },
+  //   placeholder: true,
+  // },
 ]

@@ -10,7 +10,7 @@ function AboutPage() {
   return (
     <>
       <FirmApproach headingAs="h1" />
-      <AttorneyProfile />
+      <AttorneyProfile showPhoto />
       <ContactCta />
     </>
   )

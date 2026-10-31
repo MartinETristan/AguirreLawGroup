@@ -9,8 +9,10 @@ export const site = {
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
-    display: '(956) 443-0678',
-    href: 'tel:+19564430678',
+    // display: '(956) 443-0678',
+    // href: 'tel:+19564430678',
+    display: '(957) 777-7777',
+    href: 'tel:+957777777',
   },
   email: 'appointment@aguirre-lawgroup.com',
 
@@ -48,6 +50,7 @@ export const site = {
 
   attorney: {
     name: 'Javier Aguirre',
+    photo: '/JavierAguirre/JavierAguireSide.png',
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },

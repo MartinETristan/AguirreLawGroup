@@ -15,6 +15,8 @@ export function Testimonials({
   const { t, i18n } = useTranslation()
   const lang = currentLanguage(i18n.resolvedLanguage)
 
+  if (testimonials.length === 0) return null
+
   return (
     <section className="border-t border-border">
       <Container className="flex flex-col gap-8 py-12 sm:py-16">

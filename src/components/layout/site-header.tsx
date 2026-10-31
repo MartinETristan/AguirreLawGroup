@@ -156,26 +156,15 @@ export function SiteHeader() {
         </NavigationMenu.Root>
 
         <div className="ml-auto flex items-center gap-3">
-          <a
-            href={site.phone.href}
-            className="hidden text-sm font-semibold text-foreground transition-colors hover:text-link xl:inline"
-          >
-            {site.phone.display}
-          </a>
+          <LanguageSwitcher className="hidden min-[400px]:inline-flex" />
           <Button
             asChild
             variant="outline"
-            size="icon-lg"
-            className="size-11 lg:size-10 xl:hidden"
+            size="lg"
+            className="hidden h-10 px-4 text-sm lg:inline-flex"
           >
-            <a
-              href={site.phone.href}
-              aria-label={t('common.call', { phone: site.phone.display })}
-            >
-              <PhoneIcon className="size-4.5" />
-            </a>
+            <Link to="/acceso">{t('nav.login')}</Link>
           </Button>
-          <LanguageSwitcher className="hidden min-[400px]:inline-flex" />
           <Button
             asChild
             size="lg"
@@ -263,6 +252,16 @@ export function SiteHeader() {
                       <PhoneIcon />
                       {site.phone.display}
                     </a>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    size="lg"
+                    className="h-12 text-[15px]"
+                  >
+                    <Link to="/acceso" onClick={() => handleMenu(false)}>
+                      {t('nav.login')}
+                    </Link>
                   </Button>
                   <LanguageSwitcher className="self-start" />
                 </div>
