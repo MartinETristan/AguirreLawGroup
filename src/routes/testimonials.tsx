@@ -4,7 +4,7 @@ import { ContactCta } from '@/components/sections/contact-cta'
 import { Testimonials } from '@/components/sections/testimonials'
 import { testimonials } from '@/content/testimonials'
 
-export const Route = createFileRoute('/testimonios')({
+export const Route = createFileRoute('/testimonials')({
   beforeLoad: () => {
     if (testimonials.length === 0) throw notFound()
   },

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Container } from '@/components/shared/container'
 import { SocialIcon } from '@/components/shared/social-icon'
-import { footerNav } from '@/content/navigation'
+import { footerNav, legalNav } from '@/content/navigation'
 import { site } from '@/content/site'
 
 const headingClass =
@@ -82,7 +82,7 @@ export function SiteFooter() {
                 {t(`nav.${item.key}`)}
               </Link>
             ))}
-            <Link to="/contacto" className={linkClass}>
+            <Link to="/contact-us" className={linkClass}>
               {t('nav.contact')}
             </Link>
           </nav>
@@ -95,11 +95,16 @@ export function SiteFooter() {
               name: site.name,
             })}
           </span>
-          {/* TODO: enlazar a las páginas legales cuando existan */}
           <div className="flex flex-wrap gap-6 text-ink-300">
-            <span>{t('footer.legal.privacy')}</span>
-            <span>{t('footer.legal.terms')}</span>
-            <span>{t('footer.legal.disclaimer')}</span>
+            {legalNav.map((item) => (
+              <Link
+                key={item.to}
+                to={item.to}
+                className="transition-colors hover:text-gold-300"
+              >
+                {t(`footer.legal.${item.key}`)}
+              </Link>
+            ))}
           </div>
         </div>
       </Container>

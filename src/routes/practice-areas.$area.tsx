@@ -4,7 +4,7 @@ import { PracticeAreaDetail } from '@/components/sections/practice-area-detail'
 import { isPracticeArea } from '@/content/practice-areas'
 import type { PracticeArea } from '@/content/practice-areas'
 
-export const Route = createFileRoute('/areas/$area')({
+export const Route = createFileRoute('/practice-areas/$area')({
   beforeLoad: ({ params }) => {
     if (!isPracticeArea(params.area)) throw notFound()
   },

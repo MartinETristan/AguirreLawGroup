@@ -5,14 +5,16 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
-  logo: '/Logos/alg-logo-light.png',
+  logo: {
+    src: '/Logos/alg-logo-light-190.webp',
+    srcSet:
+      '/Logos/alg-logo-light-95.webp 1x, /Logos/alg-logo-light-190.webp 2x, /Logos/alg-logo-light-285.webp 3x',
+  },
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
-    // display: '(956) 443-0678',
-    // href: 'tel:+19564430678',
-    display: '(957) 777-7777',
-    href: 'tel:+957777777',
+    display: '(956) 443-0678',
+    href: 'tel:+19564430678',
   },
   email: 'appointment@aguirre-lawgroup.com',
 
@@ -21,6 +23,15 @@ export const site = {
     city: 'Brownsville',
     state: 'TX',
     zip: '78520',
+    // Geocodificado con OpenStreetMap (coincidencia exacta del número 811)
+    geo: { lat: 25.9061, lng: -97.4980114 },
+    // Límites del mapa, [oeste, sur] y [este, norte]: la zona urbana de Brownsville y el puerto.
+    // El límite municipal de OpenStreetMap llega hasta 26.22 N por franjas anexadas que abarcan
+    // San Benito y Los Fresnos, y por eso aquí se recorta.
+    mapBounds: [
+      [-97.58, 25.84],
+      [-97.35, 26.0],
+    ] as [[number, number], [number, number]],
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=811+E+Madison+St+Brownsville+TX+78520',
   },
@@ -28,6 +39,9 @@ export const site = {
   hours: {
     open: '8:30 a.m.',
     close: '5:30 p.m.',
+    // Formato de 24 h para los datos estructurados
+    opens: '08:30',
+    closes: '17:30',
   },
 
   socials: [
@@ -49,16 +63,22 @@ export const site = {
   ],
 
   hero: {
-    logo: '/TheLawGun/TheLawGunLogo White.png',
+    logo: {
+      src: '/TheLawGun/thelawgun-white-1200.webp',
+      srcSet:
+        '/TheLawGun/thelawgun-white-600.webp 600w, /TheLawGun/thelawgun-white-900.webp 900w, /TheLawGun/thelawgun-white-1200.webp 1200w',
+      // Ancho máximo real: `max-w-md` en móvil y 34rem desde `sm`
+      sizes: '(min-width: 640px) 34rem, min(28rem, calc(100vw - 2rem))',
+    },
     logoAlt: 'The Law Gun',
     // TODO: sustituir por la foto de fondo definitiva
-    backdrop: '/BG_TEST.jpeg',
+    backdrop: '/BG_TEST.webp',
   },
 
   attorney: {
     name: 'Javier Aguirre',
-    photo: '/JavierAguirre/JavierAguireSide.png',
-    photoFront: '/JavierAguirre/Javier Aguirre Front.png',
+    photo: '/JavierAguirre/JavierAguireSide.webp',
+    photoFront: '/JavierAguirre/Javier Aguirre Front.webp',
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },

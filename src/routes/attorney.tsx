@@ -2,15 +2,14 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { AttorneyProfile } from '@/components/sections/attorney-profile'
 import { ContactCta } from '@/components/sections/contact-cta'
-import { FirmApproach } from '@/components/sections/firm-approach'
 
-export const Route = createFileRoute('/nosotros')({ component: AboutPage })
+export const Route = createFileRoute('/attorney')({ component: AttorneyPage })
 
-function AboutPage() {
+function AttorneyPage() {
   return (
     <>
-      <FirmApproach headingAs="h1" />
-      <AttorneyProfile showPhoto />
+      {/* Mismo perfil que /about-us, con foto; aquí es el título principal de la página */}
+      <AttorneyProfile headingAs="h1" />
       <ContactCta />
     </>
   )

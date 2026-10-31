@@ -6,21 +6,20 @@ import { FirmApproach } from '@/components/sections/firm-approach'
 import { HeroParallax } from '@/components/sections/hero-parallax'
 import { PracticeAreas } from '@/components/sections/practice-areas'
 import { Testimonials } from '@/components/sections/testimonials'
-import { ValuesStrip } from '@/components/sections/values-strip'
 
 export const Route = createFileRoute('/')({ component: Home })
 
-// Mismo orden que `Main.dc.html` del canvas; cada sección tiene además su propia ruta.
+// Orden de `Main.dc.html` del canvas, sin la franja de valores (el lema sigue en el footer).
+// `condensed` deja lo esencial; el texto completo vive en la ruta propia de cada sección.
 function Home() {
   return (
     <>
       <HeroParallax />
-      <ValuesStrip />
-      <PracticeAreas />
-      <FirmApproach />
-      <AttorneyProfile />
+      <PracticeAreas condensed />
+      <FirmApproach condensed />
+      <AttorneyProfile condensed />
       <Testimonials />
-      <ContactSection />
+      <ContactSection condensed />
     </>
   )
 }

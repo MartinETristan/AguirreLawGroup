@@ -9,7 +9,7 @@ type EyebrowProps = {
 }
 
 /** Etiqueta en mayúsculas con filete dorado, usada sobre cada título. */
-export function Eyebrow({ children, className }: EyebrowProps) {
+function Eyebrow({ children, className }: EyebrowProps) {
   return (
     <div
       className={cn(
@@ -24,7 +24,8 @@ export function Eyebrow({ children, className }: EyebrowProps) {
 }
 
 type SectionHeadingProps = {
-  eyebrow: string
+  /** Sin etiqueta queda solo el filete dorado. */
+  eyebrow?: string
   title: string
   as?: 'h1' | 'h2'
   className?: string
@@ -39,9 +40,9 @@ export function SectionHeading({
   return (
     <div className={cn('flex max-w-2xl flex-col gap-3', className)}>
       <Reveal>
-        <Eyebrow>{eyebrow}</Eyebrow>
+        {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : <GoldRule className="w-8" />}
       </Reveal>
-      <Heading className="font-heading text-[clamp(30px,3.6vw,44px)] leading-[1.1] text-foreground">
+      <Heading className="font-heading text-balance text-[clamp(30px,3.6vw,44px)] leading-[1.1] text-foreground">
         <MaskLine delay={0.1}>{title}</MaskLine>
       </Heading>
     </div>

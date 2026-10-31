@@ -2,13 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { AttorneyProfile } from '@/components/sections/attorney-profile'
 import { ContactCta } from '@/components/sections/contact-cta'
+import { FirmApproach } from '@/components/sections/firm-approach'
 
-export const Route = createFileRoute('/abogado')({ component: AttorneyPage })
+export const Route = createFileRoute('/about-us')({ component: AboutPage })
 
-function AttorneyPage() {
+function AboutPage() {
   return (
     <>
-      <AttorneyProfile headingAs="h1" />
+      <FirmApproach headingAs="h1" />
+      <AttorneyProfile />
       <ContactCta />
     </>
   )

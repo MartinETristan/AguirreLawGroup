@@ -10,141 +10,180 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as AbogadoRouteImport } from './routes/abogado'
-import { Route as AccesoRouteImport } from './routes/acceso'
-import { Route as ContactoRouteImport } from './routes/contacto'
-import { Route as FirmaRouteImport } from './routes/firma'
-import { Route as NosotrosRouteImport } from './routes/nosotros'
-import { Route as TestimoniosRouteImport } from './routes/testimonios'
-import { Route as AreasIndexRouteImport } from './routes/areas.index'
-import { Route as AreasAreaRouteImport } from './routes/areas.$area'
+import { Route as AboutUsRouteImport } from './routes/about-us'
+import { Route as AttorneyRouteImport } from './routes/attorney'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as FirmRouteImport } from './routes/firm'
+import { Route as LegalDisclaimerRouteImport } from './routes/legal-disclaimer'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
+import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas.index'
+import { Route as PracticeAreasAreaRouteImport } from './routes/practice-areas.$area'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AbogadoRoute = AbogadoRouteImport.update({
-  id: '/abogado',
-  path: '/abogado',
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AccesoRoute = AccesoRouteImport.update({
-  id: '/acceso',
-  path: '/acceso',
+const AttorneyRoute = AttorneyRouteImport.update({
+  id: '/attorney',
+  path: '/attorney',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ContactoRoute = ContactoRouteImport.update({
-  id: '/contacto',
-  path: '/contacto',
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
   getParentRoute: () => rootRouteImport,
 } as any)
-const FirmaRoute = FirmaRouteImport.update({
-  id: '/firma',
-  path: '/firma',
+const FirmRoute = FirmRouteImport.update({
+  id: '/firm',
+  path: '/firm',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NosotrosRoute = NosotrosRouteImport.update({
-  id: '/nosotros',
-  path: '/nosotros',
+const LegalDisclaimerRoute = LegalDisclaimerRouteImport.update({
+  id: '/legal-disclaimer',
+  path: '/legal-disclaimer',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TestimoniosRoute = TestimoniosRouteImport.update({
-  id: '/testimonios',
-  path: '/testimonios',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AreasIndexRoute = AreasIndexRouteImport.update({
-  id: '/areas/',
-  path: '/areas/',
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AreasAreaRoute = AreasAreaRouteImport.update({
-  id: '/areas/$area',
-  path: '/areas/$area',
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticeAreasIndexRoute = PracticeAreasIndexRouteImport.update({
+  id: '/practice-areas/',
+  path: '/practice-areas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PracticeAreasAreaRoute = PracticeAreasAreaRouteImport.update({
+  id: '/practice-areas/$area',
+  path: '/practice-areas/$area',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/abogado': typeof AbogadoRoute
-  '/acceso': typeof AccesoRoute
-  '/contacto': typeof ContactoRoute
-  '/firma': typeof FirmaRoute
-  '/nosotros': typeof NosotrosRoute
-  '/testimonios': typeof TestimoniosRoute
-  '/areas/$area': typeof AreasAreaRoute
-  '/areas/': typeof AreasIndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/attorney': typeof AttorneyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
+  '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/practice-areas/$area': typeof PracticeAreasAreaRoute
+  '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/abogado': typeof AbogadoRoute
-  '/acceso': typeof AccesoRoute
-  '/contacto': typeof ContactoRoute
-  '/firma': typeof FirmaRoute
-  '/nosotros': typeof NosotrosRoute
-  '/testimonios': typeof TestimoniosRoute
-  '/areas/$area': typeof AreasAreaRoute
-  '/areas': typeof AreasIndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/attorney': typeof AttorneyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
+  '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/practice-areas/$area': typeof PracticeAreasAreaRoute
+  '/practice-areas': typeof PracticeAreasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/abogado': typeof AbogadoRoute
-  '/acceso': typeof AccesoRoute
-  '/contacto': typeof ContactoRoute
-  '/firma': typeof FirmaRoute
-  '/nosotros': typeof NosotrosRoute
-  '/testimonios': typeof TestimoniosRoute
-  '/areas/$area': typeof AreasAreaRoute
-  '/areas/': typeof AreasIndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/attorney': typeof AttorneyRoute
+  '/contact-us': typeof ContactUsRoute
+  '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
+  '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
+  '/testimonials': typeof TestimonialsRoute
+  '/practice-areas/$area': typeof PracticeAreasAreaRoute
+  '/practice-areas/': typeof PracticeAreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/abogado'
-    | '/acceso'
-    | '/contacto'
-    | '/firma'
-    | '/nosotros'
-    | '/testimonios'
-    | '/areas/$area'
-    | '/areas/'
+    | '/about-us'
+    | '/attorney'
+    | '/contact-us'
+    | '/firm'
+    | '/legal-disclaimer'
+    | '/login'
+    | '/privacy-policy'
+    | '/terms'
+    | '/testimonials'
+    | '/practice-areas/$area'
+    | '/practice-areas/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/abogado'
-    | '/acceso'
-    | '/contacto'
-    | '/firma'
-    | '/nosotros'
-    | '/testimonios'
-    | '/areas/$area'
-    | '/areas'
+    | '/about-us'
+    | '/attorney'
+    | '/contact-us'
+    | '/firm'
+    | '/legal-disclaimer'
+    | '/login'
+    | '/privacy-policy'
+    | '/terms'
+    | '/testimonials'
+    | '/practice-areas/$area'
+    | '/practice-areas'
   id:
     | '__root__'
     | '/'
-    | '/abogado'
-    | '/acceso'
-    | '/contacto'
-    | '/firma'
-    | '/nosotros'
-    | '/testimonios'
-    | '/areas/$area'
-    | '/areas/'
+    | '/about-us'
+    | '/attorney'
+    | '/contact-us'
+    | '/firm'
+    | '/legal-disclaimer'
+    | '/login'
+    | '/privacy-policy'
+    | '/terms'
+    | '/testimonials'
+    | '/practice-areas/$area'
+    | '/practice-areas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  AbogadoRoute: typeof AbogadoRoute
-  AccesoRoute: typeof AccesoRoute
-  ContactoRoute: typeof ContactoRoute
-  FirmaRoute: typeof FirmaRoute
-  NosotrosRoute: typeof NosotrosRoute
-  TestimoniosRoute: typeof TestimoniosRoute
-  AreasAreaRoute: typeof AreasAreaRoute
-  AreasIndexRoute: typeof AreasIndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  AttorneyRoute: typeof AttorneyRoute
+  ContactUsRoute: typeof ContactUsRoute
+  FirmRoute: typeof FirmRoute
+  LegalDisclaimerRoute: typeof LegalDisclaimerRoute
+  LoginRoute: typeof LoginRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsRoute: typeof TermsRoute
+  TestimonialsRoute: typeof TestimonialsRoute
+  PracticeAreasAreaRoute: typeof PracticeAreasAreaRoute
+  PracticeAreasIndexRoute: typeof PracticeAreasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -156,60 +195,81 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/abogado': {
-      id: '/abogado'
-      path: '/abogado'
-      fullPath: '/abogado'
-      preLoaderRoute: typeof AbogadoRouteImport
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/acceso': {
-      id: '/acceso'
-      path: '/acceso'
-      fullPath: '/acceso'
-      preLoaderRoute: typeof AccesoRouteImport
+    '/attorney': {
+      id: '/attorney'
+      path: '/attorney'
+      fullPath: '/attorney'
+      preLoaderRoute: typeof AttorneyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/contacto': {
-      id: '/contacto'
-      path: '/contacto'
-      fullPath: '/contacto'
-      preLoaderRoute: typeof ContactoRouteImport
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/firma': {
-      id: '/firma'
-      path: '/firma'
-      fullPath: '/firma'
-      preLoaderRoute: typeof FirmaRouteImport
+    '/firm': {
+      id: '/firm'
+      path: '/firm'
+      fullPath: '/firm'
+      preLoaderRoute: typeof FirmRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/nosotros': {
-      id: '/nosotros'
-      path: '/nosotros'
-      fullPath: '/nosotros'
-      preLoaderRoute: typeof NosotrosRouteImport
+    '/legal-disclaimer': {
+      id: '/legal-disclaimer'
+      path: '/legal-disclaimer'
+      fullPath: '/legal-disclaimer'
+      preLoaderRoute: typeof LegalDisclaimerRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/testimonios': {
-      id: '/testimonios'
-      path: '/testimonios'
-      fullPath: '/testimonios'
-      preLoaderRoute: typeof TestimoniosRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/areas/': {
-      id: '/areas/'
-      path: '/areas'
-      fullPath: '/areas/'
-      preLoaderRoute: typeof AreasIndexRouteImport
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/areas/$area': {
-      id: '/areas/$area'
-      path: '/areas/$area'
-      fullPath: '/areas/$area'
-      preLoaderRoute: typeof AreasAreaRouteImport
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practice-areas/': {
+      id: '/practice-areas/'
+      path: '/practice-areas'
+      fullPath: '/practice-areas/'
+      preLoaderRoute: typeof PracticeAreasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/practice-areas/$area': {
+      id: '/practice-areas/$area'
+      path: '/practice-areas/$area'
+      fullPath: '/practice-areas/$area'
+      preLoaderRoute: typeof PracticeAreasAreaRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -217,14 +277,17 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  AbogadoRoute: AbogadoRoute,
-  AccesoRoute: AccesoRoute,
-  ContactoRoute: ContactoRoute,
-  FirmaRoute: FirmaRoute,
-  NosotrosRoute: NosotrosRoute,
-  TestimoniosRoute: TestimoniosRoute,
-  AreasAreaRoute: AreasAreaRoute,
-  AreasIndexRoute: AreasIndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  AttorneyRoute: AttorneyRoute,
+  ContactUsRoute: ContactUsRoute,
+  FirmRoute: FirmRoute,
+  LegalDisclaimerRoute: LegalDisclaimerRoute,
+  LoginRoute: LoginRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsRoute: TermsRoute,
+  TestimonialsRoute: TestimonialsRoute,
+  PracticeAreasAreaRoute: PracticeAreasAreaRoute,
+  PracticeAreasIndexRoute: PracticeAreasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
