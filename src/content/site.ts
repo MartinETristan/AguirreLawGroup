@@ -48,9 +48,17 @@ export const site = {
     },
   ],
 
+  hero: {
+    logo: '/TheLawGun/TheLawGunLogo White.png',
+    logoAlt: 'The Law Gun',
+    // TODO: sustituir por la foto de fondo definitiva
+    backdrop: '/BG_TEST.jpeg',
+  },
+
   attorney: {
     name: 'Javier Aguirre',
     photo: '/JavierAguirre/JavierAguireSide.png',
+    photoFront: '/JavierAguirre/Javier Aguirre Front.png',
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },
