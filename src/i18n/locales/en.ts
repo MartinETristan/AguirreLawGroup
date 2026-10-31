@@ -9,9 +9,7 @@ const en: Translation = {
   common: {
     freeConsultation: 'Free consultation',
     scheduleConsultation: 'Schedule your free consultation',
-    requestConsultation: 'Request a consultation',
     call: 'Call {{phone}}',
-    learnMore: 'Learn more',
     hours: 'Mon–Fri, {{open}} – {{close}}',
     hoursLong: 'Monday to Friday, {{open}} – {{close}}',
     skipToContent: 'Skip to content',
@@ -19,6 +17,7 @@ const en: Translation = {
   nav: {
     label: 'Main',
     home: 'Home',
+    about: 'About Us',
     areas: 'Practice Areas',
     firm: 'The Firm',
     attorney: 'Attorney',
@@ -27,22 +26,22 @@ const en: Translation = {
     openMenu: 'Open menu',
     menu: 'Menu',
     language: 'Language',
+    login: 'Log in',
   },
   hero: {
     eyebrow: 'Brownsville, Texas',
     title1: 'Experienced defense',
     title2: 'when you need it most.',
-    lead: 'Criminal defense and personal injury attorneys in the Rio Grande Valley. We put your rights and your freedom above everything else.',
+    lead: 'One mistake can change your life in an instant. If you are facing criminal charges or have been injured, you need an honest and discreet lawyer to guide you through this trying time.',
     stats: {
       sinceLabel: 'Practicing in the Rio Grande Valley',
       cases: 'Hundreds',
       casesLabel: 'Of cases and jury trials',
-      prosecutor: 'Former prosecutor',
+      prosecutor: 'City prosecutor',
       prosecutorLabel: 'City of Brownsville, {{year}}',
     },
     card: {
       subtitle: 'Initial case evaluation',
-      phone: 'Call us',
       hours: 'Hours',
       office: 'Office',
     },
@@ -50,7 +49,6 @@ const en: Translation = {
   values: {
     label: 'Values',
     words: ['Reliable.', 'Devoted.', 'Respected.'],
-    note: 'We stand with you from arraignment through trial, if it comes to that.',
   },
   areas: {
     eyebrow: 'Practice Areas',
@@ -63,68 +61,77 @@ const en: Translation = {
     items: {
       'criminal-law': {
         title: 'Criminal Law',
-        text: 'Everyone makes mistakes. We aggressively defend your rights in misdemeanor and felony cases.',
+        text: 'Mistakes happen. We aggressively defend your rights in misdemeanor and felony cases.',
       },
       dwi: {
         title: 'DWI',
-        text: 'Driving while intoxicated. Don’t let one bad decision define your future.',
+        text: 'Don’t let one bad decision change your life forever.',
       },
       'drug-charges': {
         title: 'Drug Charges',
-        text: 'Possession and other charges involving controlled substances.',
+        text: 'Possession, sales, trafficking, and other state or federal charges.',
       },
       'personal-injury': {
         title: 'Personal Injury',
-        text: 'Don’t ignore your pain. We get results and the compensation you deserve.',
+        text: 'Car and work accidents, slip and falls, and more. Don’t let your pain go ignored.',
       },
       'theft-property': {
         title: 'Theft & Property Crimes',
-        text: 'Defense against theft, burglary and property damage charges.',
+        text: 'Burglary, shoplifting, arson, check forgery, and more.',
       },
       'violent-crimes': {
         title: 'Violent Crimes',
-        text: 'Assault and other serious charges that demand an experienced defense.',
+        text: 'Assault, domestic violence, kidnapping, and other serious charges.',
       },
       'white-collar': {
         title: 'White Collar Crime',
-        text: 'Tax evasion, extortion and fraud, with unique insight into criminal defense.',
+        text: 'Fraud, embezzlement, extortion, and money laundering, often with federal involvement.',
       },
     },
   },
   firm: {
     eyebrow: 'The Firm',
     title: 'Your rights and your freedom come first.',
-    lead: 'As a former prosecutor, we know how a case is built from the other side, and we have the insight to find the weaknesses and mistakes in the prosecution’s case.',
-    quote:
+    lead: 'Whether you are facing a personal injury that has changed your life or an arrest that puts your future at stake, you need an attorney who will do everything in their power to defend your well-being, rights, and freedom.',
+    evidence:
+      'We have the insight to find weaknesses and mistakes in the prosecution’s case. We thoroughly study the evidence and devise the best strategy for your defense.',
+    reasonsTitle: 'When you choose Aguirre Law Group, you are choosing:',
+    reasons: [
       'A law firm that prioritizes your rights and freedom above anything else.',
-    steps: [
-      {
-        title: 'We evaluate your case',
-        text: 'A free consultation to understand the facts and explain your options.',
-      },
-      {
-        title: 'We find the weaknesses',
-        text: 'We review the charges through the eyes of a former prosecutor.',
-      },
-      {
-        title: 'We stand with you to the end',
-        text: 'Arraignment, negotiations, hearings and, if needed, a jury trial.',
-      },
+      'A dedicated attorney who is thoroughly familiar with the Texas criminal justice system.',
+      '{{years}} years of litigation experience.',
+      'A track record that includes hundreds of cases and jury trials.',
+      'A team with you the whole time: arraignment, negotiations, hearings and, if necessary, trial.',
     ],
   },
   attorney: {
     eyebrow: 'Meet your attorney',
     role: 'Criminal defense and personal injury attorney',
-    bio: 'Practicing in the Rio Grande Valley since {{year}}, with a track record that includes hundreds of cases and jury trials.',
-    bio2: 'He has defended clients charged with DWI, drug possession, tax evasion, theft, assault and extortion, among other misdemeanors and felonies.',
+    bio: 'Practicing law in the Rio Grande Valley since {{year}}, {{years}} years ago, with a focus on criminal and personal injury cases.',
+    bio2: 'He defends individuals charged with DWI, drug possession, tax evasion, theft, assault, extortion, and other misdemeanors or felonies in Brownsville, Texas.',
+    personal:
+      'When not advocating for the rights of his clients, he enjoys spending time with his wife and two children.',
     credentials: {
-      jd: 'J.D.',
+      jd: 'Juris Doctor (J.D.)',
       ba: 'B.A. in Government',
-      prosecutor: 'Former prosecutor',
-      prosecutorValue: 'City of Brownsville, {{year}}',
+      aa: 'A.A.',
+      aaValue: 'Spanish Translations',
+      prosecutor: 'City Prosecutor',
+      prosecutorValue: 'Brownsville, {{year}}',
       community: 'Community',
       communityValue: 'Scoutmaster, BSA Troop {{troop}}, since {{year}}',
     },
+  },
+  areaPage: {
+    back: 'All practice areas',
+    cta: 'Request an evaluation',
+    ctaText: 'Tell us what happened and we’ll evaluate your case.',
+    otherAreas: 'Other areas',
+    disclaimer:
+      'General information about Texas law; not legal advice. Penalties vary by case and may change with the law.',
+  },
+  faq: {
+    title: 'Frequently asked questions.',
   },
   testimonials: {
     eyebrow: 'Testimonials',
@@ -133,7 +140,7 @@ const en: Translation = {
   contact: {
     eyebrow: 'Contact',
     title: 'Let’s talk about your case.',
-    lead: 'Request your free consultation and an initial case evaluation. Tell us what happened and we’ll get in touch.',
+    lead: 'When facing a life-changing situation, you need a legal team that will do everything to protect you. Call to speak directly with your attorney or fill out the form.',
     form: {
       name: 'Full name',
       phone: 'Phone',
@@ -150,9 +157,17 @@ const en: Translation = {
       mailSubject: 'Consultation request — {{name}}',
     },
   },
+  login: {
+    eyebrow: 'System access',
+    title: 'Log in',
+    email: 'Email',
+    password: 'Password',
+    submit: 'Log in',
+    unavailable: 'System access is not available yet.',
+  },
   cta: {
     title: 'Facing a charge or recovering from an injury?',
-    text: 'A free consultation can change the course of your case.',
+    text: 'Contact us today to request an initial case evaluation.',
   },
   footer: {
     motto: 'Reliable. Devoted. Respected.',

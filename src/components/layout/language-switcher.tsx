@@ -12,7 +12,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
       role="group"
       aria-label={t('nav.language')}
       className={cn(
-        'inline-flex overflow-hidden rounded-sm border border-ink-300',
+        'inline-flex overflow-hidden rounded-sm border border-input',
         className,
       )}
     >
@@ -26,8 +26,8 @@ export function LanguageSwitcher({ className }: { className?: string }) {
           className={cn(
             'h-8 min-w-11 px-2.5 text-xs font-bold tracking-[0.08em] uppercase transition-colors duration-300 focus-visible:ring-3 focus-visible:ring-ring/50 focus-visible:outline-none',
             lng === active
-              ? 'bg-primary-950 text-ink-50'
-              : 'bg-white text-ink-600 hover:bg-primary-50 hover:text-primary-900',
+              ? 'bg-primary text-primary-foreground'
+              : 'text-muted-foreground hover:bg-muted hover:text-foreground',
           )}
         >
           {lng}

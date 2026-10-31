@@ -22,8 +22,7 @@ import { practiceAreas } from '@/content/practice-areas'
 import { fullAddress, site } from '@/content/site'
 import type { PracticeArea } from '@/content/practice-areas'
 
-const fieldClass =
-  'h-12 rounded-sm border-ink-300 bg-white px-3.5 text-[15px] md:text-[15px]'
+const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
 
 type ContactSectionProps = {
   defaultArea?: PracticeArea
@@ -85,25 +84,25 @@ export function ContactSection({
   }
 
   return (
-    <section className="bg-white">
-      <Container className="flex flex-wrap items-start gap-16 py-24 sm:py-28">
-        <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-6">
+    <section className="border-t border-border">
+      <Container className="grid items-start gap-8 py-12 sm:py-16 lg:grid-cols-[2fr_3fr] lg:gap-14">
+        <div className="flex min-w-0 flex-col gap-4">
           <SectionHeading
             as={headingAs}
             eyebrow={t('contact.eyebrow')}
             title={t('contact.title')}
           />
           <Reveal delay={0.2}>
-            <p className="text-[17px] leading-relaxed text-ink-600">
+            <p className="leading-relaxed text-muted-foreground">
               {t('contact.lead')}
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <ul className="flex flex-col gap-3.5 pt-3 text-[15px] font-semibold text-ink-900">
+            <ul className="flex flex-col gap-3 pt-1 text-[15px] font-medium text-foreground">
               {details.map((item, i) => (
                 <li
                   key={i}
-                  className="flex items-center gap-3 [&_a]:transition-colors [&_a:hover]:text-primary-700 [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-[1.6] [&_svg]:text-primary-600"
+                  className="flex items-center gap-3 [&_a]:transition-colors [&_a:hover]:text-link [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-[1.6] [&_svg]:text-muted-foreground"
                 >
                   {item.icon}
                   {item.content}
@@ -113,10 +112,10 @@ export function ContactSection({
           </Reveal>
         </div>
 
-        <Reveal className="min-w-0 flex-[1_1_480px]" delay={0.15}>
+        <Reveal className="min-w-0" delay={0.15}>
           <form
             onSubmit={handleSubmit}
-            className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5 border border-t-2 border-ink-200 border-t-gold-500 bg-ink-50 px-5 py-10 sm:px-10"
+            className="grid gap-4 rounded-lg border border-t-2 border-border border-t-gold-500 bg-card p-5 sm:grid-cols-2 sm:p-6"
           >
             <div className="flex flex-col gap-2">
               <Label htmlFor={`${id}-name`}>{t('contact.form.name')}</Label>
@@ -139,7 +138,7 @@ export function ContactSection({
                 className={fieldClass}
               />
             </div>
-            <div className="col-span-full flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor={`${id}-email`}>{t('contact.form.email')}</Label>
               <Input
                 id={`${id}-email`}
@@ -149,12 +148,12 @@ export function ContactSection({
                 className={fieldClass}
               />
             </div>
-            <div className="col-span-full flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
               <Label htmlFor={`${id}-area`}>{t('contact.form.caseType')}</Label>
               <Select value={area} onValueChange={setArea}>
                 <SelectTrigger
                   id={`${id}-area`}
-                  className={`${fieldClass} w-full`}
+                  className={`${fieldClass} w-full data-[size=default]:h-11`}
                 >
                   <SelectValue
                     placeholder={t('contact.form.caseTypePlaceholder')}
@@ -179,35 +178,35 @@ export function ContactSection({
               <Textarea
                 id={`${id}-message`}
                 name="message"
-                rows={4}
+                rows={3}
                 required
-                className="min-h-32 rounded-sm border-ink-300 bg-white px-3.5 py-3 text-[15px] md:text-[15px]"
+                className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
               />
             </div>
             <div className="col-span-full flex flex-wrap items-center justify-between gap-4">
-              <p className="max-w-xs text-xs leading-normal text-ink-600">
+              <p className="max-w-xs text-[13px] leading-snug text-muted-foreground">
                 {t('contact.form.disclaimer')}
               </p>
-              <Button type="submit" size="lg" className="h-12 px-8 text-base">
+              <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
                 {t('contact.form.submit')}
               </Button>
             </div>
-            <div aria-live="polite" className="col-span-full">
-              <AnimatePresence>
-                {sent && (
-                  <motion.p
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5, ease: EASE }}
-                    className="bg-primary-50 px-4 py-3 text-sm text-primary-900"
-                  >
-                    {t('contact.form.success', { email: site.email })}
-                  </motion.p>
-                )}
-              </AnimatePresence>
-            </div>
           </form>
+          <div aria-live="polite">
+            <AnimatePresence>
+              {sent && (
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: EASE }}
+                  className="mt-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground"
+                >
+                  {t('contact.form.success', { email: site.email })}
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </Reveal>
       </Container>
     </section>

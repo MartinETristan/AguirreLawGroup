@@ -5,12 +5,14 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
-  logo: '/Logos/alg-logo.png',
+  logo: '/Logos/alg-logo-light.png',
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
-    display: '(956) 443-0678',
-    href: 'tel:+19564430678',
+    // display: '(956) 443-0678',
+    // href: 'tel:+19564430678',
+    display: '(957) 777-7777',
+    href: 'tel:+957777777',
   },
   email: 'appointment@aguirre-lawgroup.com',
 
@@ -46,16 +48,29 @@ export const site = {
     },
   ],
 
+  hero: {
+    logo: '/TheLawGun/TheLawGunLogo White.png',
+    logoAlt: 'The Law Gun',
+    // TODO: sustituir por la foto de fondo definitiva
+    backdrop: '/BG_TEST.jpeg',
+  },
+
   attorney: {
     name: 'Javier Aguirre',
+    photo: '/JavierAguirre/JavierAguireSide.png',
+    photoFront: '/JavierAguirre/Javier Aguirre Front.png',
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },
-    ba: { school: 'University of Texas at Brownsville' },
+    ba: { school: 'University of Texas at Brownsville (UTRGV)' },
     scouts: { troop: 356, since: 2014 },
   },
 } as const
 
 export type SocialId = (typeof site.socials)[number]['id']
+
+/** Años de ejercicio; se calcula para que no vuelva a quedar desactualizado. */
+export const yearsPracticing =
+  new Date().getFullYear() - site.attorney.practicingSince
 
 export const fullAddress = `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`

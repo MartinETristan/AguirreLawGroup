@@ -50,18 +50,27 @@ type StaggerProps = {
   children: ReactNode
   className?: string
   as?: 'div' | 'ul' | 'ol' | 'dl'
+  /** Se reproduce al montar, sin esperar a que entre en pantalla. */
+  immediate?: boolean
 }
 
 /** Contenedor que escalona la entrada de sus `StaggerItem`. */
-export function Stagger({ children, className, as = 'div' }: StaggerProps) {
+export function Stagger({
+  children,
+  className,
+  as = 'div',
+  immediate = false,
+}: StaggerProps) {
   const Component = motion[as]
+  const trigger = immediate
+    ? { animate: 'show' }
+    : { whileInView: 'show', viewport }
   return (
     <Component
       className={className}
       variants={staggerParent}
       initial="hidden"
-      whileInView="show"
-      viewport={viewport}
+      {...trigger}
     >
       {children}
     </Component>
@@ -107,7 +116,7 @@ const maskText: Variants = {
 export function MaskLine({ children, className, delay = 0 }: MaskLineProps) {
   return (
     <motion.span
-      className="-mb-[0.18em] block overflow-hidden pb-[0.18em]"
+      className="mb-[-0.18em] block overflow-hidden pb-[0.18em]"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}

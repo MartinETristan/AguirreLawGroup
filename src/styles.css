@@ -687,6 +687,7 @@ body,
   --color-muted-foreground: var(--muted-foreground);
   --color-muted: var(--muted);
   --color-secondary-foreground: var(--secondary-foreground);
+  --color-link: var(--link);
   --color-complementary-foreground: var(--complementary-foreground);
   --color-complementary: var(--complementary);
   --color-secondary: var(--secondary);
@@ -707,7 +708,7 @@ body,
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Paleta Aguirre Law Group — Azul + Blanco, con dorado complementario */
+/* Paleta Aguirre Law Group — Azul marino + Blanco, con dorado complementario */
 @theme {
   /* Primario — Azul (#3387E6 = 500) */
   --color-primary-50: #eef5fd;
@@ -752,80 +753,64 @@ body,
      negro nunca es 100% negro */
   --color-snow: #fafafa;
   --color-black: #0e141d;
+
+  /* Superficies del tema oscuro — azul marino derivado de primary-950 */
+  --color-navy-200: #b9c6d8;
+  --color-navy-400: #64799a;
+  --color-navy-700: #183260;
+  --color-navy-800: #11264a;
+  --color-navy-900: #0b1b33;
+  --color-navy-950: #071326;
 }
 
 :root {
-  --background: var(--color-ink-50);
-  --foreground: var(--color-ink-900);
-  --card: #ffffff;
-  --card-foreground: var(--color-ink-900);
-  --popover: #ffffff;
-  --popover-foreground: var(--color-ink-900);
-  /* 600 en lugar de 500: texto blanco con contraste AA */
+  /* Base y elevado: el fondo retrocede y las superficies avanzan */
+  --background: var(--color-navy-900);
+  --foreground: var(--color-ink-100);
+  --card: var(--color-navy-800);
+  --card-foreground: var(--color-ink-100);
+  --popover: var(--color-navy-800);
+  --popover-foreground: var(--color-ink-100);
+  /* 600 en lugar de 500: texto blanco con contraste AA (5.0:1) */
   --primary: var(--color-primary-600);
   --primary-foreground: var(--color-ink-50);
-  --secondary: var(--color-ink-50);
-  --secondary-foreground: var(--color-primary-900);
-  --complementary: var(--color-gold-500);
-  --complementary-foreground: var(--color-ink-950);
-  --muted: var(--color-ink-100);
-  --muted-foreground: var(--color-ink-500);
-  --accent: var(--color-primary-50);
-  --accent-foreground: var(--color-primary-800);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: var(--color-ink-200);
-  --input: var(--color-ink-200);
-  --ring: var(--color-primary-400);
-  --chart-1: var(--color-primary-500);
-  --chart-2: var(--color-gold-500);
-  --chart-3: var(--color-primary-800);
-  --chart-4: var(--color-gold-700);
-  --chart-5: var(--color-primary-300);
-  --radius: 0.25rem;
-  --sidebar: var(--color-primary-950);
-  --sidebar-foreground: var(--color-ink-50);
-  --sidebar-primary: var(--color-gold-500);
-  --sidebar-primary-foreground: var(--color-ink-950);
-  --sidebar-accent: var(--color-primary-900);
-  --sidebar-accent-foreground: var(--color-ink-50);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: var(--color-gold-400);
-}
-
-.dark {
-  --background: var(--color-ink-950);
-  --foreground: var(--color-ink-50);
-  --card: var(--color-ink-900);
-  --card-foreground: var(--color-ink-50);
-  --popover: var(--color-ink-900);
-  --popover-foreground: var(--color-ink-50);
-  --primary: var(--color-primary-400);
-  --primary-foreground: var(--color-ink-950);
-  --secondary: var(--color-ink-800);
-  --secondary-foreground: var(--color-ink-50);
+  --secondary: var(--color-navy-700);
+  --secondary-foreground: var(--color-ink-100);
   --complementary: var(--color-gold-400);
   --complementary-foreground: var(--color-ink-950);
-  --muted: var(--color-ink-800);
-  --muted-foreground: var(--color-ink-400);
-  --accent: var(--color-primary-950);
-  --accent-foreground: var(--color-primary-100);
+  --muted: var(--color-navy-700);
+  --muted-foreground: var(--color-navy-200);
+  --accent: var(--color-navy-700);
+  --accent-foreground: var(--color-ink-100);
+  --link: var(--color-primary-300);
   --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: var(--color-primary-500);
+  --border: oklch(1 0 0 / 12%);
+  --input: var(--color-navy-400);
+  --ring: var(--color-primary-400);
   --chart-1: var(--color-primary-400);
   --chart-2: var(--color-gold-400);
   --chart-3: var(--color-primary-200);
   --chart-4: var(--color-gold-200);
   --chart-5: var(--color-primary-600);
-  --sidebar: var(--color-ink-900);
-  --sidebar-foreground: var(--color-ink-50);
+  --radius: 0.25rem;
+  --sidebar: var(--color-navy-950);
+  --sidebar-foreground: var(--color-ink-100);
   --sidebar-primary: var(--color-gold-400);
   --sidebar-primary-foreground: var(--color-ink-950);
-  --sidebar-accent: var(--color-ink-800);
-  --sidebar-accent-foreground: var(--color-ink-50);
-  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-accent: var(--color-navy-700);
+  --sidebar-accent-foreground: var(--color-ink-100);
+  --sidebar-border: oklch(1 0 0 / 12%);
   --sidebar-ring: var(--color-gold-400);
+  color-scheme: dark;
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --foreground: var(--color-ink-50);
+    --muted-foreground: var(--color-ink-100);
+    --border: oklch(1 0 0 / 35%);
+    --input: var(--color-navy-200);
+  }
 }
 
 @layer base {
@@ -837,6 +822,10 @@ body,
   }
   html {
     @apply font-sans antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
   ::selection {
     @apply bg-gold-200 text-ink-950;

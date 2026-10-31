@@ -1,11 +1,10 @@
+import { CheckIcon } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { SectionHeading } from '@/components/shared/section-heading'
-import { site } from '@/content/site'
-
-const numerals = ['I', 'II', 'III']
+import { yearsPracticing } from '@/content/site'
 
 export function FirmApproach({
   headingAs = 'h2',
@@ -13,62 +12,54 @@ export function FirmApproach({
   headingAs?: 'h1' | 'h2'
 }) {
   const { t } = useTranslation()
-  const steps = t('firm.steps', { returnObjects: true })
+  const reasons = t('firm.reasons', {
+    returnObjects: true,
+    years: yearsPracticing,
+  })
 
   return (
-    <section className="border-y border-ink-200 bg-white">
-      <Container className="flex flex-wrap gap-16 py-24 sm:py-28">
-        <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-6">
+    <section className="border-t border-border">
+      <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14">
+        <div className="flex min-w-0 flex-col gap-4">
           <SectionHeading
             as={headingAs}
             eyebrow={t('firm.eyebrow')}
             title={t('firm.title')}
           />
           <Reveal delay={0.2}>
-            <p className="text-[17px] leading-relaxed text-ink-600">
+            <p className="leading-relaxed text-muted-foreground">
               {t('firm.lead')}
             </p>
           </Reveal>
           <Reveal delay={0.3}>
-            <figure className="mt-4 flex flex-col gap-4 bg-primary-50 px-8 py-9">
-              <span
-                aria-hidden="true"
-                className="h-7 font-heading text-6xl leading-[0.5] text-gold-500"
-              >
-                “
-              </span>
-              <blockquote className="font-heading text-2xl leading-snug text-primary-950">
-                {t('firm.quote')}
-              </blockquote>
-              <figcaption className="text-[13px] font-semibold tracking-[0.14em] text-gold-800 uppercase">
-                {site.name}
-              </figcaption>
-            </figure>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              {t('firm.evidence')}
+            </p>
           </Reveal>
         </div>
 
-        <Stagger as="ol" className="flex min-w-0 flex-[1_1_480px] flex-col">
-          {steps.map((step, i) => (
-            <StaggerItem
-              as="li"
-              key={step.title}
-              className="flex gap-7 border-b border-ink-200 py-9 last:border-b-0"
-            >
-              <span
-                aria-hidden="true"
-                className="flex size-14 shrink-0 items-center justify-center rounded-full border border-gold-500 font-heading text-[22px] text-primary-950"
+        <div className="flex min-w-0 flex-col gap-3">
+          <Reveal>
+            <h3 className="text-[17px] leading-snug font-semibold text-foreground">
+              {t('firm.reasonsTitle')}
+            </h3>
+          </Reveal>
+          <Stagger as="ul" className="flex flex-col">
+            {reasons.map((reason) => (
+              <StaggerItem
+                as="li"
+                key={reason}
+                className="flex gap-3 border-b border-border py-3 text-[15px] leading-normal text-foreground last:border-b-0"
               >
-                {numerals[i]}
-              </span>
-              <div className="flex flex-col gap-2.5">
-                <h3 className="font-heading text-[28px] text-primary-950">
-                  {step.title}
-                </h3>
-                <p className="leading-relaxed text-ink-600">{step.text}</p>
-              </div>
-            </StaggerItem>
-          ))}
-        </Stagger>
+                <CheckIcon
+                  className="mt-0.5 size-4.5 shrink-0 text-complementary"
+                  aria-hidden="true"
+                />
+                {reason}
+              </StaggerItem>
+            ))}
+          </Stagger>
+        </div>
       </Container>
     </section>
   )

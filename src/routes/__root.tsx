@@ -54,13 +54,13 @@ function RootComponent() {
         ref={lenisRef}
         options={{
           autoRaf: false,
-          lerp: 0.35,
+          lerp: 0.85,
           wheelMultiplier: 0.9,
         }}
       />
       <a
         href="#contenido"
-        className="sr-only z-50 bg-primary-950 px-4 py-3 text-ink-50 focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        className="sr-only z-50 bg-primary px-4 py-3 text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
       >
         {t('common.skipToContent')}
       </a>
@@ -99,12 +99,12 @@ function NotFound() {
   const { t } = useTranslation()
 
   return (
-    <Container className="flex flex-col items-start gap-6 py-32">
-      <h1 className="font-heading text-5xl text-primary-950">
+    <Container className="flex flex-col items-start gap-5 py-20">
+      <h1 className="font-heading text-5xl text-foreground">
         {t('notFound.title')}
       </h1>
-      <p className="text-lg text-ink-600">{t('notFound.text')}</p>
-      <Button asChild size="lg" className="h-12 px-6 text-base">
+      <p className="text-lg text-muted-foreground">{t('notFound.text')}</p>
+      <Button asChild size="lg" className="h-12 px-6 text-[15px]">
         <Link to="/">{t('notFound.back')}</Link>
       </Button>
     </Container>
