@@ -5,7 +5,7 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
-  logo: '/Logos/alg-logo-light.png',
+  logo: '/Logos/alg-logo-light.webp',
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
@@ -59,16 +59,16 @@ export const site = {
   ],
 
   hero: {
-    logo: '/TheLawGun/TheLawGunLogo White.png',
+    logo: '/TheLawGun/TheLawGunLogo White.webp',
     logoAlt: 'The Law Gun',
     // TODO: sustituir por la foto de fondo definitiva
-    backdrop: '/BG_TEST.jpeg',
+    backdrop: '/BG_TEST.webp',
   },
 
   attorney: {
     name: 'Javier Aguirre',
-    photo: '/JavierAguirre/JavierAguireSide.png',
-    photoFront: '/JavierAguirre/Javier Aguirre Front.png',
+    photo: '/JavierAguirre/JavierAguireSide.webp',
+    photoFront: '/JavierAguirre/Javier Aguirre Front.webp',
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },

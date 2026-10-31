@@ -10,7 +10,7 @@ import type { Language } from '@/i18n'
 
 // Sin alias ni dependencias de navegador: este módulo también corre al compilar (`scripts/vite-seo.ts`).
 
-const OG_IMAGE = '/og-image.jpg'
+const OG_IMAGE = '/og-image.webp'
 const seoLanguages: Array<Language> = ['es', 'en']
 
 type SeoTag = {
@@ -72,7 +72,7 @@ function firmSchema(lang: Language) {
     '@id': `${site.url}/#firm`,
     name: site.name,
     url: absoluteUrl(localizePath('/', lang)),
-    logo: absoluteUrl('/Logos/alg-logo.png'),
+    logo: absoluteUrl('/Logos/alg-logo.webp'),
     image: absoluteUrl(OG_IMAGE),
     telephone: site.phone.href.replace('tel:', ''),
     email: site.email,
