@@ -13,8 +13,8 @@ export const site = {
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
-    display: '(956) 443-0678',
-    href: 'tel:+19564430678',
+    display: '(956) 477-7777',
+    href: 'tel:+19564777777',
   },
   email: 'appointment@aguirre-lawgroup.com',
 
