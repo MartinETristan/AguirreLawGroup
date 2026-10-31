@@ -115,7 +115,7 @@ export function AttorneyProfile({
           >
             <img
               src={attorney.photo}
-              alt={attorney.name}
+              alt={t('attorney.photoAlt', { name: attorney.name })}
               width={553}
               height={809}
               loading="lazy"

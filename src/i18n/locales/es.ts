@@ -1,9 +1,4 @@
 const es = {
-  meta: {
-    title: 'Aguirre Law Group · Abogados en Brownsville, Texas',
-    description:
-      'Defensa criminal y lesiones personales en el Valle del Río Grande. Consulta gratuita.',
-  },
   common: {
     freeConsultation: 'Consulta gratuita',
     scheduleConsultation: 'Agenda tu consulta gratuita',
@@ -27,6 +22,7 @@ const es = {
     login: 'Iniciar sesión',
   },
   hero: {
+    heading: 'Abogados de defensa criminal y lesiones personales en Brownsville, Texas',
     eyebrow: 'Brownsville, Texas',
     title1: 'Defensa experimentada',
     title2: 'cuando más la necesitas.',
@@ -103,6 +99,7 @@ const es = {
     ],
   },
   attorney: {
+    photoAlt: '{{name}}, abogado de defensa criminal y lesiones personales en Brownsville, Texas',
     eyebrow: 'Conoce a tu abogado',
     role: 'Abogado de defensa criminal y lesiones personales',
     bio: 'Ejerce en el Valle del Río Grande desde {{year}}, hace {{years}} años, con enfoque en casos penales y de lesiones personales.',

@@ -28,6 +28,9 @@ export const site = {
   hours: {
     open: '8:30 a.m.',
     close: '5:30 p.m.',
+    // Formato de 24 h para los datos estructurados
+    opens: '08:30',
+    closes: '17:30',
   },
 
   socials: [

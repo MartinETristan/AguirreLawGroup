@@ -1,9 +1,4 @@
-import {
-  motion,
-  useReducedMotion,
-  useScroll,
-  useTransform,
-} from 'motion/react'
+import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -54,10 +49,6 @@ export function HeroParallax() {
 
   return (
     <section className="border-b border-border">
-      <h1 className="sr-only">
-        {t('hero.title1')} {t('hero.title2')}
-      </h1>
-
       <div
         ref={stageRef}
         className="relative h-[clamp(480px,calc(100svh-11rem),860px)] overflow-hidden"
@@ -88,7 +79,7 @@ export function HeroParallax() {
           <img
             src={site.attorney.photoFront}
             loading="lazy"
-            alt={site.attorney.name}
+            alt={t('attorney.photoAlt', { name: site.attorney.name })}
             width={603}
             height={799}
             className="size-full object-contain object-bottom"
@@ -114,6 +105,14 @@ export function HeroParallax() {
       </div>
 
       <Container className="pb-12 sm:pb-16">
+        <motion.h1
+          className="mx-auto max-w-3xl pb-6 text-center font-heading text-balance text-[clamp(26px,3vw,36px)] leading-[1.15] text-foreground"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
+        >
+          {t('hero.heading')}
+        </motion.h1>
         <Stagger
           immediate
           className="grid gap-4 border-t border-border pt-6 sm:grid-cols-3 sm:gap-8"

@@ -1,11 +1,6 @@
 import type { Translation } from './es'
 
 const en: Translation = {
-  meta: {
-    title: 'Aguirre Law Group · Attorneys in Brownsville, Texas',
-    description:
-      'Criminal defense and personal injury in the Rio Grande Valley. Free consultation.',
-  },
   common: {
     freeConsultation: 'Free consultation',
     scheduleConsultation: 'Schedule your free consultation',
@@ -29,6 +24,7 @@ const en: Translation = {
     login: 'Log in',
   },
   hero: {
+    heading: 'Criminal defense and personal injury attorneys in Brownsville, Texas',
     eyebrow: 'Brownsville, Texas',
     title1: 'Experienced defense',
     title2: 'when you need it most.',
@@ -105,6 +101,7 @@ const en: Translation = {
     ],
   },
   attorney: {
+    photoAlt: '{{name}}, criminal defense and personal injury attorney in Brownsville, Texas',
     eyebrow: 'Meet your attorney',
     role: 'Criminal defense and personal injury attorney',
     bio: 'Practicing law in the Rio Grande Valley since {{year}}, {{years}} years ago, with a focus on criminal and personal injury cases.',

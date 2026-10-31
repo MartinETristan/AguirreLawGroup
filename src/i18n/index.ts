@@ -13,15 +13,9 @@ export const resources = {
   en: { translation: en },
 } as const
 
-function syncDocument(lng: string) {
+i18n.on('languageChanged', (lng) => {
   document.documentElement.lang = lng
-  document.title = i18n.t('meta.title')
-  document
-    .querySelector('meta[name="description"]')
-    ?.setAttribute('content', i18n.t('meta.description'))
-}
-
-i18n.on('languageChanged', syncDocument)
+})
 
 void i18n
   .use(LanguageDetector)
@@ -33,9 +27,10 @@ void i18n
     nonExplicitSupportedLngs: true,
     interpolation: { escapeValue: false },
     detection: {
-      order: ['localStorage', 'navigator'],
-      lookupLocalStorage: 'alg-lang',
-      caches: ['localStorage'],
+      // El idioma sale de la URL (`/en/...`) para que cada versión sea indexable
+      order: ['path'],
+      lookupFromPathIndex: 0,
+      caches: [],
     },
     returnObjects: true,
   })

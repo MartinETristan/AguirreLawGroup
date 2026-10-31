@@ -14,6 +14,7 @@ import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
 import { SiteFooter } from '@/components/layout/site-footer'
+import { SeoHead } from '@/components/layout/seo-head'
 import { SiteHeader } from '@/components/layout/site-header'
 import { EASE } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
@@ -49,6 +50,7 @@ function RootComponent() {
 
   return (
     <MotionConfig reducedMotion="user">
+      <SeoHead />
       <ReactLenis
         root
         ref={lenisRef}
