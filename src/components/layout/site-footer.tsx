@@ -82,7 +82,7 @@ export function SiteFooter() {
                 {t(`nav.${item.key}`)}
               </Link>
             ))}
-            <Link to="/contacto" className={linkClass}>
+            <Link to="/contact-us" className={linkClass}>
               {t('nav.contact')}
             </Link>
           </nav>

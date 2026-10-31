@@ -10,7 +10,7 @@ const router = createRouter({
   defaultPreload: 'intent',
   // El scroll lo controla Lenis en __root (vuelve arriba en cada navegación)
   scrollRestoration: false,
-  // Las rutas internas no llevan idioma; la URL pública sí (`/en/contacto`)
+  // Las rutas internas no llevan idioma; la URL pública sí (`/es/contact-us`)
   rewrite: {
     input: ({ url }) => {
       url.pathname = stripLanguagePrefix(url.pathname)

@@ -8,7 +8,7 @@ type ContactSearch = {
   area?: PracticeArea
 }
 
-export const Route = createFileRoute('/contacto')({
+export const Route = createFileRoute('/contact-us')({
   validateSearch: (search: Record<string, unknown>): ContactSearch =>
     isPracticeArea(search.area) ? { area: search.area } : {},
   component: ContactPage,

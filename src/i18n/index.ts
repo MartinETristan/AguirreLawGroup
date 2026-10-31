@@ -22,12 +22,12 @@ void i18n
   .use(initReactI18next)
   .init({
     resources,
-    fallbackLng: 'es',
+    fallbackLng: 'en',
     supportedLngs: languages,
     nonExplicitSupportedLngs: true,
     interpolation: { escapeValue: false },
     detection: {
-      // El idioma sale de la URL (`/en/...`) para que cada versión sea indexable
+      // El idioma sale de la URL (`/es/...`; sin prefijo, inglés) para que cada versión sea indexable
       order: ['path'],
       lookupFromPathIndex: 0,
       caches: [],
@@ -36,7 +36,7 @@ void i18n
   })
 
 export function currentLanguage(lng: string | undefined): Language {
-  return lng?.startsWith('en') ? 'en' : 'es'
+  return lng?.startsWith('es') ? 'es' : 'en'
 }
 
 export default i18n

@@ -24,7 +24,7 @@ export function ContactCta() {
         </div>
         <Reveal delay={0.25} className="flex flex-wrap gap-3">
           <Button asChild size="lg" className="group h-12 px-6 text-[15px]">
-            <Link to="/contacto">
+            <Link to="/contact-us">
               {t('common.scheduleConsultation')}
               <ArrowRightIcon className="transition-transform duration-500 group-hover:translate-x-1" />
             </Link>

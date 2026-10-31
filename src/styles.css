@@ -830,4 +830,11 @@ body,
   ::selection {
     @apply bg-gold-200 text-ink-950;
   }
+  /* Sin pointer-events la imagen no recibe clic derecho, arrastre ni pulsación larga */
+  img {
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+  }
 }

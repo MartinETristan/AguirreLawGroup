@@ -2,6 +2,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import type { Plugin, ResolvedConfig } from 'vite'
 
+import { legacyRedirects } from '../src/content/seo'
 import { fullAddress, site } from '../src/content/site'
 import { localizePath } from '../src/i18n/paths'
 import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo'
@@ -55,9 +56,27 @@ function renderPage(template: string, path: string, lang: Language) {
     )
 }
 
-/** `/contacto` → `contacto.html`: los hosts lo sirven sin redirigir a la URL con barra final. */
+/** `/contact-us` → `contact-us.html`: los hosts lo sirven sin redirigir a la URL con barra final. */
 function htmlFile(path: string) {
   return path === '/' ? 'index.html' : `${path.slice(1)}.html`
+}
+
+/** Google trata un `meta refresh` inmediato como redirección permanente; funciona en cualquier host estático. */
+function renderRedirect(target: string) {
+  const url = `${site.url}${target}`
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>${escapeHtml(site.name)}</title>
+    <link rel="canonical" href="${url}" />
+    <meta http-equiv="refresh" content="0; url=${target}" />
+  </head>
+  <body>
+    <a href="${target}">${url}</a>
+  </body>
+</html>
+`
 }
 
 function renderSitemap(paths: Array<string>) {
@@ -113,10 +132,13 @@ export function seo(): Plugin {
           )
         }
       }
-      // `/acceso` y las rutas inexistentes llevan `noindex`
-      await write('404.html', renderPage(template, '/404', 'es'))
-      await write('acceso.html', renderPage(template, '/acceso', 'es'))
-      await write('en/acceso.html', renderPage(template, '/acceso', 'en'))
+      for (const [from, target] of Object.entries(legacyRedirects)) {
+        await write(htmlFile(from), renderRedirect(target))
+      }
+      // `/login` y las rutas inexistentes llevan `noindex`
+      await write('404.html', renderPage(template, '/404', 'en'))
+      await write('login.html', renderPage(template, '/login', 'en'))
+      await write('es/login.html', renderPage(template, '/login', 'es'))
       await write('sitemap.xml', renderSitemap(paths))
     },
   }

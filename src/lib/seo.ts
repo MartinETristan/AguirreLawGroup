@@ -34,28 +34,28 @@ function isArea(slug: string): slug is PracticeArea {
 }
 
 function areaSlug(path: string) {
-  const slug = path.match(/^\/areas\/([^/]+)$/)?.[1]
+  const slug = path.match(/^\/practice-areas\/([^/]+)$/)?.[1]
   return slug && isArea(slug) ? slug : undefined
 }
 
 function copyFor(path: string, lang: Language): SeoCopy | undefined {
   const slug = areaSlug(path)
   if (slug) return areaCopy[slug][lang]
-  if (path === '/testimonios' && testimonials.length === 0) return undefined
+  if (path === '/testimonials' && testimonials.length === 0) return undefined
   return path in pageCopy
     ? pageCopy[path as keyof typeof pageCopy][lang]
     : undefined
 }
 
-/** Rutas públicas e indexables, sin prefijo de idioma. `/acceso` queda fuera a propósito. */
+/** Rutas públicas e indexables, sin prefijo de idioma. `/login` queda fuera a propósito. */
 export function indexablePaths() {
   return [
     ...Object.keys(pageCopy).filter((path) => copyFor(path, 'es')),
-    ...practiceAreas.map((slug) => `/areas/${slug}`),
+    ...practiceAreas.map((slug) => `/practice-areas/${slug}`),
   ]
 }
 
-/** URLs alternas de una ruta en cada idioma; `x-default` apunta al español. */
+/** URLs alternas de una ruta en cada idioma; `x-default` apunta a la versión base (inglés). */
 export function alternatesFor(path: string) {
   return [
     ...seoLanguages.map((lang) => ({
@@ -132,7 +132,7 @@ function pageSchemas(path: string, lang: Language, copy: SeoCopy) {
     })
   }
 
-  if (path === '/contacto') {
+  if (path === '/contact-us') {
     schemas.push({
       '@type': 'ContactPage',
       url,
@@ -148,7 +148,7 @@ function pageSchemas(path: string, lang: Language, copy: SeoCopy) {
     schemas.push({
       '@type': 'BreadcrumbList',
       itemListElement: [
-        { path: '/areas', name: pageCopy['/areas'][lang].title },
+        { path: '/practice-areas', name: pageCopy['/practice-areas'][lang].title },
         { path, name: copy.title },
       ].map((item, i) => ({
         '@type': 'ListItem',
@@ -218,6 +218,11 @@ export function getPageSeo(path: string, lang: Language): PageSeo {
       meta('property', 'og:type', 'website'),
       meta('property', 'og:site_name', site.name),
       meta('property', 'og:locale', lang === 'es' ? 'es_US' : 'en_US'),
+      meta(
+        'property',
+        'og:locale:alternate',
+        lang === 'es' ? 'en_US' : 'es_US',
+      ),
       meta('property', 'og:title', title),
       meta('property', 'og:description', copy.description),
       meta('property', 'og:url', url),

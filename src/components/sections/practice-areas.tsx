@@ -38,7 +38,7 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
           {limit && (
             <Reveal delay={0.2}>
               <Link
-                to="/areas"
+                to="/practice-areas"
                 className="border-b border-primary-300/50 pt-2.5 pb-1 text-[15px] font-semibold text-link transition-colors hover:border-primary-300"
               >
                 {t('areas.viewAll')}
@@ -51,7 +51,7 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
           {areas.map((slug) => (
             <StaggerItem key={slug} className="flex">
               <Link
-                to="/areas/$area"
+                to="/practice-areas/$area"
                 params={{ area: slug }}
                 className={cn(cellClass, 'bg-card')}
               >

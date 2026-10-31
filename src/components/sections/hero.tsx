@@ -60,7 +60,7 @@ export function Hero() {
                 size="lg"
                 className="group h-12 w-full px-6 text-[15px] sm:w-auto"
               >
-                <Link to="/contacto">
+                <Link to="/contact-us">
                   {t('common.scheduleConsultation')}
                   <ArrowRightIcon className="transition-transform duration-500 group-hover:translate-x-1" />
                 </Link>

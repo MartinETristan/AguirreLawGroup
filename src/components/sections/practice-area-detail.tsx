@@ -74,7 +74,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
         <div className="flex min-w-0 flex-col gap-8">
           <div className="flex flex-col gap-4">
             <Link
-              to="/areas"
+              to="/practice-areas"
               className="inline-flex w-fit items-center gap-2 py-1 text-sm font-medium text-link transition-colors hover:text-foreground"
             >
               <ArrowLeftIcon className="size-4" aria-hidden="true" />
@@ -127,7 +127,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
               {t('areaPage.ctaText')}
             </p>
             <Button asChild size="lg" className="h-11 text-[15px]">
-              <Link to="/contacto" search={{ area }}>
+              <Link to="/contact-us" search={{ area }}>
                 {t('areaPage.cta')}
               </Link>
             </Button>
@@ -156,7 +156,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
               .map((slug) => (
                 <Link
                   key={slug}
-                  to="/areas/$area"
+                  to="/practice-areas/$area"
                   params={{ area: slug }}
                   className="group flex items-center justify-between gap-3 py-1.5 text-sm text-foreground transition-colors hover:text-link"
                 >

@@ -119,7 +119,7 @@ export function SiteHeader() {
                         <li key={slug}>
                           <NavigationMenu.Link asChild>
                             <Link
-                              to="/areas/$area"
+                              to="/practice-areas/$area"
                               params={{ area: slug }}
                               className="block rounded-sm px-3 py-2 text-popover-foreground transition-colors hover:bg-muted"
                               activeProps={{ className: 'text-link' }}
@@ -163,14 +163,14 @@ export function SiteHeader() {
             size="lg"
             className="hidden h-10 px-4 text-sm lg:inline-flex"
           >
-            <Link to="/acceso">{t('nav.login')}</Link>
+            <Link to="/login">{t('nav.login')}</Link>
           </Button>
           <Button
             asChild
             size="lg"
             className="hidden h-10 px-4 text-sm lg:inline-flex"
           >
-            <Link to="/contacto">{t('common.freeConsultation')}</Link>
+            <Link to="/contact-us">{t('common.freeConsultation')}</Link>
           </Button>
 
           <Sheet open={menuOpen} onOpenChange={handleMenu}>
@@ -221,7 +221,7 @@ export function SiteHeader() {
                           {practiceAreas.map((slug) => (
                             <li key={slug}>
                               <Link
-                                to="/areas/$area"
+                                to="/practice-areas/$area"
                                 params={{ area: slug }}
                                 onClick={() => handleMenu(false)}
                                 className="block py-2 text-[15px] text-muted-foreground"
@@ -238,7 +238,7 @@ export function SiteHeader() {
                 </nav>
                 <div className="mt-auto flex flex-col gap-3">
                   <Button asChild size="lg" className="h-12 text-[15px]">
-                    <Link to="/contacto" onClick={() => handleMenu(false)}>
+                    <Link to="/contact-us" onClick={() => handleMenu(false)}>
                       {t('common.scheduleConsultation')}
                     </Link>
                   </Button>
@@ -259,7 +259,7 @@ export function SiteHeader() {
                     size="lg"
                     className="h-12 text-[15px]"
                   >
-                    <Link to="/acceso" onClick={() => handleMenu(false)}>
+                    <Link to="/login" onClick={() => handleMenu(false)}>
                       {t('nav.login')}
                     </Link>
                   </Button>

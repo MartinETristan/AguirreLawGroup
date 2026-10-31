@@ -5,12 +5,25 @@ export type SeoCopy = { title: string; description: string }
 
 type StaticPath =
   | '/'
-  | '/nosotros'
-  | '/areas'
-  | '/firma'
-  | '/abogado'
-  | '/testimonios'
-  | '/contacto'
+  | '/about-us'
+  | '/practice-areas'
+  | '/firm'
+  | '/attorney'
+  | '/testimonials'
+  | '/contact-us'
+
+/** URLs del sitio anterior que Google ya conoce (su sitemap) y que cambiaron de ruta. */
+export const legacyRedirects: Record<string, string> = {
+  '/appointment': '/contact-us',
+  '/criminal-law': '/practice-areas/criminal-law',
+  '/criminal-law-faq': '/practice-areas/criminal-law',
+  '/drug-charges': '/practice-areas/drug-charges',
+  '/dwi': '/practice-areas/dwi',
+  '/personal-injury-1': '/practice-areas/personal-injury',
+  '/theft-property-crimes': '/practice-areas/theft-property',
+  '/violent-crimes': '/practice-areas/violent-crimes',
+  '/white-collar-crime': '/practice-areas/white-collar',
+}
 
 /** Títulos y descripciones por ruta; el sufijo con el nombre de la firma se agrega al generar la etiqueta. */
 export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
@@ -26,7 +39,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'Criminal defense and personal injury attorneys in Brownsville, Texas, and the Rio Grande Valley. Schedule your free consultation.',
     },
   },
-  '/nosotros': {
+  '/about-us': {
     es: {
       title: 'Nosotros: abogados en Brownsville, TX',
       description:
@@ -38,7 +51,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'Meet Aguirre Law Group and attorney Javier Aguirre, practicing criminal defense and personal injury law in the Rio Grande Valley.',
     },
   },
-  '/areas': {
+  '/practice-areas': {
     es: {
       title: 'Áreas de práctica en Brownsville, TX',
       description:
@@ -50,7 +63,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'Criminal law, DWI, drug charges, personal injury, theft, violent crimes and white collar crimes in Brownsville, Texas.',
     },
   },
-  '/firma': {
+  '/firm': {
     es: {
       title: 'La firma: defensa legal en Brownsville, TX',
       description:
@@ -62,7 +75,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'How Aguirre Law Group works: we study the evidence and build your defense strategy in Brownsville and the Rio Grande Valley.',
     },
   },
-  '/abogado': {
+  '/attorney': {
     es: {
       title: 'Javier Aguirre, abogado en Brownsville, TX',
       description:
@@ -74,7 +87,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'Javier Aguirre, criminal defense and personal injury attorney. Practicing in the Rio Grande Valley since 2008.',
     },
   },
-  '/testimonios': {
+  '/testimonials': {
     es: {
       title: 'Testimonios de clientes en Brownsville, TX',
       description:
@@ -86,7 +99,7 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
         'What clients say about Aguirre Law Group, attorneys in Brownsville, Texas.',
     },
   },
-  '/contacto': {
+  '/contact-us': {
     es: {
       title: 'Contacto: consulta gratuita en Brownsville, TX',
       description:
