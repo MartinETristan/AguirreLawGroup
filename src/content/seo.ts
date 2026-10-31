@@ -12,6 +12,16 @@ type StaticPath =
   | '/testimonials'
   | '/contact-us'
 
+/**
+ * Títulos de pestaña de las páginas legales. Siguen con `noindex` y fuera del sitemap
+ * mientras estén vacías: al tener su texto, pasarlas a `pageCopy`.
+ */
+export const legalPageTitles = {
+  '/privacy-policy': { es: 'Aviso de privacidad', en: 'Privacy Policy' },
+  '/terms': { es: 'Términos', en: 'Terms' },
+  '/legal-disclaimer': { es: 'Aviso legal', en: 'Legal Disclaimer' },
+} satisfies Record<string, Record<Language, string>>
+
 /** URLs del sitio anterior que Google ya conoce (su sitemap) y que cambiaron de ruta. */
 export const legacyRedirects: Record<string, string> = {
   '/appointment': '/contact-us',

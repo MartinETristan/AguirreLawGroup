@@ -182,6 +182,21 @@ const en: Translation = {
       draftOpened:
         'Your request hasn’t been sent yet: review the draft in your email and send it. If it didn’t open, call us or write to us at {{email}}.',
       mailSubject: 'Consultation request — {{name}}',
+      errors: {
+        nameRequired: 'Enter your name.',
+        nameInvalid: 'Enter your name using letters only.',
+        phoneRequired: 'Enter your phone number.',
+        phoneInvalid:
+          'Enter a 10-digit phone number or, if international, include the country code (+52…).',
+        emailRequired: 'Enter your email address.',
+        emailInvalid: 'Enter a valid email, like name@example.com.',
+        areaRequired: 'Select your case type.',
+      },
+    },
+    map: {
+      title: 'Our office.',
+      label: 'Map showing the office location: {{address}}',
+      directions: 'Get directions',
     },
   },
   login: {

@@ -180,6 +180,21 @@ const es = {
       draftOpened:
         'Tu solicitud aún no se ha enviado: revisa el borrador en tu correo y envíalo. Si no se abrió, llámanos o escríbenos a {{email}}.',
       mailSubject: 'Solicitud de consulta — {{name}}',
+      errors: {
+        nameRequired: 'Escribe tu nombre.',
+        nameInvalid: 'Escribe tu nombre solo con letras.',
+        phoneRequired: 'Escribe tu teléfono.',
+        phoneInvalid:
+          'Escribe un teléfono de 10 dígitos o, si es internacional, con su código de país (+52…).',
+        emailRequired: 'Escribe tu correo electrónico.',
+        emailInvalid: 'Escribe un correo válido, como nombre@ejemplo.com.',
+        areaRequired: 'Selecciona el tipo de caso.',
+      },
+    },
+    map: {
+      title: 'Nuestra oficina.',
+      label: 'Mapa con la ubicación de la oficina: {{address}}',
+      directions: 'Cómo llegar',
     },
   },
   login: {

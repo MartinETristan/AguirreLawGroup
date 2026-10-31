@@ -17,3 +17,12 @@ export const footerNav = (
     { to: '/testimonials', key: 'testimonials' },
   ] as const
 ).filter((item) => item.key !== 'testimonials' || testimonials.length > 0)
+
+/** Páginas legales del pie; la etiqueta se resuelve con `footer.legal.<key>`. */
+export const legalNav = [
+  { to: '/privacy-policy', key: 'privacy' },
+  { to: '/terms', key: 'terms' },
+  { to: '/legal-disclaimer', key: 'disclaimer' },
+] as const
+
+export type LegalPageKey = (typeof legalNav)[number]['key']

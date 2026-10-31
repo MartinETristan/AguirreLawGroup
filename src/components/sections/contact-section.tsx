@@ -2,7 +2,7 @@ import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import type { FormEvent, ReactNode } from 'react'
+import type { ChangeEvent, FocusEvent, FormEvent, ReactNode } from 'react'
 
 import { EASE, Reveal } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
@@ -21,7 +21,9 @@ import { Textarea } from '@/components/ui/textarea'
 import { practiceAreas } from '@/content/practice-areas'
 import { fullAddress, site } from '@/content/site'
 import { useHideCallBar } from '@/lib/call-bar'
+import { contactFields, validateContactField } from '@/lib/contact-validation'
 import type { PracticeArea } from '@/content/practice-areas'
+import type { ContactError, ContactField } from '@/lib/contact-validation'
 
 const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
 
@@ -41,6 +43,9 @@ export function ContactSection({
   const id = useId()
   const [area, setArea] = useState<string>(defaultArea ?? '')
   const [sent, setSent] = useState(false)
+  const [errors, setErrors] = useState<
+    Partial<Record<ContactField, ContactError>>
+  >({})
   const sectionRef = useRef<HTMLElement>(null)
   useHideCallBar(sectionRef)
 
@@ -72,18 +77,75 @@ export function ContactSection({
     { icon: <ClockIcon />, content: t('common.hours', site.hours) },
   ]
 
+  const fieldId = (field: ContactField) => `${id}-${field}`
+  const errorId = (field: ContactField) => `${id}-${field}-error`
+
+  function setFieldError(field: ContactField, value: string) {
+    setErrors((current) => ({
+      ...current,
+      [field]: validateContactField(field, value),
+    }))
+  }
+
+  // Un campo vacío no se marca al salir de él, solo al enviar; uno ya marcado se corrige al escribir.
+  const textFieldProps = (field: ContactField) => ({
+    id: fieldId(field),
+    name: field,
+    required: true,
+    'aria-invalid': Boolean(errors[field]) || undefined,
+    'aria-describedby': errors[field] ? errorId(field) : undefined,
+    onBlur: (event: FocusEvent<HTMLInputElement>) => {
+      if (event.target.value.trim()) setFieldError(field, event.target.value)
+    },
+    onChange: (event: ChangeEvent<HTMLInputElement>) => {
+      if (errors[field]) setFieldError(field, event.target.value)
+    },
+    className: fieldClass,
+  })
+
+  function fieldError(field: ContactField) {
+    const error = errors[field]
+    return error ? (
+      <p
+        id={errorId(field)}
+        role="alert"
+        className="text-[13px] leading-snug text-destructive"
+      >
+        {t(`contact.form.errors.${error}`)}
+      </p>
+    ) : null
+  }
+
   // Sin backend todavía: arma el correo para appointment@ con los datos del formulario.
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     const data = new FormData(event.currentTarget)
-    const name = String(data.get('name') ?? '')
+    const value = (field: 'name' | 'phone' | 'email') =>
+      String(data.get(field) ?? '').trim()
+
+    const nextErrors: typeof errors = {}
+    for (const field of contactFields) {
+      nextErrors[field] = validateContactField(
+        field,
+        field === 'area' ? area : value(field),
+      )
+    }
+    const firstInvalid = contactFields.find((field) => nextErrors[field])
+    setErrors(nextErrors)
+    if (firstInvalid) {
+      setSent(false)
+      document.getElementById(fieldId(firstInvalid))?.focus()
+      return
+    }
+
+    const name = value('name')
     const areaLabel = practiceAreas.includes(area as PracticeArea)
       ? t(`areas.items.${area as PracticeArea}.title`)
       : t('contact.form.other')
     const body = [
       `${t('contact.form.name')}: ${name}`,
-      `${t('contact.form.phone')}: ${data.get('phone') ?? ''}`,
-      `${t('contact.form.email')}: ${data.get('email') ?? ''}`,
+      `${t('contact.form.phone')}: ${value('phone')}`,
+      `${t('contact.form.email')}: ${value('email')}`,
       `${t('contact.form.caseType')}: ${areaLabel}`,
       '',
       String(data.get('message') ?? ''),
@@ -138,44 +200,52 @@ export function ContactSection({
         <Reveal className="min-w-0" delay={0.15}>
           <form
             onSubmit={handleSubmit}
-            className="grid gap-4 rounded-lg border border-t-2 border-border border-t-gold-500 bg-card p-5 sm:grid-cols-2 sm:p-6"
+            noValidate
+            className="grid items-start gap-4 rounded-lg border border-border bg-card p-5 sm:grid-cols-2 sm:p-6"
           >
             <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-name`}>{t('contact.form.name')}</Label>
-              <Input
-                id={`${id}-name`}
-                name="name"
-                autoComplete="name"
-                required
-                className={fieldClass}
-              />
+              <Label htmlFor={fieldId('name')}>{t('contact.form.name')}</Label>
+              <Input autoComplete="name" {...textFieldProps('name')} />
+              {fieldError('name')}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-phone`}>{t('contact.form.phone')}</Label>
+              <Label htmlFor={fieldId('phone')}>
+                {t('contact.form.phone')}
+              </Label>
               <Input
-                id={`${id}-phone`}
-                name="phone"
                 type="tel"
                 autoComplete="tel"
-                required
-                className={fieldClass}
+                {...textFieldProps('phone')}
               />
+              {fieldError('phone')}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-email`}>{t('contact.form.email')}</Label>
+              <Label htmlFor={fieldId('email')}>
+                {t('contact.form.email')}
+              </Label>
               <Input
-                id={`${id}-email`}
-                name="email"
                 type="email"
                 autoComplete="email"
-                className={fieldClass}
+                {...textFieldProps('email')}
               />
+              {fieldError('email')}
             </div>
             <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-area`}>{t('contact.form.caseType')}</Label>
-              <Select value={area} onValueChange={setArea}>
+              <Label htmlFor={fieldId('area')}>
+                {t('contact.form.caseType')}
+              </Label>
+              <Select
+                value={area}
+                onValueChange={(value) => {
+                  setArea(value)
+                  setFieldError('area', value)
+                }}
+              >
                 <SelectTrigger
-                  id={`${id}-area`}
+                  id={fieldId('area')}
+                  aria-required
+                  aria-invalid={Boolean(errors.area) || undefined}
+                  aria-describedby={errors.area ? errorId('area') : undefined}
                   className={`${fieldClass} w-full data-[size=default]:h-11`}
                 >
                   <SelectValue
@@ -193,6 +263,7 @@ export function ContactSection({
                   </SelectItem>
                 </SelectContent>
               </Select>
+              {fieldError('area')}
             </div>
             <div className="col-span-full flex flex-col gap-2">
               <Label htmlFor={`${id}-message`}>

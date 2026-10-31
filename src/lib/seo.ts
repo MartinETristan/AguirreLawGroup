@@ -1,6 +1,6 @@
 import { faq } from '../content/faq'
 import { practiceAreas } from '../content/practice-areas'
-import { areaCopy, pageCopy } from '../content/seo'
+import { areaCopy, legalPageTitles, pageCopy } from '../content/seo'
 import { site } from '../content/site'
 import { testimonials } from '../content/testimonials'
 import { localizePath } from '../i18n/paths'
@@ -181,7 +181,10 @@ export function getPageSeo(path: string, lang: Language): PageSeo {
 
   if (!copy) {
     return {
-      title: site.name,
+      title:
+        path in legalPageTitles
+          ? `${legalPageTitles[path as keyof typeof legalPageTitles][lang]} | ${site.name}`
+          : site.name,
       description: pageCopy['/'][lang].description,
       tags: [
         { tag: 'meta', attrs: { name: 'robots', content: 'noindex' } },

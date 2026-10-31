@@ -14,7 +14,10 @@ import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as AttorneyRouteImport } from './routes/attorney'
 import { Route as ContactUsRouteImport } from './routes/contact-us'
 import { Route as FirmRouteImport } from './routes/firm'
+import { Route as LegalDisclaimerRouteImport } from './routes/legal-disclaimer'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as PrivacyPolicyRouteImport } from './routes/privacy-policy'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as PracticeAreasIndexRouteImport } from './routes/practice-areas.index'
 import { Route as PracticeAreasAreaRouteImport } from './routes/practice-areas.$area'
@@ -44,9 +47,24 @@ const FirmRoute = FirmRouteImport.update({
   path: '/firm',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LegalDisclaimerRoute = LegalDisclaimerRouteImport.update({
+  id: '/legal-disclaimer',
+  path: '/legal-disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyPolicyRoute = PrivacyPolicyRouteImport.update({
+  id: '/privacy-policy',
+  path: '/privacy-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
@@ -71,7 +89,10 @@ export interface FileRoutesByFullPath {
   '/attorney': typeof AttorneyRoute
   '/contact-us': typeof ContactUsRoute
   '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
   '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/practice-areas/$area': typeof PracticeAreasAreaRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
@@ -82,7 +103,10 @@ export interface FileRoutesByTo {
   '/attorney': typeof AttorneyRoute
   '/contact-us': typeof ContactUsRoute
   '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
   '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/practice-areas/$area': typeof PracticeAreasAreaRoute
   '/practice-areas': typeof PracticeAreasIndexRoute
@@ -94,7 +118,10 @@ export interface FileRoutesById {
   '/attorney': typeof AttorneyRoute
   '/contact-us': typeof ContactUsRoute
   '/firm': typeof FirmRoute
+  '/legal-disclaimer': typeof LegalDisclaimerRoute
   '/login': typeof LoginRoute
+  '/privacy-policy': typeof PrivacyPolicyRoute
+  '/terms': typeof TermsRoute
   '/testimonials': typeof TestimonialsRoute
   '/practice-areas/$area': typeof PracticeAreasAreaRoute
   '/practice-areas/': typeof PracticeAreasIndexRoute
@@ -107,7 +134,10 @@ export interface FileRouteTypes {
     | '/attorney'
     | '/contact-us'
     | '/firm'
+    | '/legal-disclaimer'
     | '/login'
+    | '/privacy-policy'
+    | '/terms'
     | '/testimonials'
     | '/practice-areas/$area'
     | '/practice-areas/'
@@ -118,7 +148,10 @@ export interface FileRouteTypes {
     | '/attorney'
     | '/contact-us'
     | '/firm'
+    | '/legal-disclaimer'
     | '/login'
+    | '/privacy-policy'
+    | '/terms'
     | '/testimonials'
     | '/practice-areas/$area'
     | '/practice-areas'
@@ -129,7 +162,10 @@ export interface FileRouteTypes {
     | '/attorney'
     | '/contact-us'
     | '/firm'
+    | '/legal-disclaimer'
     | '/login'
+    | '/privacy-policy'
+    | '/terms'
     | '/testimonials'
     | '/practice-areas/$area'
     | '/practice-areas/'
@@ -141,7 +177,10 @@ export interface RootRouteChildren {
   AttorneyRoute: typeof AttorneyRoute
   ContactUsRoute: typeof ContactUsRoute
   FirmRoute: typeof FirmRoute
+  LegalDisclaimerRoute: typeof LegalDisclaimerRoute
   LoginRoute: typeof LoginRoute
+  PrivacyPolicyRoute: typeof PrivacyPolicyRoute
+  TermsRoute: typeof TermsRoute
   TestimonialsRoute: typeof TestimonialsRoute
   PracticeAreasAreaRoute: typeof PracticeAreasAreaRoute
   PracticeAreasIndexRoute: typeof PracticeAreasIndexRoute
@@ -184,11 +223,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FirmRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/legal-disclaimer': {
+      id: '/legal-disclaimer'
+      path: '/legal-disclaimer'
+      fullPath: '/legal-disclaimer'
+      preLoaderRoute: typeof LegalDisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy-policy': {
+      id: '/privacy-policy'
+      path: '/privacy-policy'
+      fullPath: '/privacy-policy'
+      preLoaderRoute: typeof PrivacyPolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/testimonials': {
@@ -221,7 +281,10 @@ const rootRouteChildren: RootRouteChildren = {
   AttorneyRoute: AttorneyRoute,
   ContactUsRoute: ContactUsRoute,
   FirmRoute: FirmRoute,
+  LegalDisclaimerRoute: LegalDisclaimerRoute,
   LoginRoute: LoginRoute,
+  PrivacyPolicyRoute: PrivacyPolicyRoute,
+  TermsRoute: TermsRoute,
   TestimonialsRoute: TestimonialsRoute,
   PracticeAreasAreaRoute: PracticeAreasAreaRoute,
   PracticeAreasIndexRoute: PracticeAreasIndexRoute,

@@ -21,6 +21,8 @@ export const site = {
     city: 'Brownsville',
     state: 'TX',
     zip: '78520',
+    // Geocodificado con OpenStreetMap (coincidencia exacta del número 811)
+    geo: { lat: 25.9061, lng: -97.4980114 },
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=811+E+Madison+St+Brownsville+TX+78520',
   },
