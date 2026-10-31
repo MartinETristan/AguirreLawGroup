@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { SectionHeading } from '@/components/shared/section-heading'
-import { site } from '@/content/site'
 
 const numerals = ['I', 'II', 'III']
 
@@ -16,55 +15,41 @@ export function FirmApproach({
   const steps = t('firm.steps', { returnObjects: true })
 
   return (
-    <section className="border-y border-ink-200 bg-white">
-      <Container className="flex flex-wrap gap-16 py-24 sm:py-28">
-        <div className="flex min-w-0 flex-[1_1_380px] flex-col gap-6">
+    <section className="border-t border-border">
+      <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14">
+        <div className="flex min-w-0 flex-col gap-4">
           <SectionHeading
             as={headingAs}
             eyebrow={t('firm.eyebrow')}
             title={t('firm.title')}
           />
           <Reveal delay={0.2}>
-            <p className="text-[17px] leading-relaxed text-ink-600">
+            <p className="leading-relaxed text-muted-foreground">
               {t('firm.lead')}
             </p>
           </Reveal>
-          <Reveal delay={0.3}>
-            <figure className="mt-4 flex flex-col gap-4 bg-primary-50 px-8 py-9">
-              <span
-                aria-hidden="true"
-                className="h-7 font-heading text-6xl leading-[0.5] text-gold-500"
-              >
-                “
-              </span>
-              <blockquote className="font-heading text-2xl leading-snug text-primary-950">
-                {t('firm.quote')}
-              </blockquote>
-              <figcaption className="text-[13px] font-semibold tracking-[0.14em] text-gold-800 uppercase">
-                {site.name}
-              </figcaption>
-            </figure>
-          </Reveal>
         </div>
 
-        <Stagger as="ol" className="flex min-w-0 flex-[1_1_480px] flex-col">
+        <Stagger as="ol" className="flex min-w-0 flex-col">
           {steps.map((step, i) => (
             <StaggerItem
               as="li"
               key={step.title}
-              className="flex gap-7 border-b border-ink-200 py-9 last:border-b-0"
+              className="flex gap-4 border-b border-border py-4 first:pt-0 last:border-b-0 last:pb-0"
             >
               <span
                 aria-hidden="true"
-                className="flex size-14 shrink-0 items-center justify-center rounded-full border border-gold-500 font-heading text-[22px] text-primary-950"
+                className="flex size-9 shrink-0 items-center justify-center rounded-full border border-gold-500 font-heading text-[15px] text-complementary"
               >
                 {numerals[i]}
               </span>
-              <div className="flex flex-col gap-2.5">
-                <h3 className="font-heading text-[28px] text-primary-950">
+              <div className="flex flex-col gap-1">
+                <h3 className="text-[17px] leading-snug font-semibold text-foreground">
                   {step.title}
                 </h3>
-                <p className="leading-relaxed text-ink-600">{step.text}</p>
+                <p className="text-[15px] leading-normal text-muted-foreground">
+                  {step.text}
+                </p>
               </div>
             </StaggerItem>
           ))}

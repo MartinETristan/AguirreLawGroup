@@ -107,7 +107,7 @@ const maskText: Variants = {
 export function MaskLine({ children, className, delay = 0 }: MaskLineProps) {
   return (
     <motion.span
-      className="-mb-[0.18em] block overflow-hidden pb-[0.18em]"
+      className="mb-[-0.18em] block overflow-hidden pb-[0.18em]"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true }}

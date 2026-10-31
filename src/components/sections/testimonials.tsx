@@ -16,33 +16,28 @@ export function Testimonials({
   const lang = currentLanguage(i18n.resolvedLanguage)
 
   return (
-    <section className="border-y border-primary-100 bg-primary-50">
-      <Container className="flex flex-col gap-14 py-24 sm:py-28">
+    <section className="border-t border-border">
+      <Container className="flex flex-col gap-8 py-12 sm:py-16">
         <SectionHeading
           as={headingAs}
-          centered
           eyebrow={t('testimonials.eyebrow')}
           title={t('testimonials.title')}
         />
-        <Stagger className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] gap-6">
+        <Stagger className="grid gap-4 md:grid-cols-3">
           {testimonials.map((item) => (
             <StaggerItem as="figure" key={item.id} className="flex">
-              <Card className="w-full gap-6 rounded-none py-10 ring-primary-100 transition-shadow duration-500 hover:shadow-[0_24px_48px_-28px_rgba(15,37,69,0.35)]">
-                <CardContent className="flex flex-col gap-6 px-9">
-                  <span
-                    aria-hidden="true"
-                    className="h-7 font-heading text-6xl leading-[0.5] text-gold-500"
-                  >
-                    “
-                  </span>
-                  <blockquote className="font-heading text-[22px] leading-snug text-ink-900">
+              <Card className="w-full gap-4 rounded-lg py-5">
+                <CardContent className="px-5">
+                  <blockquote className="text-[15px] leading-relaxed text-foreground">
                     {item.quote[lang]}
                   </blockquote>
                 </CardContent>
-                <CardFooter className="mt-auto flex-col items-start gap-0.5 border-0 bg-transparent px-9 py-0 text-sm">
+                <CardFooter className="mt-auto flex-col items-start gap-0.5 border-0 bg-transparent px-5 pt-0 pb-5 text-sm">
                   <figcaption className="contents">
-                    <strong className="text-primary-950">{item.name}</strong>
-                    <span className="text-ink-600">
+                    <strong className="font-semibold text-foreground">
+                      {item.name}
+                    </strong>
+                    <span className="text-muted-foreground">
                       {t(`areas.items.${item.area}.title`)}
                     </span>
                   </figcaption>

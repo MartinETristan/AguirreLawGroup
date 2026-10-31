@@ -5,7 +5,7 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
-  logo: '/Logos/alg-logo.png',
+  logo: '/Logos/alg-logo-light.png',
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {

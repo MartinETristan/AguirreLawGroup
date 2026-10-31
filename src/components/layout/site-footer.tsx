@@ -1,7 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 
-import { GoldRule } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { SocialIcon } from '@/components/shared/social-icon'
 import { mainNav } from '@/content/navigation'
@@ -15,14 +14,13 @@ export function SiteFooter() {
   const { t } = useTranslation()
 
   return (
-    <footer className="bg-primary-950 text-ink-200">
-      <Container className="flex flex-col gap-14 pt-18 pb-8">
-        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
-          <div className="flex flex-col gap-4">
-            <span className="font-heading text-3xl text-ink-50">
+    <footer className="border-t border-border bg-navy-950 text-ink-200">
+      <Container className="flex flex-col gap-10 pt-12 pb-6">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex flex-col gap-3">
+            <span className="font-heading text-[28px] leading-tight text-ink-50">
               {site.name}
             </span>
-            <GoldRule className="w-12" />
             <p className="text-sm leading-relaxed text-ink-300">
               {t('footer.motto')}
             </p>
@@ -43,7 +41,7 @@ export function SiteFooter() {
             </ul>
           </div>
 
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-2 text-sm">
             <h2 className={headingClass}>{t('footer.office')}</h2>
             <a
               href={site.address.mapsUrl}
@@ -61,7 +59,7 @@ export function SiteFooter() {
             </span>
           </div>
 
-          <div className="flex flex-col gap-3 text-sm">
+          <div className="flex flex-col gap-2 text-sm">
             <h2 className={headingClass}>{t('footer.contact')}</h2>
             <a href={site.phone.href} className={linkClass}>
               {site.phone.display}
@@ -76,7 +74,7 @@ export function SiteFooter() {
 
           <nav
             aria-label={t('footer.navigation')}
-            className="flex flex-col gap-3 text-sm"
+            className="flex flex-col gap-2 text-sm"
           >
             <h2 className={headingClass}>{t('footer.navigation')}</h2>
             {mainNav.map((item) => (
@@ -90,7 +88,7 @@ export function SiteFooter() {
           </nav>
         </div>
 
-        <div className="flex flex-wrap justify-between gap-4 border-t border-ink-50/10 pt-6 text-[13px] text-ink-400">
+        <div className="flex flex-wrap justify-between gap-4 border-t border-ink-50/10 pt-5 text-[13px] text-ink-400">
           <span>
             {t('footer.rights', {
               year: new Date().getFullYear(),

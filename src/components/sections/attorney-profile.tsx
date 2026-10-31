@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next'
 
 import {
-  GoldRule,
   MaskLine,
   Reveal,
   Stagger,
@@ -42,48 +41,47 @@ export function AttorneyProfile({
   ]
 
   return (
-    <section className="bg-ink-50">
-      <Container className="flex flex-wrap items-start gap-16 py-24 sm:py-28">
-        <div className="flex min-w-0 flex-[1_1_340px] flex-col gap-6">
+    <section className="border-t border-border">
+      <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14">
+        <div className="flex min-w-0 flex-col gap-4">
           <Reveal>
             <Eyebrow>{t('attorney.eyebrow')}</Eyebrow>
           </Reveal>
-          <Heading className="font-heading text-[clamp(44px,6vw,80px)] leading-[0.98] tracking-[-0.02em] text-primary-950">
+          <Heading className="font-heading text-[clamp(36px,4.4vw,56px)] leading-[1.04] text-foreground">
             <MaskLine delay={0.1}>{firstName}</MaskLine>
             <MaskLine delay={0.2}>{lastNames.join(' ')}</MaskLine>
           </Heading>
-          <GoldRule className="w-16" delay={0.4} />
-          <Reveal delay={0.4}>
-            <p className="max-w-xs leading-normal font-semibold text-primary-700">
+          <Reveal delay={0.3}>
+            <p className="max-w-xs text-[15px] leading-normal text-muted-foreground">
               {t('attorney.role')}
             </p>
           </Reveal>
         </div>
 
-        <div className="flex min-w-0 flex-[1_1_520px] flex-col gap-8">
+        <div className="flex min-w-0 flex-col gap-4">
           <Reveal delay={0.15}>
-            <p className="font-heading text-[clamp(22px,2.4vw,28px)] leading-snug text-ink-900">
+            <p className="text-[17px] leading-relaxed text-foreground">
               {t('attorney.bio', { year: attorney.practicingSince })}
             </p>
           </Reveal>
           <Reveal delay={0.25}>
-            <p className="text-[17px] leading-relaxed text-ink-600">
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
               {t('attorney.bio2')}
             </p>
           </Reveal>
           <Stagger
             as="dl"
-            className="grid gap-x-8 border-t border-ink-200 sm:grid-cols-2"
+            className="grid gap-x-6 border-t border-border sm:grid-cols-2"
           >
             {credentials.map((item) => (
               <StaggerItem
                 key={item.label}
-                className="flex flex-col gap-1 border-b border-ink-200 py-4.5"
+                className="flex flex-col gap-0.5 border-b border-border py-3"
               >
-                <dt className="text-xs font-semibold tracking-[0.14em] text-gold-800 uppercase">
+                <dt className="text-[13px] text-muted-foreground">
                   {item.label}
                 </dt>
-                <dd className="text-[15px] text-ink-900">{item.value}</dd>
+                <dd className="text-[15px] text-foreground">{item.value}</dd>
               </StaggerItem>
             ))}
           </Stagger>

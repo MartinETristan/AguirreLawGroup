@@ -9,9 +9,7 @@ const en: Translation = {
   common: {
     freeConsultation: 'Free consultation',
     scheduleConsultation: 'Schedule your free consultation',
-    requestConsultation: 'Request a consultation',
     call: 'Call {{phone}}',
-    learnMore: 'Learn more',
     hours: 'Mon–Fri, {{open}} – {{close}}',
     hoursLong: 'Monday to Friday, {{open}} – {{close}}',
     skipToContent: 'Skip to content',
@@ -42,7 +40,6 @@ const en: Translation = {
     },
     card: {
       subtitle: 'Initial case evaluation',
-      phone: 'Call us',
       hours: 'Hours',
       office: 'Office',
     },
@@ -50,7 +47,6 @@ const en: Translation = {
   values: {
     label: 'Values',
     words: ['Reliable.', 'Devoted.', 'Respected.'],
-    note: 'We stand with you from arraignment through trial, if it comes to that.',
   },
   areas: {
     eyebrow: 'Practice Areas',
@@ -95,8 +91,6 @@ const en: Translation = {
     eyebrow: 'The Firm',
     title: 'Your rights and your freedom come first.',
     lead: 'As a former prosecutor, we know how a case is built from the other side, and we have the insight to find the weaknesses and mistakes in the prosecution’s case.',
-    quote:
-      'A law firm that prioritizes your rights and freedom above anything else.',
     steps: [
       {
         title: 'We evaluate your case',

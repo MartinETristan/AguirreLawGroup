@@ -7,9 +7,7 @@ const es = {
   common: {
     freeConsultation: 'Consulta gratuita',
     scheduleConsultation: 'Agenda tu consulta gratuita',
-    requestConsultation: 'Solicitar consulta',
     call: 'Llama al {{phone}}',
-    learnMore: 'Saber más',
     hours: 'Lun a Vie, {{open}} – {{close}}',
     hoursLong: 'Lunes a viernes, {{open}} – {{close}}',
     skipToContent: 'Saltar al contenido',
@@ -40,7 +38,6 @@ const es = {
     },
     card: {
       subtitle: 'Evaluación inicial de tu caso',
-      phone: 'Llámanos',
       hours: 'Horario',
       office: 'Oficina',
     },
@@ -48,7 +45,6 @@ const es = {
   values: {
     label: 'Valores',
     words: ['Confiables.', 'Dedicados.', 'Respetados.'],
-    note: 'Te acompañamos desde la lectura de cargos hasta el juicio, si es necesario.',
   },
   areas: {
     eyebrow: 'Áreas de práctica',
@@ -93,8 +89,6 @@ const es = {
     eyebrow: 'La firma',
     title: 'Tus derechos y tu libertad, antes que todo.',
     lead: 'Como ex fiscal, conocemos cómo se construye un caso desde el otro lado, y sabemos encontrar las debilidades y los errores en la acusación.',
-    quote:
-      'Una firma que antepone tus derechos y tu libertad por encima de cualquier otra cosa.',
     steps: [
       {
         title: 'Evaluamos tu caso',
