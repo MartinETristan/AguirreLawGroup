@@ -14,7 +14,7 @@ import { useHideCallBar } from '@/lib/call-bar'
 // baja respecto al scroll y más lenta se percibe. Javier y el fondo solo bajan,
 // así el corte de la foto nunca sale del degradado inferior.
 // El logo va fijo a la página, sin parallax.
-const PARALLAX = { attorney: 100, backdrop: 200 }
+const PARALLAX = { attorney: 150, backdrop: 300 }
 
 export function HeroParallax() {
   const { t } = useTranslation()

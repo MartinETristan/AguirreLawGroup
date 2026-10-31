@@ -114,7 +114,7 @@ export function SiteHeader() {
                       )}
                     </Link>
                   </NavigationMenu.Trigger>
-                  <NavigationMenu.Content className="absolute top-full left-0 w-72 pt-3">
+                  <NavigationMenu.Content className="absolute top-full left-0 w-72 pt-3 data-closed:animate-out data-closed:duration-150 data-closed:fade-out-0 data-closed:slide-out-to-top-1 data-open:animate-in data-open:duration-200 data-open:fade-in-0 data-open:slide-in-from-top-1 motion-reduce:animate-none">
                     <ul className="flex flex-col rounded-lg border border-border bg-popover p-1.5 shadow-lg">
                       {practiceAreas.map((slug) => (
                         <li key={slug}>

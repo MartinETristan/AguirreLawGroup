@@ -211,6 +211,11 @@ const es = {
     password: 'Contraseña',
     submit: 'Iniciar sesión',
     unavailable: 'El acceso al sistema todavía no está disponible.',
+    errors: {
+      emailRequired: 'Escribe tu correo electrónico.',
+      emailInvalid: 'Escribe un correo válido, como nombre@ejemplo.com.',
+      passwordRequired: 'Escribe tu contraseña.',
+    },
   },
   cta: {
     title: '¿Enfrentas un cargo o sufriste una lesión?',

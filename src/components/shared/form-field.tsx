@@ -1,7 +1,6 @@
-import { AnimatePresence, motion } from 'motion/react'
 import type { ReactNode } from 'react'
 
-import { EASE } from '@/components/motion/reveal'
+import { Collapse } from '@/components/motion/reveal'
 import { Label } from '@/components/ui/label'
 import { cn } from '@/lib/utils'
 
@@ -18,29 +17,29 @@ export function FormField({
   id,
   label,
   error,
-  className,
   children,
 }: {
   /** Id del control que va en `children`. */
   id: string
   label: string
   error?: string
-  className?: string
   children: ReactNode
 }) {
   return (
-    <div className={cn('flex flex-col gap-2', className)}>
-      <Label htmlFor={id}>{label}</Label>
-      {children}
-      {error && (
+    <div>
+      <div className="flex flex-col gap-2">
+        <Label htmlFor={id}>{label}</Label>
+        {children}
+      </div>
+      <Collapse show={Boolean(error)}>
         <p
           id={fieldErrorId(id)}
           role="alert"
-          className="text-[13px] leading-snug text-destructive"
+          className="pt-2 text-[13px] leading-snug text-destructive"
         >
           {error}
         </p>
-      )}
+      </Collapse>
     </div>
   )
 }
@@ -57,22 +56,16 @@ export function FormStatus({
 }) {
   return (
     <div aria-live="polite">
-      <AnimatePresence>
-        {show && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5, ease: EASE }}
-            className={cn(
-              'mt-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground',
-              className,
-            )}
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <Collapse show={show}>
+        <div
+          className={cn(
+            'mt-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground',
+            className,
+          )}
+        >
+          {children}
+        </div>
+      </Collapse>
     </div>
   )
 }

@@ -213,6 +213,11 @@ const en: Translation = {
     password: 'Password',
     submit: 'Log in',
     unavailable: 'System access is not available yet.',
+    errors: {
+      emailRequired: 'Enter your email address.',
+      emailInvalid: 'Enter a valid email, like name@example.com.',
+      passwordRequired: 'Enter your password.',
+    },
   },
   cta: {
     title: 'Facing a charge or recovering from an injury?',

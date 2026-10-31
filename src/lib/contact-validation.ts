@@ -22,6 +22,12 @@ function isPhone(value: string) {
   return digits.length === 10 || (digits.length === 11 && digits.startsWith('1'))
 }
 
+export function validateEmail(rawValue: string) {
+  const value = rawValue.trim()
+  if (!value) return 'emailRequired'
+  return EMAIL.test(value) ? undefined : 'emailInvalid'
+}
+
 export function validateContactField(
   field: ContactField,
   rawValue: string,
@@ -36,8 +42,7 @@ export function validateContactField(
       if (!value) return 'phoneRequired'
       return isPhone(value) ? undefined : 'phoneInvalid'
     case 'email':
-      if (!value) return 'emailRequired'
-      return EMAIL.test(value) ? undefined : 'emailInvalid'
+      return validateEmail(value)
     case 'area':
       return value ? undefined : 'areaRequired'
   }

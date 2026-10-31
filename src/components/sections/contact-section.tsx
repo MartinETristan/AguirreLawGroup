@@ -3,7 +3,7 @@ import { useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { ChangeEvent, FocusEvent, FormEvent, ReactNode } from 'react'
 
-import { Reveal } from '@/components/motion/reveal'
+import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { CallButton } from '@/components/shared/call-button'
 import {
   FormField,
@@ -197,70 +197,91 @@ export function ContactSection({
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="grid items-start gap-4 rounded-lg border border-border bg-card p-5 sm:grid-cols-2 sm:p-6"
+          className="rounded-lg border border-border bg-card p-5 sm:p-6"
         >
-          <FormField {...fieldProps('name', t('contact.form.name'))}>
-            <Input autoComplete="name" {...textFieldProps('name')} />
-          </FormField>
-          <FormField {...fieldProps('phone', t('contact.form.phone'))}>
-            <Input type="tel" autoComplete="tel" {...textFieldProps('phone')} />
-          </FormField>
-          <FormField {...fieldProps('email', t('contact.form.email'))}>
-            <Input
-              type="email"
-              autoComplete="email"
-              {...textFieldProps('email')}
-            />
-          </FormField>
-          <FormField {...fieldProps('area', t('contact.form.caseType'))}>
-            <Select
-              value={area}
-              onValueChange={(value) => {
-                setArea(value)
-                setFieldError('area', value)
-              }}
-            >
-              <SelectTrigger
-                id={fieldId('area')}
-                aria-required
-                aria-invalid={Boolean(errors.area) || undefined}
-                aria-describedby={errors.area ? errorId('area') : undefined}
-                className={`${fieldClass} w-full data-[size=default]:h-11`}
-              >
-                <SelectValue
-                  placeholder={t('contact.form.caseTypePlaceholder')}
+          <Stagger className="grid items-start gap-4 sm:grid-cols-2">
+            <StaggerItem>
+              <FormField {...fieldProps('name', t('contact.form.name'))}>
+                <Input autoComplete="name" {...textFieldProps('name')} />
+              </FormField>
+            </StaggerItem>
+            <StaggerItem>
+              <FormField {...fieldProps('phone', t('contact.form.phone'))}>
+                <Input
+                  type="tel"
+                  autoComplete="tel"
+                  {...textFieldProps('phone')}
                 />
-              </SelectTrigger>
-              <SelectContent position="popper" data-lenis-prevent>
-                {practiceAreas.map((slug) => (
-                  <SelectItem key={slug} value={slug}>
-                    {t(`areas.items.${slug}.title`)}
-                  </SelectItem>
-                ))}
-                <SelectItem value="other">{t('contact.form.other')}</SelectItem>
-              </SelectContent>
-            </Select>
-          </FormField>
-          <FormField
-            id={`${id}-message`}
-            label={t('contact.form.message')}
-            className="col-span-full"
-          >
-            <Textarea
-              id={`${id}-message`}
-              name="message"
-              rows={3}
-              className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
-            />
-          </FormField>
-          <div className="col-span-full flex flex-wrap items-center justify-between gap-4">
-            <p className="max-w-xs text-[13px] leading-snug text-muted-foreground">
-              {t('contact.form.disclaimer')}
-            </p>
-            <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
-              {t('contact.form.submit')}
-            </Button>
-          </div>
+              </FormField>
+            </StaggerItem>
+            <StaggerItem>
+              <FormField {...fieldProps('email', t('contact.form.email'))}>
+                <Input
+                  type="email"
+                  autoComplete="email"
+                  {...textFieldProps('email')}
+                />
+              </FormField>
+            </StaggerItem>
+            <StaggerItem>
+              <FormField {...fieldProps('area', t('contact.form.caseType'))}>
+                <Select
+                  value={area}
+                  onValueChange={(value) => {
+                    setArea(value)
+                    setFieldError('area', value)
+                  }}
+                >
+                  <SelectTrigger
+                    id={fieldId('area')}
+                    aria-required
+                    aria-invalid={Boolean(errors.area) || undefined}
+                    aria-describedby={errors.area ? errorId('area') : undefined}
+                    className={`${fieldClass} w-full data-[size=default]:h-11 [&>svg]:transition-transform [&>svg]:duration-300 data-[state=open]:[&>svg]:rotate-180`}
+                  >
+                    <SelectValue
+                      placeholder={t('contact.form.caseTypePlaceholder')}
+                    />
+                  </SelectTrigger>
+                  <SelectContent
+                    position="popper"
+                    data-lenis-prevent
+                    className="duration-200"
+                  >
+                    {practiceAreas.map((slug) => (
+                      <SelectItem key={slug} value={slug}>
+                        {t(`areas.items.${slug}.title`)}
+                      </SelectItem>
+                    ))}
+                    <SelectItem value="other">
+                      {t('contact.form.other')}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </FormField>
+            </StaggerItem>
+            <StaggerItem className="col-span-full">
+              <FormField
+                id={`${id}-message`}
+                label={t('contact.form.message')}
+              >
+                <Textarea
+                  id={`${id}-message`}
+                  name="message"
+                  rows={3}
+                  className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
+                />
+              </FormField>
+            </StaggerItem>
+            <StaggerItem className="col-span-full flex flex-wrap items-center justify-between gap-4">
+              <p className="max-w-xs text-[13px] leading-snug text-muted-foreground">
+                {t('contact.form.disclaimer')}
+              </p>
+              <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
+                {t('contact.form.submit')}
+              </Button>
+            </StaggerItem>
+          </Stagger>
         </form>
         <FormStatus show={sent} className="flex flex-col items-start gap-3">
           <p>{t('contact.form.draftOpened', { email: site.email })}</p>

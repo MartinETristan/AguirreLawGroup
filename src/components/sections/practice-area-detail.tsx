@@ -110,7 +110,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
           </Reveal>
         )}
 
-        <p className="border-t border-border pt-5 text-[13px] leading-snug text-muted-foreground">
+        <p className="border-t border-border pt-5 text-[13px] leading-snug text-muted-foreground text-center">
           {t('areaPage.disclaimer')}
         </p>
       </div>

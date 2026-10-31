@@ -1,4 +1,4 @@
-import { motion } from 'motion/react'
+import { AnimatePresence, motion, useReducedMotion } from 'motion/react'
 import type { ReactNode } from 'react'
 import type { Variants } from 'motion/react'
 
@@ -33,6 +33,34 @@ export function Reveal({
     >
       {children}
     </motion.div>
+  )
+}
+
+/** Monta y desmonta su contenido abriendo y cerrando la altura, sin saltos en lo que tiene debajo. */
+export function Collapse({
+  show,
+  children,
+}: {
+  show: boolean
+  children: ReactNode
+}) {
+  // MotionConfig solo anula transformaciones: la altura se corta aquí
+  const reduceMotion = useReducedMotion()
+
+  return (
+    <AnimatePresence initial={false}>
+      {show && (
+        <motion.div
+          className="overflow-hidden"
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: 'auto', opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          transition={{ duration: reduceMotion ? 0 : 0.3, ease: EASE }}
+        >
+          {children}
+        </motion.div>
+      )}
+    </AnimatePresence>
   )
 }
 
