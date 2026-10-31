@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Container } from '@/components/shared/container'
 import { SocialIcon } from '@/components/shared/social-icon'
-import { mainNav } from '@/content/navigation'
+import { footerNav } from '@/content/navigation'
 import { site } from '@/content/site'
 
 const headingClass =
@@ -77,7 +77,7 @@ export function SiteFooter() {
             className="flex flex-col gap-2 text-sm"
           >
             <h2 className={headingClass}>{t('footer.navigation')}</h2>
-            {mainNav.map((item) => (
+            {footerNav.map((item) => (
               <Link key={item.to} to={item.to} className={linkClass}>
                 {t(`nav.${item.key}`)}
               </Link>

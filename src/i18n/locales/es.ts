@@ -15,6 +15,7 @@ const es = {
   nav: {
     label: 'Principal',
     home: 'Inicio',
+    about: 'Nosotros',
     areas: 'Áreas de práctica',
     firm: 'La firma',
     attorney: 'Abogado',
@@ -26,14 +27,14 @@ const es = {
   },
   hero: {
     eyebrow: 'Brownsville, Texas',
-    title1: 'Defensa firme cuando',
-    title2: 'más la necesitas.',
-    lead: 'Abogados de defensa criminal y lesiones personales en el Valle del Río Grande. Protegemos tus derechos y tu libertad por encima de todo.',
+    title1: 'Defensa experimentada',
+    title2: 'cuando más la necesitas.',
+    lead: 'Un error puede cambiar tu vida en un instante. Si enfrentas cargos penales o sufriste una lesión, necesitas un abogado honesto y discreto que te guíe en este momento difícil.',
     stats: {
       sinceLabel: 'Ejerciendo en el Valle del Río Grande',
       cases: 'Cientos',
       casesLabel: 'De casos y juicios con jurado',
-      prosecutor: 'Ex fiscal',
+      prosecutor: 'Fiscal municipal',
       prosecutorLabel: 'Ciudad de Brownsville, {{year}}',
     },
     card: {
@@ -57,66 +58,77 @@ const es = {
     items: {
       'criminal-law': {
         title: 'Derecho penal',
-        text: 'Todos cometemos errores. Defendemos tus derechos con firmeza en delitos menores y graves.',
+        text: 'Los errores pasan. Defendemos tus derechos con firmeza en delitos menores y graves.',
       },
       dwi: {
         title: 'DWI',
-        text: 'Manejo bajo la influencia. No dejes que una mala decisión defina tu futuro.',
+        text: 'No dejes que una mala decisión cambie tu vida para siempre.',
       },
       'drug-charges': {
         title: 'Cargos por drogas',
-        text: 'Posesión y otros cargos relacionados con sustancias controladas.',
+        text: 'Posesión, venta, tráfico y otros cargos estatales o federales.',
       },
       'personal-injury': {
         title: 'Lesiones personales',
-        text: 'No ignores tu dolor. Buscamos resultados y la compensación que mereces.',
+        text: 'Accidentes de auto, laborales, caídas y más. Que tu dolor no quede ignorado.',
       },
       'theft-property': {
         title: 'Robo y delitos contra la propiedad',
-        text: 'Defensa en acusaciones de robo, hurto y daños a la propiedad.',
+        text: 'Allanamiento, robo en tiendas, incendio provocado, falsificación de cheques y más.',
       },
       'violent-crimes': {
         title: 'Delitos violentos',
-        text: 'Agresión y otros cargos graves que exigen una defensa experimentada.',
+        text: 'Agresión, violencia doméstica, secuestro y otros cargos graves.',
       },
       'white-collar': {
         title: 'Delitos de cuello blanco',
-        text: 'Evasión fiscal, extorsión y fraude, con una visión única de la defensa criminal.',
+        text: 'Fraude, malversación, extorsión y lavado de dinero, a menudo con intervención federal.',
       },
     },
   },
   firm: {
     eyebrow: 'La firma',
     title: 'Tus derechos y tu libertad, antes que todo.',
-    lead: 'Como ex fiscal, conocemos cómo se construye un caso desde el otro lado, y sabemos encontrar las debilidades y los errores en la acusación.',
-    steps: [
-      {
-        title: 'Evaluamos tu caso',
-        text: 'Una consulta gratuita para conocer los hechos y explicarte tus opciones.',
-      },
-      {
-        title: 'Encontramos las debilidades',
-        text: 'Analizamos la acusación con la mirada de quien ya fue fiscal.',
-      },
-      {
-        title: 'Te acompañamos hasta el final',
-        text: 'Lectura de cargos, negociaciones, audiencias y, si hace falta, juicio con jurado.',
-      },
+    lead: 'Ya sea que enfrentes una lesión que cambió tu vida o un arresto que pone en juego tu futuro, necesitas un abogado que haga todo lo posible por defender tu bienestar, tus derechos y tu libertad.',
+    evidence:
+      'Tenemos la visión para encontrar debilidades y errores en el caso de la fiscalía. Estudiamos a fondo la evidencia y diseñamos la mejor estrategia para tu defensa.',
+    reasonsTitle: 'Al elegir Aguirre Law Group, eliges:',
+    reasons: [
+      'Una firma que antepone tus derechos y tu libertad a cualquier otra cosa.',
+      'Un abogado dedicado que conoce a fondo el sistema de justicia penal de Texas.',
+      '{{years}} años de experiencia en litigio.',
+      'Una trayectoria de cientos de casos y juicios con jurado.',
+      'Un equipo contigo todo el tiempo: lectura de cargos, negociaciones, audiencias y, si hace falta, juicio.',
     ],
   },
   attorney: {
     eyebrow: 'Conoce a tu abogado',
     role: 'Abogado de defensa criminal y lesiones personales',
-    bio: 'Ejerce en el Valle del Río Grande desde {{year}}, con una trayectoria de cientos de casos y juicios con jurado.',
-    bio2: 'Ha defendido a clientes en cargos de DWI, posesión de drogas, evasión fiscal, robo, agresión y extorsión, entre otros delitos menores y graves.',
+    bio: 'Ejerce en el Valle del Río Grande desde {{year}}, hace {{years}} años, con enfoque en casos penales y de lesiones personales.',
+    bio2: 'Defiende a personas acusadas de DWI, posesión de drogas, evasión fiscal, robo, agresión, extorsión y otros delitos menores y graves en Brownsville, Texas.',
+    personal:
+      'Cuando no está defendiendo los derechos de sus clientes, disfruta pasar tiempo con su esposa y sus dos hijos.',
     credentials: {
-      jd: 'J.D.',
+      jd: 'Juris Doctor (J.D.)',
       ba: 'B.A. en Gobierno',
-      prosecutor: 'Ex fiscal',
-      prosecutorValue: 'Ciudad de Brownsville, {{year}}',
+      aa: 'A.A.',
+      aaValue: 'Traducción al español',
+      prosecutor: 'Fiscal de la ciudad',
+      prosecutorValue: 'Brownsville, {{year}}',
       community: 'Comunidad',
       communityValue: 'Scoutmaster, Tropa {{troop}} BSA, desde {{year}}',
     },
+  },
+  areaPage: {
+    back: 'Todas las áreas',
+    cta: 'Solicitar evaluación',
+    ctaText: 'Cuéntanos qué pasó y evaluamos tu caso.',
+    otherAreas: 'Otras áreas',
+    disclaimer:
+      'Información general sobre la ley de Texas; no constituye asesoría legal. Las sanciones varían según cada caso y pueden cambiar con la ley.',
+  },
+  faq: {
+    title: 'Preguntas frecuentes.',
   },
   testimonials: {
     eyebrow: 'Testimonios',
@@ -125,7 +137,7 @@ const es = {
   contact: {
     eyebrow: 'Contacto',
     title: 'Hablemos de tu caso.',
-    lead: 'Solicita tu consulta gratuita y una evaluación inicial de tu caso. Cuéntanos qué pasó y te contactaremos.',
+    lead: 'Ante una situación que cambia tu vida, necesitas un equipo legal que haga todo por protegerte. Llámanos para hablar directamente con tu abogado o llena el formulario.',
     form: {
       name: 'Nombre completo',
       phone: 'Teléfono',
@@ -144,7 +156,7 @@ const es = {
   },
   cta: {
     title: '¿Enfrentas un cargo o sufriste una lesión?',
-    text: 'Una consulta gratuita puede cambiar el rumbo de tu caso.',
+    text: 'Contáctanos hoy para solicitar una evaluación inicial de tu caso.',
   },
   footer: {
     motto: 'Confiables. Dedicados. Respetados.',

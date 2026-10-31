@@ -765,7 +765,7 @@ body,
 
 :root {
   /* Base y elevado: el fondo retrocede y las superficies avanzan */
-  --background: var(--color-navy-950);
+  --background: var(--color-navy-900);
   --foreground: var(--color-ink-100);
   --card: var(--color-navy-800);
   --card-foreground: var(--color-ink-100);

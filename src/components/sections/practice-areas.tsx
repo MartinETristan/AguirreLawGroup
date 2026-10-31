@@ -51,8 +51,8 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
           {areas.map((slug) => (
             <StaggerItem key={slug} className="flex">
               <Link
-                to="/contacto"
-                search={{ area: slug }}
+                to="/areas/$area"
+                params={{ area: slug }}
                 className={cn(cellClass, 'bg-card')}
               >
                 <span

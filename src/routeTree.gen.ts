@@ -11,10 +11,12 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AbogadoRouteImport } from './routes/abogado'
-import { Route as AreasRouteImport } from './routes/areas'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as FirmaRouteImport } from './routes/firma'
+import { Route as NosotrosRouteImport } from './routes/nosotros'
 import { Route as TestimoniosRouteImport } from './routes/testimonios'
+import { Route as AreasIndexRouteImport } from './routes/areas.index'
+import { Route as AreasAreaRouteImport } from './routes/areas.$area'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -24,11 +26,6 @@ const IndexRoute = IndexRouteImport.update({
 const AbogadoRoute = AbogadoRouteImport.update({
   id: '/abogado',
   path: '/abogado',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AreasRoute = AreasRouteImport.update({
-  id: '/areas',
-  path: '/areas',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -41,60 +38,100 @@ const FirmaRoute = FirmaRouteImport.update({
   path: '/firma',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NosotrosRoute = NosotrosRouteImport.update({
+  id: '/nosotros',
+  path: '/nosotros',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestimoniosRoute = TestimoniosRouteImport.update({
   id: '/testimonios',
   path: '/testimonios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasIndexRoute = AreasIndexRouteImport.update({
+  id: '/areas/',
+  path: '/areas/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AreasAreaRoute = AreasAreaRouteImport.update({
+  id: '/areas/$area',
+  path: '/areas/$area',
   getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/abogado': typeof AbogadoRoute
-  '/areas': typeof AreasRoute
   '/contacto': typeof ContactoRoute
   '/firma': typeof FirmaRoute
+  '/nosotros': typeof NosotrosRoute
   '/testimonios': typeof TestimoniosRoute
+  '/areas/$area': typeof AreasAreaRoute
+  '/areas/': typeof AreasIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/abogado': typeof AbogadoRoute
-  '/areas': typeof AreasRoute
   '/contacto': typeof ContactoRoute
   '/firma': typeof FirmaRoute
+  '/nosotros': typeof NosotrosRoute
   '/testimonios': typeof TestimoniosRoute
+  '/areas/$area': typeof AreasAreaRoute
+  '/areas': typeof AreasIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/abogado': typeof AbogadoRoute
-  '/areas': typeof AreasRoute
   '/contacto': typeof ContactoRoute
   '/firma': typeof FirmaRoute
+  '/nosotros': typeof NosotrosRoute
   '/testimonios': typeof TestimoniosRoute
+  '/areas/$area': typeof AreasAreaRoute
+  '/areas/': typeof AreasIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/abogado' | '/areas' | '/contacto' | '/firma' | '/testimonios'
+    | '/'
+    | '/abogado'
+    | '/contacto'
+    | '/firma'
+    | '/nosotros'
+    | '/testimonios'
+    | '/areas/$area'
+    | '/areas/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/abogado' | '/areas' | '/contacto' | '/firma' | '/testimonios'
+  to:
+    | '/'
+    | '/abogado'
+    | '/contacto'
+    | '/firma'
+    | '/nosotros'
+    | '/testimonios'
+    | '/areas/$area'
+    | '/areas'
   id:
     | '__root__'
     | '/'
     | '/abogado'
-    | '/areas'
     | '/contacto'
     | '/firma'
+    | '/nosotros'
     | '/testimonios'
+    | '/areas/$area'
+    | '/areas/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AbogadoRoute: typeof AbogadoRoute
-  AreasRoute: typeof AreasRoute
   ContactoRoute: typeof ContactoRoute
   FirmaRoute: typeof FirmaRoute
+  NosotrosRoute: typeof NosotrosRoute
   TestimoniosRoute: typeof TestimoniosRoute
+  AreasAreaRoute: typeof AreasAreaRoute
+  AreasIndexRoute: typeof AreasIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -113,13 +150,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AbogadoRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/areas': {
-      id: '/areas'
-      path: '/areas'
-      fullPath: '/areas'
-      preLoaderRoute: typeof AreasRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/contacto': {
       id: '/contacto'
       path: '/contacto'
@@ -134,11 +164,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof FirmaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/nosotros': {
+      id: '/nosotros'
+      path: '/nosotros'
+      fullPath: '/nosotros'
+      preLoaderRoute: typeof NosotrosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/testimonios': {
       id: '/testimonios'
       path: '/testimonios'
       fullPath: '/testimonios'
       preLoaderRoute: typeof TestimoniosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas/': {
+      id: '/areas/'
+      path: '/areas'
+      fullPath: '/areas/'
+      preLoaderRoute: typeof AreasIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/areas/$area': {
+      id: '/areas/$area'
+      path: '/areas/$area'
+      fullPath: '/areas/$area'
+      preLoaderRoute: typeof AreasAreaRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -147,10 +198,12 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AbogadoRoute: AbogadoRoute,
-  AreasRoute: AreasRoute,
   ContactoRoute: ContactoRoute,
   FirmaRoute: FirmaRoute,
+  NosotrosRoute: NosotrosRoute,
   TestimoniosRoute: TestimoniosRoute,
+  AreasAreaRoute: AreasAreaRoute,
+  AreasIndexRoute: AreasIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

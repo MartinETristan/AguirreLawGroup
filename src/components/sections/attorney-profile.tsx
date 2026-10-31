@@ -8,7 +8,7 @@ import {
 } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { Eyebrow } from '@/components/shared/section-heading'
-import { site } from '@/content/site'
+import { site, yearsPracticing } from '@/content/site'
 
 export function AttorneyProfile({
   headingAs: Heading = 'h2',
@@ -25,6 +25,10 @@ export function AttorneyProfile({
       value: `${attorney.jd.school}, ${attorney.jd.year}`,
     },
     { label: t('attorney.credentials.ba'), value: attorney.ba.school },
+    {
+      label: t('attorney.credentials.aa'),
+      value: t('attorney.credentials.aaValue'),
+    },
     {
       label: t('attorney.credentials.prosecutor'),
       value: t('attorney.credentials.prosecutorValue', {
@@ -61,12 +65,20 @@ export function AttorneyProfile({
         <div className="flex min-w-0 flex-col gap-4">
           <Reveal delay={0.15}>
             <p className="text-[17px] leading-relaxed text-foreground">
-              {t('attorney.bio', { year: attorney.practicingSince })}
+              {t('attorney.bio', {
+                year: attorney.practicingSince,
+                years: yearsPracticing,
+              })}
             </p>
           </Reveal>
           <Reveal delay={0.25}>
             <p className="text-[15px] leading-relaxed text-muted-foreground">
               {t('attorney.bio2')}
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <p className="text-[15px] leading-relaxed text-muted-foreground">
+              {t('attorney.personal')}
             </p>
           </Reveal>
           <Stagger

@@ -51,11 +51,15 @@ export const site = {
     practicingSince: 2008,
     prosecutorYear: 2017,
     jd: { school: 'St. Mary’s University', year: 2007 },
-    ba: { school: 'University of Texas at Brownsville' },
+    ba: { school: 'University of Texas at Brownsville (UTRGV)' },
     scouts: { troop: 356, since: 2014 },
   },
 } as const
 
 export type SocialId = (typeof site.socials)[number]['id']
+
+/** Años de ejercicio; se calcula para que no vuelva a quedar desactualizado. */
+export const yearsPracticing =
+  new Date().getFullYear() - site.attorney.practicingSince
 
 export const fullAddress = `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`
