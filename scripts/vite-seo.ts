@@ -2,11 +2,11 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import type { Plugin, ResolvedConfig } from 'vite'
 
-import { legacyRedirects, legalPageTitles } from '../src/content/seo'
-import { fullAddress, site } from '../src/content/site'
-import { localizePath } from '../src/i18n/paths'
-import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo'
-import type { Language } from '../src/i18n'
+import { legacyRedirects, legalPageTitles } from '../src/content/seo.ts'
+import { fullAddress, site } from '../src/content/site.ts'
+import { localizePath } from '../src/i18n/paths.ts'
+import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo.ts'
+import type { Language } from '../src/i18n/index.ts'
 
 const languages: Array<Language> = ['es', 'en']
 

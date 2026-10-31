@@ -4,7 +4,6 @@ const es = {
     scheduleConsultation: 'Agenda tu consulta gratuita',
     call: 'Llama al {{phone}}',
     hours: 'Lun a Vie, {{open}} – {{close}}',
-    hoursLong: 'Lunes a viernes, {{open}} – {{close}}',
     skipToContent: 'Saltar al contenido',
   },
   nav: {
@@ -24,20 +23,12 @@ const es = {
   },
   hero: {
     heading: 'Abogados de defensa criminal y lesiones personales en Brownsville, Texas',
-    title1: 'Defensa experimentada',
-    title2: 'cuando más la necesitas.',
-    lead: 'Un error puede cambiar tu vida en un instante. Si enfrentas cargos penales o sufriste una lesión, necesitas un abogado honesto y discreto que te guíe en este momento difícil.',
     stats: {
       sinceLabel: 'Ejerciendo en el Valle del Río Grande',
       cases: 'Cientos',
       casesLabel: 'De casos y juicios con jurado',
       prosecutor: 'Fiscal municipal',
       prosecutorLabel: 'Ciudad de Brownsville, {{year}}',
-    },
-    card: {
-      subtitle: 'Evaluación inicial de tu caso',
-      hours: 'Horario',
-      office: 'Oficina',
     },
   },
   values: {

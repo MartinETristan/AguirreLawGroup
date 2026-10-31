@@ -9,7 +9,7 @@ type EyebrowProps = {
 }
 
 /** Etiqueta en mayúsculas con filete dorado, usada sobre cada título. */
-export function Eyebrow({ children, className }: EyebrowProps) {
+function Eyebrow({ children, className }: EyebrowProps) {
   return (
     <div
       className={cn(

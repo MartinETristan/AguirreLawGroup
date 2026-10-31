@@ -6,7 +6,6 @@ const en: Translation = {
     scheduleConsultation: 'Schedule your free consultation',
     call: 'Call {{phone}}',
     hours: 'Mon–Fri, {{open}} – {{close}}',
-    hoursLong: 'Monday to Friday, {{open}} – {{close}}',
     skipToContent: 'Skip to content',
   },
   nav: {
@@ -26,20 +25,12 @@ const en: Translation = {
   },
   hero: {
     heading: 'Criminal defense and personal injury attorneys in Brownsville, Texas',
-    title1: 'Experienced defense',
-    title2: 'when you need it most.',
-    lead: 'One mistake can change your life in an instant. If you are facing criminal charges or have been injured, you need an honest and discreet lawyer to guide you through this trying time.',
     stats: {
       sinceLabel: 'Practicing in the Rio Grande Valley',
       cases: 'Hundreds',
       casesLabel: 'Of cases and jury trials',
       prosecutor: 'City prosecutor',
       prosecutorLabel: 'City of Brownsville, {{year}}',
-    },
-    card: {
-      subtitle: 'Initial case evaluation',
-      hours: 'Hours',
-      office: 'Office',
     },
   },
   values: {

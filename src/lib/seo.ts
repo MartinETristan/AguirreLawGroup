@@ -1,11 +1,11 @@
-import { faq } from '../content/faq'
-import { practiceAreas } from '../content/practice-areas'
-import { areaCopy, legalPageTitles, pageCopy } from '../content/seo'
-import { site } from '../content/site'
-import { testimonials } from '../content/testimonials'
-import { localizePath } from '../i18n/paths'
-import type { PracticeArea } from '../content/practice-areas'
-import type { SeoCopy } from '../content/seo'
+import { faq } from '../content/faq.ts'
+import { practiceAreas } from '../content/practice-areas.ts'
+import { areaCopy, legalPageTitles, pageCopy } from '../content/seo.ts'
+import { site } from '../content/site.ts'
+import { testimonials } from '../content/testimonials.ts'
+import { localizePath } from '../i18n/paths.ts'
+import type { PracticeArea } from '../content/practice-areas.ts'
+import type { SeoCopy } from '../content/seo.ts'
 import type { Language } from '@/i18n'
 
 // Sin alias ni dependencias de navegador: este módulo también corre al compilar (`scripts/vite-seo.ts`).
@@ -13,7 +13,7 @@ import type { Language } from '@/i18n'
 const OG_IMAGE = '/og-image.jpg'
 const seoLanguages: Array<Language> = ['es', 'en']
 
-export type SeoTag = {
+type SeoTag = {
   tag: 'meta' | 'link' | 'script'
   attrs: Record<string, string>
   text?: string

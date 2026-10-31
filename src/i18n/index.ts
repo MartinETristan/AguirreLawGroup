@@ -8,7 +8,7 @@ import es from './locales/es'
 export const languages = ['es', 'en'] as const
 export type Language = (typeof languages)[number]
 
-export const resources = {
+const resources = {
   es: { translation: es },
   en: { translation: en },
 } as const

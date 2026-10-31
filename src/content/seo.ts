@@ -1,4 +1,4 @@
-import type { PracticeArea } from './practice-areas'
+import type { PracticeArea } from './practice-areas.ts'
 import type { Language } from '@/i18n'
 
 export type SeoCopy = { title: string; description: string }
