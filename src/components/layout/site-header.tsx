@@ -140,7 +140,8 @@ export function SiteHeader() {
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-6 px-4 sm:px-6">
         <Link to="/" className="shrink-0" aria-label={site.name}>
           <img
-            src={site.logo}
+            src={site.logo.src}
+            srcSet={site.logo.srcSet}
             alt={site.name}
             width={95}
             height={40}

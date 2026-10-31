@@ -5,7 +5,11 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
-  logo: '/Logos/alg-logo-light.webp',
+  logo: {
+    src: '/Logos/alg-logo-light-190.webp',
+    srcSet:
+      '/Logos/alg-logo-light-95.webp 1x, /Logos/alg-logo-light-190.webp 2x, /Logos/alg-logo-light-285.webp 3x',
+  },
   url: 'https://www.aguirre-lawgroup.com',
 
   phone: {
@@ -59,7 +63,13 @@ export const site = {
   ],
 
   hero: {
-    logo: '/TheLawGun/TheLawGunLogo White.webp',
+    logo: {
+      src: '/TheLawGun/thelawgun-white-1200.webp',
+      srcSet:
+        '/TheLawGun/thelawgun-white-600.webp 600w, /TheLawGun/thelawgun-white-900.webp 900w, /TheLawGun/thelawgun-white-1200.webp 1200w',
+      // Ancho máximo real: `max-w-md` en móvil y 34rem desde `sm`
+      sizes: '(min-width: 640px) 34rem, min(28rem, calc(100vw - 2rem))',
+    },
     logoAlt: 'The Law Gun',
     // TODO: sustituir por la foto de fondo definitiva
     backdrop: '/BG_TEST.webp',

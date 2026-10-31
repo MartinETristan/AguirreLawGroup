@@ -70,6 +70,7 @@ export function HeroParallax() {
           <img
             src={site.hero.backdrop}
             alt=""
+            fetchPriority="high"
             className="size-full object-cover blur-[3px]"
           />
         </motion.div>
@@ -99,10 +100,12 @@ export function HeroParallax() {
           transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
         >
           <img
-            src={site.hero.logo}
+            src={site.hero.logo.src}
+            srcSet={site.hero.logo.srcSet}
+            sizes={site.hero.logo.sizes}
             alt={site.hero.logoAlt}
-            width={3240}
-            height={1080}
+            width={1200}
+            height={400}
             className="h-auto w-full max-w-md sm:max-w-[min(34rem,58svh)]"
           />
         </motion.div>
