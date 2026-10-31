@@ -2,6 +2,7 @@ import {
   Link,
   Outlet,
   createRootRoute,
+  useMatch,
   useRouterState,
 } from '@tanstack/react-router'
 import { ReactLenis } from 'lenis/react'
@@ -20,6 +21,7 @@ import { SiteHeader } from '@/components/layout/site-header'
 import { EASE } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 import 'lenis/dist/lenis.css'
 import '../styles.css'
@@ -33,6 +35,8 @@ function RootComponent() {
   const { t } = useTranslation()
   const lenisRef = useRef<LenisRef>(null)
   const pathname = useRouterState({ select: (s) => s.location.pathname })
+  // El login va sin header, footer ni barra de llamada: solo su flecha para volver al sitio.
+  const showSiteChrome = !useMatch({ from: '/login', shouldThrow: false })
 
   // Drive Lenis from Motion's frame loop so both share one requestAnimationFrame
   useEffect(() => {
@@ -61,15 +65,22 @@ function RootComponent() {
           wheelMultiplier: 0.9,
         }}
       />
-      <a
-        href="#contenido"
-        className="sr-only z-50 bg-primary px-4 py-3 text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
-      >
-        {t('common.skipToContent')}
-      </a>
+      {showSiteChrome && (
+        <a
+          href="#contenido"
+          className="sr-only z-50 bg-primary px-4 py-3 text-primary-foreground focus:not-sr-only focus:fixed focus:top-3 focus:left-3"
+        >
+          {t('common.skipToContent')}
+        </a>
+      )}
       {/* El relleno inferior deja a la vista el final del footer bajo la barra de llamada */}
-      <div className="flex min-h-screen flex-col bg-background pb-16 lg:pb-0">
-        <SiteHeader />
+      <div
+        className={cn(
+          'flex min-h-screen flex-col bg-background',
+          showSiteChrome && 'pb-16 lg:pb-0',
+        )}
+      >
+        {showSiteChrome && <SiteHeader />}
         <motion.main
           id="contenido"
           key={pathname}
@@ -80,9 +91,9 @@ function RootComponent() {
         >
           <Outlet />
         </motion.main>
-        <SiteFooter />
+        {showSiteChrome && <SiteFooter />}
       </div>
-      <MobileCallBar />
+      {showSiteChrome && <MobileCallBar />}
       {import.meta.env.DEV && (
         <TanStackDevtools
           config={{

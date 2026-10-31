@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 
 import { Stagger, StaggerItem } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
+import { GoldDiamond } from '@/components/shared/gold'
 
 export function ValuesStrip() {
   const { t } = useTranslation()
@@ -19,10 +20,7 @@ export function ValuesStrip() {
               </StaggerItem>
               {i < words.length - 1 && (
                 <StaggerItem>
-                  <span
-                    aria-hidden="true"
-                    className="block size-1.5 rotate-45 bg-gold-500"
-                  />
+                  <GoldDiamond className="block" />
                 </StaggerItem>
               )}
             </Fragment>

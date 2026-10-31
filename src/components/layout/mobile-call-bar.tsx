@@ -1,9 +1,8 @@
-import { PhoneIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useTranslation } from 'react-i18next'
 
 import { EASE } from '@/components/motion/reveal'
-import { Button } from '@/components/ui/button'
+import { CallButton } from '@/components/shared/call-button'
 import { site } from '@/content/site'
 import { useCallBarCovered } from '@/lib/call-bar'
 
@@ -25,12 +24,9 @@ export function MobileCallBar() {
           animate={{ y: 0, transition: { duration: 0.25, ease: EASE, delay: 0.2 } }}
           exit={{ y: '100%', transition: { duration: 0.2, ease: EASE } }}
         >
-          <Button asChild size="lg" className="h-12 w-full text-[15px]">
-            <a href={site.phone.href}>
-              <PhoneIcon />
-              {t('common.call', { phone: site.phone.display })}
-            </a>
-          </Button>
+          <CallButton className="h-12 w-full text-[15px]">
+            {t('common.call', { phone: site.phone.display })}
+          </CallButton>
         </motion.div>
       )}
     </AnimatePresence>

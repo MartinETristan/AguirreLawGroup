@@ -1,10 +1,10 @@
 import { Link } from '@tanstack/react-router'
-import { PhoneIcon } from 'lucide-react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { EASE, Stagger, StaggerItem } from '@/components/motion/reveal'
+import { CallButton } from '@/components/shared/call-button'
 import { Container } from '@/components/shared/container'
 import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
@@ -14,7 +14,7 @@ import { useHideCallBar } from '@/lib/call-bar'
 // baja respecto al scroll y más lenta se percibe. Javier y el fondo solo bajan,
 // así el corte de la foto nunca sale del degradado inferior.
 // El logo va fijo a la página, sin parallax.
-const PARALLAX = { attorney: 56, backdrop: 160 }
+const PARALLAX = { attorney: 100, backdrop: 200 }
 
 export function HeroParallax() {
   const { t } = useTranslation()
@@ -113,15 +113,12 @@ export function HeroParallax() {
         <h1 className="sr-only">{t('hero.heading')}</h1>
         <div
           ref={actionsRef}
-          className="mx-auto grid max-w-md grid-cols-2 gap-3 pt-4 pb-8"
+          className="mx-auto grid max-w-md grid-cols-2 gap-3 pb-8"
         >
-          <Button asChild size="lg" className="h-12 text-[15px]">
-            <a href={site.phone.href}>
-              <PhoneIcon />
-              <span className="sm:hidden">{t('landing.hero.call')}</span>
-              <span className="hidden sm:inline">{site.phone.display}</span>
-            </a>
-          </Button>
+          <CallButton className="h-12 text-[15px]">
+            <span className="sm:hidden">{t('landing.hero.call')}</span>
+            <span className="hidden sm:inline">{site.phone.display}</span>
+          </CallButton>
           <Button
             asChild
             size="lg"

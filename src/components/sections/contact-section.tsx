@@ -1,15 +1,20 @@
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react'
-import { AnimatePresence, motion } from 'motion/react'
 import { useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { ChangeEvent, FocusEvent, FormEvent, ReactNode } from 'react'
 
-import { EASE, Reveal } from '@/components/motion/reveal'
-import { Container } from '@/components/shared/container'
+import { Reveal } from '@/components/motion/reveal'
+import { CallButton } from '@/components/shared/call-button'
+import {
+  FormField,
+  FormStatus,
+  fieldClass,
+  fieldErrorId,
+} from '@/components/shared/form-field'
+import { Section } from '@/components/shared/section'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
@@ -24,8 +29,6 @@ import { useHideCallBar } from '@/lib/call-bar'
 import { contactFields, validateContactField } from '@/lib/contact-validation'
 import type { PracticeArea } from '@/content/practice-areas'
 import type { ContactError, ContactField } from '@/lib/contact-validation'
-
-const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
 
 type ContactSectionProps = {
   defaultArea?: PracticeArea
@@ -78,7 +81,7 @@ export function ContactSection({
   ]
 
   const fieldId = (field: ContactField) => `${id}-${field}`
-  const errorId = (field: ContactField) => `${id}-${field}-error`
+  const errorId = (field: ContactField) => fieldErrorId(fieldId(field))
 
   function setFieldError(field: ContactField, value: string) {
     setErrors((current) => ({
@@ -103,17 +106,14 @@ export function ContactSection({
     className: fieldClass,
   })
 
-  function fieldError(field: ContactField) {
+  // Etiqueta y mensaje de error de cada campo validado
+  const fieldProps = (field: ContactField, label: string) => {
     const error = errors[field]
-    return error ? (
-      <p
-        id={errorId(field)}
-        role="alert"
-        className="text-[13px] leading-snug text-destructive"
-      >
-        {t(`contact.form.errors.${error}`)}
-      </p>
-    ) : null
+    return {
+      id: fieldId(field),
+      label,
+      error: error && t(`contact.form.errors.${error}`),
+    }
   }
 
   // Sin backend todavía: arma el correo para appointment@ con los datos del formulario.
@@ -156,158 +156,119 @@ export function ContactSection({
   }
 
   return (
-    <section ref={sectionRef} className="border-t border-border">
-      <Container className="grid items-start gap-8 py-12 sm:py-16 lg:grid-cols-[2fr_3fr] lg:gap-14">
-        <div className="flex min-w-0 flex-col gap-4">
-          <SectionHeading
-            as={headingAs}
-            title={t('contact.title')}
-          />
-          {condensed ? (
-            <>
-              <p className="leading-relaxed text-muted-foreground">
-                {t('landing.contact.lead')}
-              </p>
-              <Button asChild size="lg" className="h-12 w-fit px-6 text-[15px]">
-                <a href={site.phone.href}>
-                  <PhoneIcon />
-                  {t('common.call', { phone: site.phone.display })}
-                </a>
-              </Button>
-            </>
-          ) : (
-            <Reveal delay={0.2}>
-              <p className="leading-relaxed text-muted-foreground">
-                {t('contact.lead')}
-              </p>
-            </Reveal>
-          )}
-          <Reveal delay={condensed ? 0 : 0.3}>
-            <ul className="flex flex-col gap-3 pt-1 text-[15px] font-medium text-foreground">
-              {details.map((item, i) => (
-                <li
-                  key={i}
-                  className="flex items-center gap-3 [&_a]:transition-colors [&_a:hover]:text-link [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-[1.6] [&_svg]:text-muted-foreground"
-                >
-                  {item.icon}
-                  {item.content}
-                </li>
-              ))}
-            </ul>
+    <Section
+      ref={sectionRef}
+      className="grid items-start gap-8 lg:grid-cols-[2fr_3fr] lg:gap-14"
+    >
+      <div className="flex min-w-0 flex-col gap-4">
+        <SectionHeading as={headingAs} title={t('contact.title')} />
+        {condensed ? (
+          <>
+            <p className="leading-relaxed text-muted-foreground">
+              {t('landing.contact.lead')}
+            </p>
+            <CallButton className="h-12 w-fit px-6 text-[15px]">
+              {t('common.call', { phone: site.phone.display })}
+            </CallButton>
+          </>
+        ) : (
+          <Reveal delay={0.2}>
+            <p className="leading-relaxed text-muted-foreground">
+              {t('contact.lead')}
+            </p>
           </Reveal>
-        </div>
-
-        <Reveal className="min-w-0" delay={0.15}>
-          <form
-            onSubmit={handleSubmit}
-            noValidate
-            className="grid items-start gap-4 rounded-lg border border-border bg-card p-5 sm:grid-cols-2 sm:p-6"
-          >
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={fieldId('name')}>{t('contact.form.name')}</Label>
-              <Input autoComplete="name" {...textFieldProps('name')} />
-              {fieldError('name')}
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={fieldId('phone')}>
-                {t('contact.form.phone')}
-              </Label>
-              <Input
-                type="tel"
-                autoComplete="tel"
-                {...textFieldProps('phone')}
-              />
-              {fieldError('phone')}
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={fieldId('email')}>
-                {t('contact.form.email')}
-              </Label>
-              <Input
-                type="email"
-                autoComplete="email"
-                {...textFieldProps('email')}
-              />
-              {fieldError('email')}
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={fieldId('area')}>
-                {t('contact.form.caseType')}
-              </Label>
-              <Select
-                value={area}
-                onValueChange={(value) => {
-                  setArea(value)
-                  setFieldError('area', value)
-                }}
+        )}
+        <Reveal delay={condensed ? 0 : 0.3}>
+          <ul className="flex flex-col gap-3 pt-1 text-[15px] font-medium text-foreground">
+            {details.map((item, i) => (
+              <li
+                key={i}
+                className="flex items-center gap-3 [&_a]:transition-colors [&_a:hover]:text-link [&_svg]:size-5 [&_svg]:shrink-0 [&_svg]:stroke-[1.6] [&_svg]:text-muted-foreground"
               >
-                <SelectTrigger
-                  id={fieldId('area')}
-                  aria-required
-                  aria-invalid={Boolean(errors.area) || undefined}
-                  aria-describedby={errors.area ? errorId('area') : undefined}
-                  className={`${fieldClass} w-full data-[size=default]:h-11`}
-                >
-                  <SelectValue
-                    placeholder={t('contact.form.caseTypePlaceholder')}
-                  />
-                </SelectTrigger>
-                <SelectContent position="popper" data-lenis-prevent>
-                  {practiceAreas.map((slug) => (
-                    <SelectItem key={slug} value={slug}>
-                      {t(`areas.items.${slug}.title`)}
-                    </SelectItem>
-                  ))}
-                  <SelectItem value="other">
-                    {t('contact.form.other')}
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              {fieldError('area')}
-            </div>
-            <div className="col-span-full flex flex-col gap-2">
-              <Label htmlFor={`${id}-message`}>
-                {t('contact.form.message')}
-              </Label>
-              <Textarea
-                id={`${id}-message`}
-                name="message"
-                rows={3}
-                className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
-              />
-            </div>
-            <div className="col-span-full flex flex-wrap items-center justify-between gap-4">
-              <p className="max-w-xs text-[13px] leading-snug text-muted-foreground">
-                {t('contact.form.disclaimer')}
-              </p>
-              <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
-                {t('contact.form.submit')}
-              </Button>
-            </div>
-          </form>
-          <div aria-live="polite">
-            <AnimatePresence>
-              {sent && (
-                <motion.div
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: EASE }}
-                  className="mt-3 flex flex-col items-start gap-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground"
-                >
-                  <p>{t('contact.form.draftOpened', { email: site.email })}</p>
-                  <Button asChild className="h-11 px-5 text-[15px]">
-                    <a href={site.phone.href}>
-                      <PhoneIcon />
-                      {t('common.call', { phone: site.phone.display })}
-                    </a>
-                  </Button>
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+                {item.icon}
+                {item.content}
+              </li>
+            ))}
+          </ul>
         </Reveal>
-      </Container>
-    </section>
+      </div>
+
+      <Reveal className="min-w-0" delay={0.15}>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="grid items-start gap-4 rounded-lg border border-border bg-card p-5 sm:grid-cols-2 sm:p-6"
+        >
+          <FormField {...fieldProps('name', t('contact.form.name'))}>
+            <Input autoComplete="name" {...textFieldProps('name')} />
+          </FormField>
+          <FormField {...fieldProps('phone', t('contact.form.phone'))}>
+            <Input type="tel" autoComplete="tel" {...textFieldProps('phone')} />
+          </FormField>
+          <FormField {...fieldProps('email', t('contact.form.email'))}>
+            <Input
+              type="email"
+              autoComplete="email"
+              {...textFieldProps('email')}
+            />
+          </FormField>
+          <FormField {...fieldProps('area', t('contact.form.caseType'))}>
+            <Select
+              value={area}
+              onValueChange={(value) => {
+                setArea(value)
+                setFieldError('area', value)
+              }}
+            >
+              <SelectTrigger
+                id={fieldId('area')}
+                aria-required
+                aria-invalid={Boolean(errors.area) || undefined}
+                aria-describedby={errors.area ? errorId('area') : undefined}
+                className={`${fieldClass} w-full data-[size=default]:h-11`}
+              >
+                <SelectValue
+                  placeholder={t('contact.form.caseTypePlaceholder')}
+                />
+              </SelectTrigger>
+              <SelectContent position="popper" data-lenis-prevent>
+                {practiceAreas.map((slug) => (
+                  <SelectItem key={slug} value={slug}>
+                    {t(`areas.items.${slug}.title`)}
+                  </SelectItem>
+                ))}
+                <SelectItem value="other">{t('contact.form.other')}</SelectItem>
+              </SelectContent>
+            </Select>
+          </FormField>
+          <FormField
+            id={`${id}-message`}
+            label={t('contact.form.message')}
+            className="col-span-full"
+          >
+            <Textarea
+              id={`${id}-message`}
+              name="message"
+              rows={3}
+              className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
+            />
+          </FormField>
+          <div className="col-span-full flex flex-wrap items-center justify-between gap-4">
+            <p className="max-w-xs text-[13px] leading-snug text-muted-foreground">
+              {t('contact.form.disclaimer')}
+            </p>
+            <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
+              {t('contact.form.submit')}
+            </Button>
+          </div>
+        </form>
+        <FormStatus show={sent} className="flex flex-col items-start gap-3">
+          <p>{t('contact.form.draftOpened', { email: site.email })}</p>
+          <CallButton className="h-11 px-5 text-[15px]">
+            {t('common.call', { phone: site.phone.display })}
+          </CallButton>
+        </FormStatus>
+      </Reveal>
+    </Section>
   )
 }

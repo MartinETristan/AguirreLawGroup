@@ -10,6 +10,8 @@ import { seo } from './scripts/vite-seo'
 
 const config = defineConfig({
   resolve: { tsconfigPaths: true },
+  // Se importa de forma diferida: sin esto Vite lo descubre tarde y recarga la página en desarrollo.
+  optimizeDeps: { include: ['maplibre-gl'] },
   plugins: [
     devtools(),
     tailwindcss(),

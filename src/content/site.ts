@@ -23,6 +23,13 @@ export const site = {
     zip: '78520',
     // Geocodificado con OpenStreetMap (coincidencia exacta del número 811)
     geo: { lat: 25.9061, lng: -97.4980114 },
+    // Límites del mapa, [oeste, sur] y [este, norte]: la zona urbana de Brownsville y el puerto.
+    // El límite municipal de OpenStreetMap llega hasta 26.22 N por franjas anexadas que abarcan
+    // San Benito y Los Fresnos, y por eso aquí se recorta.
+    mapBounds: [
+      [-97.58, 25.84],
+      [-97.35, 26.0],
+    ] as [[number, number], [number, number]],
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=811+E+Madison+St+Brownsville+TX+78520',
   },

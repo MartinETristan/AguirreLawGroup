@@ -1,16 +1,20 @@
-import { AnimatePresence, motion } from 'motion/react'
+import { Link } from '@tanstack/react-router'
+import { ArrowLeftIcon } from 'lucide-react'
 import { useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { FormEvent } from 'react'
 
-import { EASE, Reveal } from '@/components/motion/reveal'
+import { Reveal } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
+import {
+  FormField,
+  FormStatus,
+  fieldClass,
+} from '@/components/shared/form-field'
+import { GoldCard } from '@/components/shared/gold'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-
-const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
 
 export function LoginForm() {
   const { t } = useTranslation()
@@ -24,59 +28,50 @@ export function LoginForm() {
   }
 
   return (
-    <section>
-      <Container className="flex max-w-md flex-col gap-6 py-12 sm:py-16">
-        <SectionHeading
-          as="h1"
-          eyebrow={t('login.eyebrow')}
-          title={t('login.title')}
-        />
+    <section className="relative flex min-h-svh items-center">
+      <Button
+        asChild
+        variant="outline"
+        size="icon-lg"
+        className="absolute top-4 left-4 size-11 sm:top-6 sm:left-6"
+      >
+        {/* El rewrite del router añade el prefijo del idioma actual */}
+        <Link to="/" aria-label={t('login.back')} title={t('login.back')}>
+          <ArrowLeftIcon className="size-5" />
+        </Link>
+      </Button>
+
+      <Container className="flex max-w-md flex-col gap-6 pt-20 pb-12">
+        <SectionHeading as="h1" title={t('login.title')} />
         <Reveal className="min-w-0" delay={0.15}>
-          <form
-            onSubmit={handleSubmit}
-            className="flex flex-col gap-4 rounded-lg border border-t-2 border-border border-t-gold-500 bg-card p-5 sm:p-6"
-          >
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-email`}>{t('login.email')}</Label>
-              <Input
-                id={`${id}-email`}
-                name="email"
-                type="email"
-                autoComplete="username"
-                required
-                className={fieldClass}
-              />
-            </div>
-            <div className="flex flex-col gap-2">
-              <Label htmlFor={`${id}-password`}>{t('login.password')}</Label>
-              <Input
-                id={`${id}-password`}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                required
-                className={fieldClass}
-              />
-            </div>
-            <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
-              {t('login.submit')}
-            </Button>
-          </form>
-          <div aria-live="polite">
-            <AnimatePresence>
-              {submitted && (
-                <motion.p
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.5, ease: EASE }}
-                  className="mt-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground"
-                >
-                  {t('login.unavailable')}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
+          <GoldCard asChild className="flex flex-col gap-4 p-5 sm:p-6">
+            <form onSubmit={handleSubmit}>
+              <FormField id={`${id}-email`} label={t('login.email')}>
+                <Input
+                  id={`${id}-email`}
+                  name="email"
+                  type="email"
+                  autoComplete="username"
+                  required
+                  className={fieldClass}
+                />
+              </FormField>
+              <FormField id={`${id}-password`} label={t('login.password')}>
+                <Input
+                  id={`${id}-password`}
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className={fieldClass}
+                />
+              </FormField>
+              <Button type="submit" size="lg" className="h-11 px-6 text-[15px]">
+                {t('login.submit')}
+              </Button>
+            </form>
+          </GoldCard>
+          <FormStatus show={submitted}>{t('login.unavailable')}</FormStatus>
         </Reveal>
       </Container>
     </section>

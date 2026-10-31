@@ -1,6 +1,6 @@
 import { Link } from '@tanstack/react-router'
 import { useLenis } from 'lenis/react'
-import { ChevronDownIcon, MenuIcon, PhoneIcon } from 'lucide-react'
+import { ChevronDownIcon, MenuIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { NavigationMenu } from 'radix-ui'
 import { useState } from 'react'
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 
 import { LanguageSwitcher } from './language-switcher'
 import { EASE } from '@/components/motion/reveal'
+import { CallButton } from '@/components/shared/call-button'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -242,17 +243,7 @@ export function SiteHeader() {
                       {t('common.scheduleConsultation')}
                     </Link>
                   </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    size="lg"
-                    className="h-12 text-[15px]"
-                  >
-                    <a href={site.phone.href}>
-                      <PhoneIcon />
-                      {site.phone.display}
-                    </a>
-                  </Button>
+                  <CallButton variant="outline" className="h-12 text-[15px]" />
                   <Button
                     asChild
                     variant="outline"
