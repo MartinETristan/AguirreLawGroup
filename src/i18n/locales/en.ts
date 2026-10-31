@@ -19,6 +19,7 @@ const en: Translation = {
     testimonials: 'Testimonials',
     contact: 'Contact',
     openMenu: 'Open menu',
+    areasSubmenu: 'Practice areas submenu',
     menu: 'Menu',
     language: 'Language',
     login: 'Log in',

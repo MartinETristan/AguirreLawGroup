@@ -20,9 +20,18 @@ export function MobileCallBar() {
       {!covered && (
         <motion.div
           className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background p-2 lg:hidden"
-          initial={{ y: '100%' }}
-          animate={{ y: 0, transition: { duration: 0.25, ease: EASE, delay: 0.2 } }}
-          exit={{ y: '100%', transition: { duration: 0.2, ease: EASE } }}
+          initial={{ opacity: 0, y: 12 }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            // Sin `EASE`: su arranque rápido deja la barra casi opaca en 100 ms y se ve de golpe
+            transition: { duration: 0.6, ease: 'easeInOut', delay: 0.2 },
+          }}
+          exit={{
+            opacity: 0,
+            y: 12,
+            transition: { duration: 0.3, ease: EASE },
+          }}
         >
           <CallButton className="h-12 w-full text-[15px]">
             {t('common.call', { phone: site.phone.display })}

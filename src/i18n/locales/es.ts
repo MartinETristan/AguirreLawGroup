@@ -17,6 +17,7 @@ const es = {
     testimonials: 'Testimonios',
     contact: 'Contacto',
     openMenu: 'Abrir menú',
+    areasSubmenu: 'Submenú de áreas de práctica',
     menu: 'Menú',
     language: 'Idioma',
     login: 'Iniciar sesión',

@@ -103,7 +103,7 @@ export function HeroParallax() {
             alt={site.hero.logoAlt}
             width={3240}
             height={1080}
-            className="h-auto w-full max-w-60 sm:max-w-[min(34rem,58svh)]"
+            className="h-auto w-full max-w-md sm:max-w-[min(34rem,58svh)]"
           />
         </motion.div>
       </div>

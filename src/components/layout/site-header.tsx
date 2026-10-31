@@ -3,12 +3,11 @@ import { useLenis } from 'lenis/react'
 import { ChevronDownIcon, MenuIcon } from 'lucide-react'
 import { motion } from 'motion/react'
 import { NavigationMenu } from 'radix-ui'
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { LanguageSwitcher } from './language-switcher'
 import { EASE } from '@/components/motion/reveal'
-import { CallButton } from '@/components/shared/call-button'
 import { Button } from '@/components/ui/button'
 import {
   Sheet,
@@ -20,9 +19,12 @@ import {
 import { mainNav } from '@/content/navigation'
 import { practiceAreas } from '@/content/practice-areas'
 import { site } from '@/content/site'
+import { cn } from '@/lib/utils'
 
 const navLinkClass =
   'group relative block py-2.5 text-muted-foreground transition-colors hover:text-foreground'
+
+const mobileNavLinkClass = 'block py-3 font-heading text-[28px] text-foreground'
 
 function NavUnderline({ isActive }: { isActive: boolean }) {
   return isActive ? (
@@ -33,6 +35,80 @@ function NavUnderline({ isActive }: { isActive: boolean }) {
     />
   ) : (
     <span className="absolute inset-x-0 bottom-1 h-px origin-left scale-x-0 bg-primary-300 transition-transform duration-500 ease-out group-hover:scale-x-100" />
+  )
+}
+
+/**
+ * Áreas de práctica en el menú móvil: el texto navega y la flecha despliega el
+ * submenú. Arranca cerrado en cada apertura porque el Sheet desmonta su contenido.
+ */
+function MobileAreasItem({
+  to,
+  label,
+  onNavigate,
+}: {
+  to: string
+  label: string
+  onNavigate: () => void
+}) {
+  const { t } = useTranslation()
+  const [open, setOpen] = useState(false)
+  const panelId = useId()
+
+  return (
+    <>
+      <div className="flex items-center justify-between gap-2">
+        <Link
+          to={to}
+          onClick={onNavigate}
+          className={cn(mobileNavLinkClass, 'min-w-0')}
+          activeProps={{ className: 'text-link' }}
+        >
+          {label}
+        </Link>
+        <button
+          type="button"
+          aria-label={t('nav.areasSubmenu')}
+          aria-expanded={open}
+          aria-controls={panelId}
+          onClick={() => setOpen((current) => !current)}
+          className="flex size-11 shrink-0 cursor-pointer items-center justify-center text-muted-foreground"
+        >
+          <ChevronDownIcon
+            className={cn(
+              'size-5 transition-transform duration-300',
+              open && 'rotate-180',
+            )}
+            aria-hidden="true"
+          />
+        </button>
+      </div>
+      <div
+        id={panelId}
+        className={cn(
+          'grid transition-[grid-template-rows,opacity,visibility] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none',
+          open ? 'grid-rows-[1fr]' : 'invisible grid-rows-[0fr] opacity-0',
+        )}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <ul className="flex flex-col pb-3">
+            {practiceAreas.map((slug) => (
+              <li key={slug}>
+                <Link
+                  to="/practice-areas/$area"
+                  params={{ area: slug }}
+                  onClick={onNavigate}
+                  className="block py-2 text-[15px] text-muted-foreground"
+                  activeProps={{ className: 'text-link' }}
+                >
+                  {t(`areas.items.${slug}.title`)}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </>
   )
 }
 
@@ -208,31 +284,22 @@ export function SiteHeader() {
                       }}
                       className="border-b border-border"
                     >
-                      <Link
-                        to={item.to}
-                        onClick={() => handleMenu(false)}
-                        activeOptions={{ exact: item.to === '/' }}
-                        className="block py-3 font-heading text-[28px] text-foreground"
-                        activeProps={{ className: 'text-link' }}
-                      >
-                        {t(`nav.${item.key}`)}
-                      </Link>
-                      {item.key === 'areas' && (
-                        <ul className="flex flex-col pb-3">
-                          {practiceAreas.map((slug) => (
-                            <li key={slug}>
-                              <Link
-                                to="/practice-areas/$area"
-                                params={{ area: slug }}
-                                onClick={() => handleMenu(false)}
-                                className="block py-2 text-[15px] text-muted-foreground"
-                                activeProps={{ className: 'text-link' }}
-                              >
-                                {t(`areas.items.${slug}.title`)}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+                      {item.key === 'areas' ? (
+                        <MobileAreasItem
+                          to={item.to}
+                          label={t(`nav.${item.key}`)}
+                          onNavigate={() => handleMenu(false)}
+                        />
+                      ) : (
+                        <Link
+                          to={item.to}
+                          onClick={() => handleMenu(false)}
+                          activeOptions={{ exact: item.to === '/' }}
+                          className={mobileNavLinkClass}
+                          activeProps={{ className: 'text-link' }}
+                        >
+                          {t(`nav.${item.key}`)}
+                        </Link>
                       )}
                     </motion.div>
                   ))}
@@ -243,7 +310,6 @@ export function SiteHeader() {
                       {t('common.scheduleConsultation')}
                     </Link>
                   </Button>
-                  <CallButton variant="outline" className="h-12 text-[15px]" />
                   <Button
                     asChild
                     variant="outline"
@@ -254,7 +320,6 @@ export function SiteHeader() {
                       {t('nav.login')}
                     </Link>
                   </Button>
-                  <LanguageSwitcher className="self-start" />
                 </div>
               </div>
             </SheetContent>
