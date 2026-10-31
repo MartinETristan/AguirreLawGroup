@@ -156,7 +156,7 @@ export function SiteHeader() {
         </NavigationMenu.Root>
 
         <div className="ml-auto flex items-center gap-3">
-          <LanguageSwitcher className="hidden min-[400px]:inline-flex" />
+          <LanguageSwitcher />
           <Button
             asChild
             variant="outline"

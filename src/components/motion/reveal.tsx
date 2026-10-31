@@ -29,7 +29,7 @@ export function Reveal({
       initial={{ opacity: 0, y }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={viewport}
-      transition={{ duration: 0.9, ease: EASE, delay }}
+      transition={{ duration: 0.5, ease: EASE, delay }}
     >
       {children}
     </motion.div>
@@ -43,7 +43,7 @@ const staggerParent: Variants = {
 
 export const staggerItem: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: EASE } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
 }
 
 type StaggerProps = {

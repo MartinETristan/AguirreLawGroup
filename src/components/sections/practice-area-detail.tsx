@@ -81,7 +81,6 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
               {t('areaPage.back')}
             </Link>
             <Reveal>
-              <Eyebrow>{t('areas.eyebrow')}</Eyebrow>
             </Reveal>
             <h1 className="font-heading text-[clamp(36px,4.6vw,56px)] leading-[1.06] text-foreground">
               <MaskLine delay={0.1}>{t(`areas.items.${area}.title`)}</MaskLine>

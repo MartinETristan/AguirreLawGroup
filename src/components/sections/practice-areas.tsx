@@ -13,6 +13,8 @@ type PracticeAreasProps = {
   /** Muestra solo las primeras N áreas y un enlace a la página completa. */
   limit?: number
   headingAs?: 'h1' | 'h2'
+  /** Versión del landing: solo palabras clave por área. */
+  condensed?: boolean
 }
 
 const cellClass =
@@ -22,7 +24,11 @@ const cellTitleClass =
 const cellArrowClass =
   'mt-1 size-4 shrink-0 text-link transition-transform duration-500 group-hover:translate-x-1'
 
-export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
+export function PracticeAreas({
+  limit,
+  headingAs = 'h2',
+  condensed = false,
+}: PracticeAreasProps) {
   const { t } = useTranslation()
   const areas = limit ? practiceAreas.slice(0, limit) : practiceAreas
 
@@ -32,8 +38,7 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <SectionHeading
             as={headingAs}
-            eyebrow={t('areas.eyebrow')}
-            title={t('areas.title')}
+            title={condensed ? t('landing.areas.title') : t('areas.title')}
           />
           {limit && (
             <Reveal delay={0.2}>
@@ -67,7 +72,9 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
                   />
                 </h3>
                 <p className="text-sm leading-normal text-muted-foreground">
-                  {t(`areas.items.${slug}.text`)}
+                  {condensed
+                    ? t(`landing.areas.items.${slug}`)
+                    : t(`areas.items.${slug}.text`)}
                 </p>
               </Link>
             </StaggerItem>
@@ -85,9 +92,11 @@ export function PracticeAreas({ limit, headingAs = 'h2' }: PracticeAreasProps) {
                     aria-hidden="true"
                   />
                 </h3>
-                <p className="text-sm leading-normal text-muted-foreground">
-                  {t('areas.other.text')}
-                </p>
+                {!condensed && (
+                  <p className="text-sm leading-normal text-muted-foreground">
+                    {t('areas.other.text')}
+                  </p>
+                )}
                 <span className="mt-auto pt-1 text-sm font-semibold text-link">
                   {site.phone.display}
                 </span>

@@ -1,6 +1,6 @@
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon } from 'lucide-react'
 import { AnimatePresence, motion } from 'motion/react'
-import { useId, useState } from 'react'
+import { useId, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import type { FormEvent, ReactNode } from 'react'
 
@@ -20,6 +20,7 @@ import {
 import { Textarea } from '@/components/ui/textarea'
 import { practiceAreas } from '@/content/practice-areas'
 import { fullAddress, site } from '@/content/site'
+import { useHideCallBar } from '@/lib/call-bar'
 import type { PracticeArea } from '@/content/practice-areas'
 
 const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
@@ -27,22 +28,31 @@ const fieldClass = 'h-11 rounded-sm px-3 text-[15px] md:text-[15px]'
 type ContactSectionProps = {
   defaultArea?: PracticeArea
   headingAs?: 'h1' | 'h2'
+  /** Versión del landing: el teléfono pasa a botón y se quita el texto de introducción. */
+  condensed?: boolean
 }
 
 export function ContactSection({
   defaultArea,
   headingAs = 'h2',
+  condensed = false,
 }: ContactSectionProps) {
   const { t } = useTranslation()
   const id = useId()
   const [area, setArea] = useState<string>(defaultArea ?? '')
   const [sent, setSent] = useState(false)
+  const sectionRef = useRef<HTMLElement>(null)
+  useHideCallBar(sectionRef)
 
   const details: Array<{ icon: ReactNode; content: ReactNode }> = [
-    {
-      icon: <PhoneIcon />,
-      content: <a href={site.phone.href}>{site.phone.display}</a>,
-    },
+    ...(condensed
+      ? []
+      : [
+          {
+            icon: <PhoneIcon />,
+            content: <a href={site.phone.href}>{site.phone.display}</a>,
+          },
+        ]),
     {
       icon: <MailIcon />,
       content: (
@@ -84,20 +94,33 @@ export function ContactSection({
   }
 
   return (
-    <section className="border-t border-border">
+    <section ref={sectionRef} className="border-t border-border">
       <Container className="grid items-start gap-8 py-12 sm:py-16 lg:grid-cols-[2fr_3fr] lg:gap-14">
         <div className="flex min-w-0 flex-col gap-4">
           <SectionHeading
             as={headingAs}
-            eyebrow={t('contact.eyebrow')}
             title={t('contact.title')}
           />
-          <Reveal delay={0.2}>
-            <p className="leading-relaxed text-muted-foreground">
-              {t('contact.lead')}
-            </p>
-          </Reveal>
-          <Reveal delay={0.3}>
+          {condensed ? (
+            <>
+              <p className="leading-relaxed text-muted-foreground">
+                {t('landing.contact.lead')}
+              </p>
+              <Button asChild size="lg" className="h-12 w-fit px-6 text-[15px]">
+                <a href={site.phone.href}>
+                  <PhoneIcon />
+                  {t('common.call', { phone: site.phone.display })}
+                </a>
+              </Button>
+            </>
+          ) : (
+            <Reveal delay={0.2}>
+              <p className="leading-relaxed text-muted-foreground">
+                {t('contact.lead')}
+              </p>
+            </Reveal>
+          )}
+          <Reveal delay={condensed ? 0 : 0.3}>
             <ul className="flex flex-col gap-3 pt-1 text-[15px] font-medium text-foreground">
               {details.map((item, i) => (
                 <li
@@ -179,7 +202,6 @@ export function ContactSection({
                 id={`${id}-message`}
                 name="message"
                 rows={3}
-                required
                 className="min-h-24 rounded-sm px-3 py-2.5 text-[15px] md:text-[15px]"
               />
             </div>
@@ -195,15 +217,21 @@ export function ContactSection({
           <div aria-live="polite">
             <AnimatePresence>
               {sent && (
-                <motion.p
+                <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.5, ease: EASE }}
-                  className="mt-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground"
+                  className="mt-3 flex flex-col items-start gap-3 rounded-sm bg-accent px-4 py-3 text-sm text-accent-foreground"
                 >
-                  {t('contact.form.success', { email: site.email })}
-                </motion.p>
+                  <p>{t('contact.form.draftOpened', { email: site.email })}</p>
+                  <Button asChild className="h-11 px-5 text-[15px]">
+                    <a href={site.phone.href}>
+                      <PhoneIcon />
+                      {t('common.call', { phone: site.phone.display })}
+                    </a>
+                  </Button>
+                </motion.div>
               )}
             </AnimatePresence>
           </div>

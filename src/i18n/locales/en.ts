@@ -25,7 +25,6 @@ const en: Translation = {
   },
   hero: {
     heading: 'Criminal defense and personal injury attorneys in Brownsville, Texas',
-    eyebrow: 'Brownsville, Texas',
     title1: 'Experienced defense',
     title2: 'when you need it most.',
     lead: 'One mistake can change your life in an instant. If you are facing criminal charges or have been injured, you need an honest and discreet lawyer to guide you through this trying time.',
@@ -47,7 +46,6 @@ const en: Translation = {
     words: ['Reliable.', 'Devoted.', 'Respected.'],
   },
   areas: {
-    eyebrow: 'Practice Areas',
     title: 'One decision shouldn’t change your life.',
     viewAll: 'View all practice areas',
     other: {
@@ -86,7 +84,6 @@ const en: Translation = {
     },
   },
   firm: {
-    eyebrow: 'The Firm',
     title: 'Your rights and your freedom come first.',
     lead: 'Whether you are facing a personal injury that has changed your life or an arrest that puts your future at stake, you need an attorney who will do everything in their power to defend your well-being, rights, and freedom.',
     evidence:
@@ -102,7 +99,6 @@ const en: Translation = {
   },
   attorney: {
     photoAlt: '{{name}}, criminal defense and personal injury attorney in Brownsville, Texas',
-    eyebrow: 'Meet your attorney',
     role: 'Criminal defense and personal injury attorney',
     bio: 'Practicing law in the Rio Grande Valley since {{year}}, {{years}} years ago, with a focus on criminal and personal injury cases.',
     bio2: 'He defends individuals charged with DWI, drug possession, tax evasion, theft, assault, extortion, and other misdemeanors or felonies in Brownsville, Texas.',
@@ -119,6 +115,42 @@ const en: Translation = {
       communityValue: 'Scoutmaster, BSA Troop {{troop}}, since {{year}}',
     },
   },
+  landing: {
+    hero: {
+      call: 'Call',
+    },
+    areas: {
+      title: 'What are you facing?',
+      items: {
+        'criminal-law': 'Misdemeanors and felonies.',
+        dwi: 'First offense or repeat.',
+        'drug-charges': 'Possession, sales, trafficking. State or federal.',
+        'personal-injury': 'Car and work accidents, falls.',
+        'theft-property': 'Burglary, shoplifting, arson, forgery.',
+        'violent-crimes': 'Assault, domestic violence, kidnapping.',
+        'white-collar': 'Fraud, embezzlement, extortion, money laundering.',
+      },
+    },
+    firm: {
+      stagesCaption: 'A team with you the whole time.',
+      stages: ['Arraignment', 'Negotiations', 'Hearings', 'Trial'],
+      stageCondition: 'if necessary',
+      evidence:
+        'We thoroughly study the evidence and look for weaknesses and mistakes in the prosecution’s case.',
+    },
+    attorney: {
+      personal: 'Husband and father of two.',
+      more: 'View full profile',
+      practicing: 'Begins practicing in the Rio Grande Valley',
+      scouts: 'Scoutmaster, BSA Troop {{troop}}',
+      prosecutor: 'City prosecutor, Brownsville',
+      today: 'Today',
+      years: '{{years}} years in practice',
+    },
+    contact: {
+      lead: 'Call to speak directly with your attorney or fill out the form.',
+    },
+  },
   areaPage: {
     back: 'All practice areas',
     cta: 'Request an evaluation',
@@ -131,11 +163,9 @@ const en: Translation = {
     title: 'Frequently asked questions.',
   },
   testimonials: {
-    eyebrow: 'Testimonials',
     title: 'What our clients say.',
   },
   contact: {
-    eyebrow: 'Contact',
     title: 'Let’s talk about your case.',
     lead: 'When facing a life-changing situation, you need a legal team that will do everything to protect you. Call to speak directly with your attorney or fill out the form.',
     form: {
@@ -145,17 +175,16 @@ const en: Translation = {
       caseType: 'Case type',
       caseTypePlaceholder: 'Select an option',
       other: 'Other',
-      message: 'Tell us about your case',
+      message: 'Tell us about your case (optional)',
       disclaimer:
         'Your information is confidential. Submitting this form does not create an attorney-client relationship.',
-      submit: 'Request consultation',
-      success:
-        'We opened your email with the request ready. If it didn’t open, write to us at {{email}}.',
+      submit: 'Open email draft',
+      draftOpened:
+        'Your request hasn’t been sent yet: review the draft in your email and send it. If it didn’t open, call us or write to us at {{email}}.',
       mailSubject: 'Consultation request — {{name}}',
     },
   },
   login: {
-    eyebrow: 'System access',
     title: 'Log in',
     email: 'Email',
     password: 'Password',

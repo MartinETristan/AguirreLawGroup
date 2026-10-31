@@ -1,5 +1,7 @@
+import { Link } from '@tanstack/react-router'
 import { useTranslation } from 'react-i18next'
 
+import { GoldTrack } from '@/components/illustrations/gold-track'
 import {
   MaskLine,
   Reveal,
@@ -13,9 +15,12 @@ import { site, yearsPracticing } from '@/content/site'
 export function AttorneyProfile({
   headingAs: Heading = 'h2',
   showPhoto = false,
+  condensed = false,
 }: {
   headingAs?: 'h1' | 'h2'
   showPhoto?: boolean
+  /** Versión del landing: la trayectoria en línea de tiempo, con enlace al perfil completo. */
+  condensed?: boolean
 }) {
   const { t } = useTranslation()
   const { attorney } = site
@@ -48,9 +53,6 @@ export function AttorneyProfile({
 
   const intro = (
     <div className="flex min-w-0 flex-col gap-4">
-      <Reveal>
-        <Eyebrow>{t('attorney.eyebrow')}</Eyebrow>
-      </Reveal>
       <Heading className="font-heading text-[clamp(36px,4.4vw,56px)] leading-[1.04] text-foreground">
         <MaskLine delay={0.1}>{firstName}</MaskLine>
         <MaskLine delay={0.2}>{lastNames.join(' ')}</MaskLine>
@@ -99,6 +101,70 @@ export function AttorneyProfile({
       </Stagger>
     </div>
   )
+
+  if (condensed) {
+    const career = [
+      {
+        year: attorney.jd.year,
+        text: `${t('attorney.credentials.jd')}, ${attorney.jd.school}`,
+      },
+      { year: attorney.practicingSince, text: t('landing.attorney.practicing') },
+      {
+        year: attorney.scouts.since,
+        text: t('landing.attorney.scouts', { troop: attorney.scouts.troop }),
+      },
+      {
+        year: attorney.prosecutorYear,
+        text: t('landing.attorney.prosecutor'),
+      },
+      {
+        year: t('landing.attorney.today'),
+        text: t('landing.attorney.years', { years: yearsPracticing }),
+      },
+    ]
+
+    return (
+      <section className="border-t border-border">
+        <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14">
+          <div className="flex min-w-0 flex-col gap-4">
+            {intro}
+            <p className="text-[15px] leading-normal text-foreground">
+              {t('landing.attorney.personal')}
+            </p>
+            <Link
+              to="/about-us"
+              className="w-fit border-b border-primary-300/50 pt-2.5 pb-1 text-[15px] font-semibold text-link transition-colors hover:border-primary-300"
+            >
+              {t('landing.attorney.more')}
+            </Link>
+          </div>
+
+          <div className="flex min-w-0 flex-col gap-6">
+            <GoldTrack
+              items={career.map((step) => ({
+                id: String(step.year),
+                title: (
+                  <p className="font-heading text-[28px] leading-none text-foreground">
+                    {step.year}
+                  </p>
+                ),
+                detail: (
+                  <p className="pt-1 text-[15px] leading-normal text-muted-foreground">
+                    {step.text}
+                  </p>
+                ),
+              }))}
+            />
+            <p className="border-t border-border pt-4 text-sm leading-normal text-muted-foreground">
+              {t('attorney.credentials.aa')}, {t('attorney.credentials.aaValue')}
+              {' · '}
+              {t('attorney.credentials.ba')}, {attorney.ba.school}
+            </p>
+          </div>
+        </Container>
+      </section>
+    )
+  }
 
   if (showPhoto) {
     return (

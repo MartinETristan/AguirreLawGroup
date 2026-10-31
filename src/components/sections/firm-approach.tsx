@@ -1,15 +1,22 @@
 import { CheckIcon } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 
+import { EvidenceSheet } from '@/components/illustrations/evidence-sheet'
+import { GoldTrack } from '@/components/illustrations/gold-track'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
 import { SectionHeading } from '@/components/shared/section-heading'
 import { yearsPracticing } from '@/content/site'
 
+const captionClass = 'text-[17px] leading-snug font-semibold text-foreground'
+
 export function FirmApproach({
   headingAs = 'h2',
+  condensed = false,
 }: {
   headingAs?: 'h1' | 'h2'
+  /** Versión del landing: las etapas y el estudio de la evidencia se muestran en vez de contarse. */
+  condensed?: boolean
 }) {
   const { t } = useTranslation()
   const reasons = t('firm.reasons', {
@@ -17,13 +24,45 @@ export function FirmApproach({
     years: yearsPracticing,
   })
 
+  if (condensed) {
+    const stages = t('landing.firm.stages', { returnObjects: true })
+    return (
+      <section className="border-t border-border">
+        <Container className="flex flex-col gap-10 py-12 sm:py-16">
+          <SectionHeading as={headingAs} title={t('firm.title')} />
+
+          <div className="flex flex-col gap-5">
+            <h3 className={captionClass}>{t('landing.firm.stagesCaption')}</h3>
+            <GoldTrack
+              horizontal
+              open
+              items={stages.map((stage, i) => ({
+                id: stage,
+                title: <p className={captionClass}>{stage}</p>,
+                detail: i === stages.length - 1 && (
+                  <p className="text-sm text-muted-foreground">
+                    {t('landing.firm.stageCondition')}
+                  </p>
+                ),
+              }))}
+            />
+          </div>
+
+          <div className="grid items-center gap-5 border-t border-border pt-10 lg:grid-cols-2 lg:gap-14">
+            <h3 className={captionClass}>{t('landing.firm.evidence')}</h3>
+            <EvidenceSheet />
+          </div>
+        </Container>
+      </section>
+    )
+  }
+
   return (
     <section className="border-t border-border">
       <Container className="grid gap-8 py-12 sm:py-16 lg:grid-cols-2 lg:gap-14">
         <div className="flex min-w-0 flex-col gap-4">
           <SectionHeading
             as={headingAs}
-            eyebrow={t('firm.eyebrow')}
             title={t('firm.title')}
           />
           <Reveal delay={0.2}>

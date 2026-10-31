@@ -1,10 +1,14 @@
+import { Link } from '@tanstack/react-router'
+import { PhoneIcon } from 'lucide-react'
 import { motion, useReducedMotion, useScroll, useTransform } from 'motion/react'
 import { useRef } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import { EASE, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { Container } from '@/components/shared/container'
+import { Button } from '@/components/ui/button'
 import { site } from '@/content/site'
+import { useHideCallBar } from '@/lib/call-bar'
 
 // Desplazamiento de cada capa al recorrer el escenario: cuanto más atrás, más
 // baja respecto al scroll y más lenta se percibe. Javier y el fondo solo bajan,
@@ -15,6 +19,8 @@ const PARALLAX = { attorney: 56, backdrop: 160 }
 export function HeroParallax() {
   const { t } = useTranslation()
   const stageRef = useRef<HTMLDivElement>(null)
+  const actionsRef = useRef<HTMLDivElement>(null)
+  useHideCallBar(actionsRef)
   const reduceMotion = useReducedMotion()
 
   const { scrollYProgress } = useScroll({
@@ -51,7 +57,7 @@ export function HeroParallax() {
     <section className="border-b border-border">
       <div
         ref={stageRef}
-        className="relative h-[clamp(480px,calc(100svh-11rem),860px)] overflow-hidden"
+        className="relative h-[clamp(420px,calc(100svh-11rem),860px)] overflow-hidden"
       >
         {/* El fondo sobra por arriba para no dejar hueco cuando baja */}
         <motion.div
@@ -63,8 +69,7 @@ export function HeroParallax() {
         >
           <img
             src={site.hero.backdrop}
-            loading="lazy"
-            alt="TheGunLawLogo"
+            alt=""
             className="size-full object-cover blur-[3px]"
           />
         </motion.div>
@@ -78,7 +83,6 @@ export function HeroParallax() {
         >
           <img
             src={site.attorney.photoFront}
-            loading="lazy"
             alt={t('attorney.photoAlt', { name: site.attorney.name })}
             width={603}
             height={799}
@@ -89,7 +93,7 @@ export function HeroParallax() {
         <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--background)_12%,transparent_55%)]" />
 
         <motion.div
-          className="absolute inset-x-0 bottom-[4%] flex justify-center px-4"
+          className="absolute inset-x-0 bottom-[3%] flex flex-col items-center gap-1 px-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2, ease: EASE, delay: 0.3 }}
@@ -99,20 +103,34 @@ export function HeroParallax() {
             alt={site.hero.logoAlt}
             width={3240}
             height={1080}
-            className="h-auto w-full max-w-[min(56rem,64svh)]"
+            className="h-auto w-full max-w-60 sm:max-w-[min(34rem,58svh)]"
           />
         </motion.div>
       </div>
 
       <Container className="pb-12 sm:pb-16">
-        <motion.h1
-          className="mx-auto max-w-3xl pb-6 text-center font-heading text-balance text-[clamp(26px,3vw,36px)] leading-[1.15] text-foreground"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.9, ease: EASE, delay: 0.4 }}
+        {/* El logo hace de título visual; el H1 queda para buscadores y lectores de pantalla */}
+        <h1 className="sr-only">{t('hero.heading')}</h1>
+        <div
+          ref={actionsRef}
+          className="mx-auto grid max-w-md grid-cols-2 gap-3 pt-4 pb-8"
         >
-          {t('hero.heading')}
-        </motion.h1>
+          <Button asChild size="lg" className="h-12 text-[15px]">
+            <a href={site.phone.href}>
+              <PhoneIcon />
+              <span className="sm:hidden">{t('landing.hero.call')}</span>
+              <span className="hidden sm:inline">{site.phone.display}</span>
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 text-[15px]"
+          >
+            <Link to="/contact-us">{t('common.freeConsultation')}</Link>
+          </Button>
+        </div>
         <Stagger
           immediate
           className="grid gap-4 border-t border-border pt-6 sm:grid-cols-3 sm:gap-8"

@@ -13,6 +13,7 @@ import type { LenisRef } from 'lenis/react'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 
+import { MobileCallBar } from '@/components/layout/mobile-call-bar'
 import { SiteFooter } from '@/components/layout/site-footer'
 import { SeoHead } from '@/components/layout/seo-head'
 import { SiteHeader } from '@/components/layout/site-header'
@@ -66,7 +67,8 @@ function RootComponent() {
       >
         {t('common.skipToContent')}
       </a>
-      <div className="flex min-h-screen flex-col bg-background">
+      {/* El relleno inferior deja a la vista el final del footer bajo la barra de llamada */}
+      <div className="flex min-h-screen flex-col bg-background pb-16 lg:pb-0">
         <SiteHeader />
         <motion.main
           id="contenido"
@@ -80,6 +82,7 @@ function RootComponent() {
         </motion.main>
         <SiteFooter />
       </div>
+      <MobileCallBar />
       {import.meta.env.DEV && (
         <TanStackDevtools
           config={{

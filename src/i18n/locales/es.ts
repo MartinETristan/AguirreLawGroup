@@ -23,7 +23,6 @@ const es = {
   },
   hero: {
     heading: 'Abogados de defensa criminal y lesiones personales en Brownsville, Texas',
-    eyebrow: 'Brownsville, Texas',
     title1: 'Defensa experimentada',
     title2: 'cuando más la necesitas.',
     lead: 'Un error puede cambiar tu vida en un instante. Si enfrentas cargos penales o sufriste una lesión, necesitas un abogado honesto y discreto que te guíe en este momento difícil.',
@@ -45,7 +44,6 @@ const es = {
     words: ['Confiables.', 'Dedicados.', 'Respetados.'],
   },
   areas: {
-    eyebrow: 'Áreas de práctica',
     title: 'Una sola decisión no debe cambiar tu vida.',
     viewAll: 'Ver todas las áreas',
     other: {
@@ -84,7 +82,6 @@ const es = {
     },
   },
   firm: {
-    eyebrow: 'La firma',
     title: 'Tus derechos y tu libertad, antes que todo.',
     lead: 'Ya sea que enfrentes una lesión que cambió tu vida o un arresto que pone en juego tu futuro, necesitas un abogado que haga todo lo posible por defender tu bienestar, tus derechos y tu libertad.',
     evidence:
@@ -100,7 +97,6 @@ const es = {
   },
   attorney: {
     photoAlt: '{{name}}, abogado de defensa criminal y lesiones personales en Brownsville, Texas',
-    eyebrow: 'Conoce a tu abogado',
     role: 'Abogado de defensa criminal y lesiones personales',
     bio: 'Ejerce en el Valle del Río Grande desde {{year}}, hace {{years}} años, con enfoque en casos penales y de lesiones personales.',
     bio2: 'Defiende a personas acusadas de DWI, posesión de drogas, evasión fiscal, robo, agresión, extorsión y otros delitos menores y graves en Brownsville, Texas.',
@@ -117,6 +113,42 @@ const es = {
       communityValue: 'Scoutmaster, Tropa {{troop}} BSA, desde {{year}}',
     },
   },
+  landing: {
+    hero: {
+      call: 'Llamar',
+    },
+    areas: {
+      title: '¿Qué estás enfrentando?',
+      items: {
+        'criminal-law': 'Delitos menores y graves.',
+        dwi: 'Primera ofensa o reincidencia.',
+        'drug-charges': 'Posesión, venta, tráfico. Estatales o federales.',
+        'personal-injury': 'Accidentes de auto, laborales, caídas.',
+        'theft-property': 'Allanamiento, robo en tiendas, incendio, falsificación.',
+        'violent-crimes': 'Agresión, violencia doméstica, secuestro.',
+        'white-collar': 'Fraude, malversación, extorsión, lavado de dinero.',
+      },
+    },
+    firm: {
+      stagesCaption: 'Un equipo contigo todo el tiempo.',
+      stages: ['Lectura de cargos', 'Negociaciones', 'Audiencias', 'Juicio'],
+      stageCondition: 'si hace falta',
+      evidence:
+        'Estudiamos a fondo la evidencia y buscamos debilidades y errores en el caso de la fiscalía.',
+    },
+    attorney: {
+      personal: 'Esposo y padre de dos hijos.',
+      more: 'Ver perfil completo',
+      practicing: 'Empieza a ejercer en el Valle del Río Grande',
+      scouts: 'Scoutmaster, Tropa {{troop}} BSA',
+      prosecutor: 'Fiscal municipal, Brownsville',
+      today: 'Hoy',
+      years: '{{years}} años de ejercicio',
+    },
+    contact: {
+      lead: 'Llámanos para hablar directamente con tu abogado o llena el formulario.',
+    },
+  },
   areaPage: {
     back: 'Todas las áreas',
     cta: 'Solicitar evaluación',
@@ -129,11 +161,9 @@ const es = {
     title: 'Preguntas frecuentes.',
   },
   testimonials: {
-    eyebrow: 'Testimonios',
     title: 'Lo que dicen nuestros clientes.',
   },
   contact: {
-    eyebrow: 'Contacto',
     title: 'Hablemos de tu caso.',
     lead: 'Ante una situación que cambia tu vida, necesitas un equipo legal que haga todo por protegerte. Llámanos para hablar directamente con tu abogado o llena el formulario.',
     form: {
@@ -143,17 +173,16 @@ const es = {
       caseType: 'Tipo de caso',
       caseTypePlaceholder: 'Selecciona una opción',
       other: 'Otro',
-      message: 'Cuéntanos tu caso',
+      message: 'Cuéntanos tu caso (opcional)',
       disclaimer:
         'Tu información es confidencial. Enviar este formulario no crea una relación abogado-cliente.',
-      submit: 'Solicitar consulta',
-      success:
-        'Abrimos tu correo con la solicitud lista. Si no se abrió, escríbenos a {{email}}.',
+      submit: 'Abrir borrador de correo',
+      draftOpened:
+        'Tu solicitud aún no se ha enviado: revisa el borrador en tu correo y envíalo. Si no se abrió, llámanos o escríbenos a {{email}}.',
       mailSubject: 'Solicitud de consulta — {{name}}',
     },
   },
   login: {
-    eyebrow: 'Acceso al sistema',
     title: 'Inicia sesión',
     email: 'Correo electrónico',
     password: 'Contraseña',

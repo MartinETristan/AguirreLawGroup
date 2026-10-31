@@ -6,7 +6,7 @@ import { localizePath } from '@/i18n/paths'
 import { cn } from '@/lib/utils'
 
 const itemClass =
-  'inline-flex h-8 min-w-11 items-center justify-center px-2.5 text-xs font-bold tracking-[0.08em] uppercase'
+  'inline-flex h-11 min-w-11 items-center lg:h-8 justify-center px-2.5 text-xs font-bold tracking-[0.08em] uppercase'
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const { t, i18n } = useTranslation()

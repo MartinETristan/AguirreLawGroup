@@ -15,3 +15,5 @@ todos.json
 # Claude Code (memoria y contexto local)
 .claude/
 .agents/
+.codex/
+.impeccable/
