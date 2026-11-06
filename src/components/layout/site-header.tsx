@@ -142,9 +142,9 @@ export function SiteHeader() {
           <img
             src={site.logo.src}
             srcSet={site.logo.srcSet}
-            alt={site.name}
-            width={95}
-            height={40}
+            alt={site.logo.alt}
+            width={site.logo.width}
+            height={site.logo.height}
             className="h-9 w-auto sm:h-10"
           />
         </Link>

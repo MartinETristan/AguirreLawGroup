@@ -27,7 +27,7 @@ export function AttorneyProfile({
 
   const intro = (
     <div className="flex min-w-0 flex-col gap-4">
-      <Heading className="font-heading text-[clamp(36px,4.4vw,56px)] leading-[1.04] text-foreground">
+      <Heading className="font-heading text-[clamp(36px,4.4vw,56px)] leading-[1.04] text-satin">
         <MaskLine delay={0.1}>{firstName}</MaskLine>
         <MaskLine delay={0.2}>{lastNames.join(' ')}</MaskLine>
       </Heading>
@@ -77,7 +77,7 @@ export function AttorneyProfile({
             items={career.map((step) => ({
               id: String(step.year),
               title: (
-                <p className="font-heading text-[28px] leading-none text-foreground">
+                <p className="font-heading text-[28px] leading-none text-satin">
                   {step.year}
                 </p>
               ),

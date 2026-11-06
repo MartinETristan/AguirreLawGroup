@@ -15,7 +15,7 @@ export function ValuesStrip() {
         <Stagger className="flex flex-wrap items-center gap-x-6 gap-y-2 justify-center">
           {words.map((word, i) => (
             <Fragment key={word}>
-              <StaggerItem className="font-heading text-2xl text-foreground">
+              <StaggerItem className="font-heading text-2xl text-satin">
                 {word}
               </StaggerItem>
               {i < words.length - 1 && (

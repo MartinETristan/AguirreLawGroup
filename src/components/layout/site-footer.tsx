@@ -18,7 +18,7 @@ export function SiteFooter() {
       <Container className="flex flex-col gap-10 pt-12 pb-6">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           <div className="flex flex-col gap-3">
-            <span className="font-heading text-[28px] leading-tight text-ink-50">
+            <span className="font-heading text-[28px] leading-tight text-satin">
               {site.name}
             </span>
             <p className="text-sm leading-relaxed text-ink-300">

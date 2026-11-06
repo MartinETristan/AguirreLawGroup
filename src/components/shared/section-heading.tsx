@@ -42,7 +42,7 @@ export function SectionHeading({
       <Reveal>
         {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : <GoldRule className="w-8" />}
       </Reveal>
-      <Heading className="font-heading text-balance text-[clamp(30px,3.6vw,44px)] leading-[1.1] text-foreground">
+      <Heading className="font-heading text-balance text-[clamp(30px,3.6vw,44px)] leading-[1.1] text-satin">
         <MaskLine delay={0.1}>{title}</MaskLine>
       </Heading>
     </div>

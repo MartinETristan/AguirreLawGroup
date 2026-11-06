@@ -114,6 +114,12 @@ export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
       syncZoomLimit()
     })
     map.on('zoomend', syncZoomLimit)
+    // El estilo oscuro de OpenFreeMap pide iconos que su sprite no trae (p. ej. `wood-pattern` en
+    // `landcover_wood`); un píxel transparente los cubre y evita el aviso en consola.
+    map.on('styleimagemissing', ({ id }) => {
+      if (!map.hasImage(id))
+        map.addImage(id, { width: 1, height: 1, data: new Uint8Array(4) })
+    })
     map.on('load', () => {
       map.addSource('outside-city', {
         type: 'geojson',

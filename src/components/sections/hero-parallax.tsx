@@ -140,7 +140,7 @@ export function HeroParallax() {
               key={stat.label}
               className="flex items-center gap-4 sm:flex-col sm:gap-0.5"
             >
-              <span className="w-32 shrink-0 font-heading text-[28px] leading-tight text-foreground sm:w-auto">
+              <span className="w-32 shrink-0 font-heading text-[28px] leading-tight text-satin sm:w-auto">
                 {stat.value}
               </span>
               <span className="text-sm leading-snug text-muted-foreground">

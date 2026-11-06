@@ -5,10 +5,14 @@
  */
 export const site = {
   name: 'Aguirre Law Group',
+  // Logo del navbar: The Law Gun en blanco, recortado y a 40 px de alto a 1x
   logo: {
-    src: '/Logos/alg-logo-light-190.webp',
+    src: '/TheLawGun/thelawgun-white-nav-80.webp',
     srcSet:
-      '/Logos/alg-logo-light-95.webp 1x, /Logos/alg-logo-light-190.webp 2x, /Logos/alg-logo-light-285.webp 3x',
+      '/TheLawGun/thelawgun-white-nav-40.webp 1x, /TheLawGun/thelawgun-white-nav-80.webp 2x, /TheLawGun/thelawgun-white-nav-120.webp 3x',
+    width: 149,
+    height: 40,
+    alt: 'The Law Gun',
   },
   url: 'https://www.aguirre-lawgroup.com',
 
@@ -64,9 +68,10 @@ export const site = {
 
   hero: {
     logo: {
-      src: '/TheLawGun/thelawgun-white-1200.webp',
+      // Temporal: versión Satin (degradado). La dorada lisa es `thelawgun-gold-*` con los mismos anchos.
+      src: '/TheLawGun/thelawgun-satin-1200.webp',
       srcSet:
-        '/TheLawGun/thelawgun-white-600.webp 600w, /TheLawGun/thelawgun-white-900.webp 900w, /TheLawGun/thelawgun-white-1200.webp 1200w',
+        '/TheLawGun/thelawgun-satin-600.webp 600w, /TheLawGun/thelawgun-satin-900.webp 900w, /TheLawGun/thelawgun-satin-1200.webp 1200w',
       // Ancho máximo real: `max-w-md` en móvil y 34rem desde `sm`
       sizes: '(min-width: 640px) 34rem, min(28rem, calc(100vw - 2rem))',
     },

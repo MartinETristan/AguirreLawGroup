@@ -18,7 +18,7 @@ import type { PracticeArea } from '@/content/practice-areas'
 function Section({ section }: { section: AreaSection }) {
   return (
     <Reveal className="flex flex-col gap-3 border-t border-border pt-6">
-      <h2 className="font-heading text-[28px] leading-tight text-foreground">
+      <h2 className="font-heading text-[28px] leading-tight text-satin">
         {section.title}
       </h2>
       {section.text?.map((paragraph) => (
@@ -80,7 +80,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
             <ArrowLeftIcon className="size-4" aria-hidden="true" />
             {t('areaPage.back')}
           </Link>
-          <h1 className="font-heading text-[clamp(36px,4.6vw,56px)] leading-[1.06] text-foreground">
+          <h1 className="font-heading text-[clamp(36px,4.6vw,56px)] leading-[1.06] text-satin">
             <MaskLine delay={0.1}>{t(`areas.items.${area}.title`)}</MaskLine>
           </h1>
           <Reveal delay={0.2}>
@@ -103,7 +103,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
 
         {area === 'criminal-law' && (
           <Reveal className="flex flex-col gap-1 border-t border-border pt-6">
-            <h2 className="pb-2 font-heading text-[28px] leading-tight text-foreground">
+            <h2 className="pb-2 font-heading text-[28px] leading-tight text-satin">
               {t('faq.title')}
             </h2>
             <FaqList />
