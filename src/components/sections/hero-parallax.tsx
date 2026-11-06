@@ -59,39 +59,40 @@ export function HeroParallax() {
         ref={stageRef}
         className="relative h-[clamp(420px,calc(100svh-11rem),860px)] overflow-hidden"
       >
-        {/* El fondo sobra por arriba para no dejar hueco cuando baja */}
-        <motion.div
-          className="absolute inset-x-0 -top-40 bottom-0"
-          style={{ y: backdropY }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.55 }}
-          transition={{ duration: 1.2, ease: EASE }}
-        >
-          <img
-            src={site.hero.backdrop}
-            alt=""
-            fetchPriority="high"
-            className="size-full object-cover blur-[3px]"
-          />
-        </motion.div>
+        {/* Fondo y foto se desvanecen con máscara hacia el color de la página */}
+        <div className="absolute inset-0 hero-fade">
+          {/* El fondo sobra por arriba para no dejar hueco cuando baja */}
+          <motion.div
+            className="absolute inset-x-0 -top-40 bottom-0"
+            style={{ y: backdropY }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.55 }}
+            transition={{ duration: 1.2, ease: EASE }}
+          >
+            <img
+              src={site.hero.backdrop}
+              alt=""
+              fetchPriority="high"
+              className="size-full object-cover blur-[3px]"
+            />
+          </motion.div>
 
-        <motion.div
-          className="absolute inset-x-0 top-[6%] bottom-0"
-          style={{ y: attorneyY }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1.2, ease: EASE, delay: 0.15 }}
-        >
-          <img
-            src={site.attorney.photoFront}
-            alt={t('attorney.photoAlt', { name: site.attorney.name })}
-            width={603}
-            height={799}
-            className="size-full object-contain object-bottom"
-          />
-        </motion.div>
-
-        <div className="absolute inset-0 bg-[linear-gradient(to_top,var(--background)_12%,transparent_55%)]" />
+          <motion.div
+            className="absolute inset-x-0 top-[6%] bottom-0"
+            style={{ y: attorneyY }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: EASE, delay: 0.15 }}
+          >
+            <img
+              src={site.attorney.photoFront}
+              alt={t('attorney.photoAlt', { name: site.attorney.name })}
+              width={603}
+              height={799}
+              className="size-full object-contain object-bottom"
+            />
+          </motion.div>
+        </div>
 
         <motion.div
           className="absolute inset-x-0 bottom-[3%] flex flex-col items-center gap-1 px-4"

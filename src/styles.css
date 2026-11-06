@@ -876,3 +876,22 @@ body,
     -webkit-touch-callout: none;
   }
 }
+/* Fundido inferior del hero: máscara sobre las capas de imagen, no un degradado encima.
+   Un degradado superpuesto deja una línea de 1px en el borde: las capas con parallax se
+   componen aparte y su recorte se redondea distinto. Con la máscara las imágenes llegan
+   transparentes al borde. La curva es smoothstep: con una rampa lineal, el cambio brusco
+   de pendiente donde se vuelve sólido también se percibe como línea. */
+@utility hero-fade {
+  mask-image: linear-gradient(
+    to top,
+    transparent 10%,
+    rgb(0 0 0 / 0.043) 16.25%,
+    rgb(0 0 0 / 0.156) 22.5%,
+    rgb(0 0 0 / 0.316) 28.75%,
+    rgb(0 0 0 / 0.5) 35%,
+    rgb(0 0 0 / 0.684) 41.25%,
+    rgb(0 0 0 / 0.844) 47.5%,
+    rgb(0 0 0 / 0.957) 53.75%,
+    black 60%
+  );
+}
