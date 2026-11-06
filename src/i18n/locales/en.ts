@@ -44,6 +44,10 @@ const en: Translation = {
       title: 'Don’t see your case?',
       text: 'Tell us what happened and we’ll guide you at no cost.',
     },
+    groups: {
+      injury: 'Personal Injury',
+      criminal: 'Criminal Defense',
+    },
     items: {
       'criminal-law': {
         title: 'Criminal Law',
@@ -60,6 +64,42 @@ const en: Translation = {
       'personal-injury': {
         title: 'Personal Injury',
         text: 'Car and work accidents, slip and falls, and more. Don’t let your pain go ignored.',
+      },
+      'car-accidents': {
+        title: 'Car Accidents',
+        text: 'Rear-end, head-on, hit-and-run crashes and more. We pursue what the other insurer owes you.',
+      },
+      'drunk-driving-accidents': {
+        title: 'Drunk Driving Accidents',
+        text: 'Your own civil claim against the driver and, sometimes, whoever served them.',
+      },
+      'truck-accidents': {
+        title: 'Truck Accidents',
+        text: 'Semis and 18-wheelers. We act fast to preserve the truck’s records.',
+      },
+      'motorcycle-accidents': {
+        title: 'Motorcycle Accidents',
+        text: 'Riding doesn’t make you to blame. We show who caused the crash.',
+      },
+      'pedestrian-accidents': {
+        title: 'Pedestrian Accidents',
+        text: 'Crosswalks, parking lots and school zones. We find every coverage.',
+      },
+      'bicycle-accidents': {
+        title: 'Bicycle Accidents',
+        text: 'In Texas a bicycle has the same rights as any vehicle.',
+      },
+      'uber-lyft-accidents': {
+        title: 'Uber & Lyft Accidents',
+        text: 'Passengers and third parties. We identify which policy pays.',
+      },
+      'tour-bus-accidents': {
+        title: 'Tour Bus Accidents',
+        text: 'Tour, charter and school buses and shuttles, often with many injured.',
+      },
+      'uninsured-motorists': {
+        title: 'Uninsured & Underinsured Drivers',
+        text: 'Your UM/UIM policy can cover what the at-fault driver can’t pay.',
       },
       'theft-property': {
         title: 'Theft & Property Crimes',

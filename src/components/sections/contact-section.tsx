@@ -18,12 +18,14 @@ import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import { practiceAreas } from '@/content/practice-areas'
+import { areaGroups, practiceAreas } from '@/content/practice-areas'
 import { fullAddress, site } from '@/content/site'
 import { useHideCallBar } from '@/lib/call-bar'
 import { contactFields, validateContactField } from '@/lib/contact-validation'
@@ -250,10 +252,17 @@ export function ContactSection({
                     data-lenis-prevent
                     className="duration-200"
                   >
-                    {practiceAreas.map((slug) => (
-                      <SelectItem key={slug} value={slug}>
-                        {t(`areas.items.${slug}.title`)}
-                      </SelectItem>
+                    {areaGroups.map((group) => (
+                      <SelectGroup key={group.key}>
+                        <SelectLabel>
+                          {t(`areas.groups.${group.key}`)}
+                        </SelectLabel>
+                        {group.areas.map((slug) => (
+                          <SelectItem key={slug} value={slug}>
+                            {t(`areas.items.${slug}.title`)}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
                     ))}
                     <SelectItem value="other">
                       {t('contact.form.other')}
@@ -263,10 +272,7 @@ export function ContactSection({
               </FormField>
             </StaggerItem>
             <StaggerItem className="col-span-full">
-              <FormField
-                id={`${id}-message`}
-                label={t('contact.form.message')}
-              >
+              <FormField id={`${id}-message`} label={t('contact.form.message')}>
                 <Textarea
                   id={`${id}-message`}
                   name="message"

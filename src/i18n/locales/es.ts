@@ -42,6 +42,10 @@ const es = {
       title: '¿No ves tu caso?',
       text: 'Cuéntanos tu situación y te orientamos sin costo.',
     },
+    groups: {
+      injury: 'Lesiones personales',
+      criminal: 'Defensa penal',
+    },
     items: {
       'criminal-law': {
         title: 'Derecho penal',
@@ -58,6 +62,42 @@ const es = {
       'personal-injury': {
         title: 'Lesiones personales',
         text: 'Accidentes de auto, laborales, caídas y más. Que tu dolor no quede ignorado.',
+      },
+      'car-accidents': {
+        title: 'Accidentes de auto',
+        text: 'Choques por alcance, de frente, con fuga y más. Reclamamos lo que el otro seguro te debe.',
+      },
+      'drunk-driving-accidents': {
+        title: 'Accidentes por conductor ebrio',
+        text: 'Un reclamo civil propio contra el conductor y, a veces, contra quien le vendió el alcohol.',
+      },
+      'truck-accidents': {
+        title: 'Accidentes de camión',
+        text: 'Tráileres y 18 ruedas. Actuamos rápido para conservar los registros del camión.',
+      },
+      'motorcycle-accidents': {
+        title: 'Accidentes de moto',
+        text: 'Ir en moto no te hace culpable. Demostramos quién causó el choque.',
+      },
+      'pedestrian-accidents': {
+        title: 'Atropellos a peatones',
+        text: 'Cruces, estacionamientos y zonas escolares. Buscamos todas las coberturas.',
+      },
+      'bicycle-accidents': {
+        title: 'Accidentes de bicicleta',
+        text: 'En Texas la bicicleta tiene los mismos derechos que un vehículo.',
+      },
+      'uber-lyft-accidents': {
+        title: 'Accidentes de Uber y Lyft',
+        text: 'Pasajeros y terceros. Identificamos qué póliza responde en cada caso.',
+      },
+      'tour-bus-accidents': {
+        title: 'Accidentes de autobús',
+        text: 'Autobuses turísticos, chárter, escolares y shuttles, con varios lesionados.',
+      },
+      'uninsured-motorists': {
+        title: 'Conductores sin seguro o con seguro insuficiente',
+        text: 'Tu póliza UM/UIM puede cubrir lo que el responsable no puede pagar.',
       },
       'theft-property': {
         title: 'Robo y delitos contra la propiedad',

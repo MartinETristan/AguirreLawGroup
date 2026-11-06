@@ -1,3 +1,4 @@
+import { injuryAreaPages } from './injury-area-pages'
 import { yearsPracticing } from './site'
 import type { PracticeArea } from './practice-areas'
 import type { Language } from '@/i18n'
@@ -86,6 +87,7 @@ const penaltyRows: Record<Language, AreaSection['rows']> = {
 }
 
 export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
+  ...injuryAreaPages,
   'criminal-law': {
     es: {
       tagline: 'Defensa firme para personas acusadas en Brownsville.',

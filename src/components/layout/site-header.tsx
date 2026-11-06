@@ -17,7 +17,7 @@ import {
   SheetTrigger,
 } from '@/components/ui/sheet'
 import { mainNav } from '@/content/navigation'
-import { practiceAreas } from '@/content/practice-areas'
+import { areaGroups } from '@/content/practice-areas'
 import { site } from '@/content/site'
 import { cn } from '@/lib/utils'
 
@@ -91,21 +91,30 @@ function MobileAreasItem({
         )}
       >
         <div className="min-h-0 overflow-hidden">
-          <ul className="flex flex-col pb-3">
-            {practiceAreas.map((slug) => (
-              <li key={slug}>
-                <Link
-                  to="/practice-areas/$area"
-                  params={{ area: slug }}
-                  onClick={onNavigate}
-                  className="block py-2 text-[15px] text-muted-foreground"
-                  activeProps={{ className: 'text-link' }}
-                >
-                  {t(`areas.items.${slug}.title`)}
-                </Link>
-              </li>
+          <div className="flex flex-col gap-3 pb-3">
+            {areaGroups.map((group) => (
+              <div key={group.key}>
+                <p className="pb-1 text-[13px] font-semibold text-complementary">
+                  {t(`areas.groups.${group.key}`)}
+                </p>
+                <ul className="flex flex-col">
+                  {group.areas.map((slug) => (
+                    <li key={slug}>
+                      <Link
+                        to="/practice-areas/$area"
+                        params={{ area: slug }}
+                        onClick={onNavigate}
+                        className="block py-2 text-[15px] text-muted-foreground"
+                        activeProps={{ className: 'text-link' }}
+                      >
+                        {t(`areas.items.${slug}.title`)}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </>
@@ -191,23 +200,32 @@ export function SiteHeader() {
                       )}
                     </Link>
                   </NavigationMenu.Trigger>
-                  <NavigationMenu.Content className="absolute top-full left-0 w-72 pt-3 data-closed:animate-out data-closed:duration-150 data-closed:fade-out-0 data-closed:slide-out-to-top-1 data-open:animate-in data-open:duration-200 data-open:fade-in-0 data-open:slide-in-from-top-1 motion-reduce:animate-none">
-                    <ul className="flex flex-col rounded-lg border border-border bg-popover p-1.5 shadow-lg">
-                      {practiceAreas.map((slug) => (
-                        <li key={slug}>
-                          <NavigationMenu.Link asChild>
-                            <Link
-                              to="/practice-areas/$area"
-                              params={{ area: slug }}
-                              className="block rounded-sm px-3 py-2 text-popover-foreground transition-colors hover:bg-muted"
-                              activeProps={{ className: 'text-link' }}
-                            >
-                              {t(`areas.items.${slug}.title`)}
-                            </Link>
-                          </NavigationMenu.Link>
-                        </li>
+                  <NavigationMenu.Content className="absolute top-full left-0 w-[min(40rem,calc(100vw-2rem))] pt-3 data-closed:animate-out data-closed:duration-150 data-closed:fade-out-0 data-closed:slide-out-to-top-1 data-open:animate-in data-open:duration-200 data-open:fade-in-0 data-open:slide-in-from-top-1 motion-reduce:animate-none">
+                    <div className="grid grid-cols-2 gap-1.5 rounded-lg border border-border bg-popover p-1.5 shadow-lg">
+                      {areaGroups.map((group) => (
+                        <div key={group.key} className="flex flex-col">
+                          <p className="px-3 pt-2 pb-1 text-[13px] font-semibold text-complementary">
+                            {t(`areas.groups.${group.key}`)}
+                          </p>
+                          <ul className="flex flex-col">
+                            {group.areas.map((slug) => (
+                              <li key={slug}>
+                                <NavigationMenu.Link asChild>
+                                  <Link
+                                    to="/practice-areas/$area"
+                                    params={{ area: slug }}
+                                    className="block rounded-sm px-3 py-1.5 text-[15px] text-popover-foreground transition-colors hover:bg-muted"
+                                    activeProps={{ className: 'text-link' }}
+                                  >
+                                    {t(`areas.items.${slug}.title`)}
+                                  </Link>
+                                </NavigationMenu.Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
                       ))}
-                    </ul>
+                    </div>
                   </NavigationMenu.Content>
                 </NavigationMenu.Item>
               ) : (

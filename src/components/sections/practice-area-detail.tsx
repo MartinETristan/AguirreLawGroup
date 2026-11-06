@@ -11,7 +11,7 @@ import { Section as PageSection } from '@/components/shared/section'
 import { Button } from '@/components/ui/button'
 import { areaFaqs } from '@/content/faq'
 import { areaPages } from '@/content/practice-area-pages'
-import { practiceAreas } from '@/content/practice-areas'
+import { areaGroupOf } from '@/content/practice-areas'
 import { currentLanguage } from '@/i18n'
 import type { AreaSection } from '@/content/practice-area-pages'
 import type { PracticeArea } from '@/content/practice-areas'
@@ -140,8 +140,8 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
           <h2 className="pb-1 text-[13px] text-muted-foreground">
             {t('areaPage.otherAreas')}
           </h2>
-          {practiceAreas
-            .filter((slug) => slug !== area)
+          {areaGroupOf(area)
+            .areas.filter((slug) => slug !== area)
             .map((slug) => (
               <Link
                 key={slug}

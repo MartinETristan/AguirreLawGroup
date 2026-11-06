@@ -56,9 +56,9 @@ export function CenteredHeading({
         className,
       )}
     >
-      <Reveal>
+      {/* <Reveal>
         <GoldRule className="w-12 origin-center" />
-      </Reveal>
+      </Reveal> */}
       <Heading className="font-heading text-balance text-[clamp(34px,4.8vw,60px)] leading-[1.06] text-satin">
         <MaskLine delay={0.1}>{title}</MaskLine>
       </Heading>
