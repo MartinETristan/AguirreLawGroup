@@ -24,6 +24,9 @@ export type AreaPage = {
  *   ellos; el Driver Responsibility Program se derogó el 1 de septiembre de 2019.
  * - Drogas: sin el listado de sustancias por grupo ni la categoría "Life felony",
  *   que no se pudieron confirmar contra el código vigente.
+ * - Lesiones personales: ampliada con la estructura de stevedimopoulos.com, adaptada a
+ *   la ley de Texas (plazo de 2 años, responsabilidad proporcional del 50%, límites de
+ *   daños). Los tipos de caso nuevos y las cifras legales esperan la revisión del abogado.
  */
 const penaltyRows: Record<Language, AreaSection['rows']> = {
   es: [
@@ -463,38 +466,148 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
     es: {
       tagline: 'No enfrentes solo una lesión que cambió tu vida.',
       intro: [
-        'Si tú o un ser querido se lesionaron en un accidente de auto, un accidente laboral, una caída u otro incidente causado por otra parte, podrías presentar una demanda por lesiones personales. Ayudamos a las víctimas a obtener la justicia y la compensación que necesitan para retomar su vida.',
+        'Si tú o un ser querido se lesionaron en un accidente de auto, un accidente laboral, una caída u otro incidente causado por otra parte, podrías tener derecho a una compensación. Ayudamos a las víctimas en Brownsville y el Valle del Río Grande a obtener la justicia y la compensación que necesitan para retomar su vida.',
+        'Las aseguradoras tienen abogados y ajustadores cuidando sus intereses desde el primer día. Nosotros investigamos lo que pasó, reunimos la evidencia y negociamos por ti, para que tú te concentres en recuperarte.',
       ],
       sections: [
         {
-          title: 'Tipos de casos',
-          text: [
-            'Hemos ayudado a decenas de personas y familias en casos como:',
-          ],
+          title: 'Casos que atendemos',
           list: [
             'Accidentes de auto',
-            'Accidentes laborales',
+            'Accidentes de camión y 18 ruedas',
+            'Accidentes de motocicleta',
+            'Atropellos a peatones y ciclistas',
+            'Accidentes laborales y de construcción',
             'Resbalones y caídas',
+            'Responsabilidad de propietarios (premisas)',
             'Mordeduras de perro',
-            'Negligencia',
+            'Productos defectuosos',
             'Negligencia médica',
+            'Negligencia en asilos',
+            'Muerte por negligencia',
           ],
+        },
+        {
+          title: '¿Tienes un caso?',
+          text: [
+            'En la consulta revisamos tres preguntas. Si la respuesta a las tres es sí, es probable que tengas un reclamo.',
+          ],
+          rows: [
+            {
+              label: 'Responsabilidad',
+              value:
+                '¿Otra persona o empresa actuó con negligencia, es decir, no tuvo el cuidado razonable que debía, y eso causó tu lesión?',
+            },
+            {
+              label: 'Daños',
+              value:
+                '¿La lesión te causó gastos médicos, salarios perdidos, dolor u otras pérdidas que se puedan demostrar?',
+            },
+            {
+              label: 'Recursos',
+              value:
+                '¿Hay un seguro o un responsable con capacidad de pagar? A veces es tu propia póliza, como la cobertura de conductor sin seguro.',
+            },
+          ],
+        },
+        {
+          title: 'Qué hacer después de un accidente',
+          rows: [
+            {
+              label: 'Busca atención médica',
+              value:
+                'Llama al 911 si hay heridos y hazte revisar aunque te sientas bien. Algunas lesiones, como las de cabeza, cuello o espalda, dan síntomas días después.',
+            },
+            {
+              label: 'Reporta el accidente',
+              value:
+                'A la policía en un choque, o a tu supervisor si fue en el trabajo. Pide el número del reporte policial.',
+            },
+            {
+              label: 'Documenta la escena',
+              value:
+                'Toma fotos de los vehículos, el lugar, las señales y tus lesiones. Anota nombres, teléfonos y datos del seguro del otro conductor y de los testigos.',
+            },
+            {
+              label: 'Guarda cada documento',
+              value:
+                'Reporte policial o de incidente, registros y recibos médicos, comprobantes de días sin trabajar y toda la correspondencia con aseguradoras.',
+            },
+            {
+              label: 'Sigue tu tratamiento',
+              value:
+                'Acude a tus citas y sigue las indicaciones médicas. Las interrupciones en el tratamiento suelen usarse para reducir el valor de un reclamo.',
+            },
+            {
+              label: 'Cuida lo que dices',
+              value:
+                'No admitas culpa, no publiques sobre el accidente en redes sociales y no des una declaración grabada a la aseguradora del otro conductor sin orientación.',
+            },
+            {
+              label: 'Habla con un abogado',
+              value:
+                'Antes de firmar cualquier documento o aceptar una oferta. Una vez que aceptas un acuerdo, por lo general ya no puedes reclamar más.',
+            },
+          ],
+          note: 'Actuar con rapidez ayuda a conservar la evidencia y aumenta tus probabilidades de resolver tu reclamo antes.',
+        },
+        {
+          title: 'Leyes de Texas que afectan tu caso',
+          rows: [
+            {
+              label: 'Plazo para demandar',
+              value:
+                'Por lo general, dos años desde la fecha de la lesión. Hay excepciones, por ejemplo para menores de edad, y los reclamos contra el gobierno pueden exigir un aviso formal en solo unos meses.',
+            },
+            {
+              label: 'Responsabilidad proporcional',
+              value:
+                'Si compartes parte de la culpa, tu compensación se reduce según tu porcentaje. Si tu responsabilidad supera el 50%, no puedes recuperar daños.',
+            },
+            {
+              label: 'Estado de culpa',
+              value:
+                'En Texas paga quien causó el accidente, normalmente a través de su aseguradora. Tu póliza puede ayudar con coberturas como PIP o conductor sin seguro (UM/UIM).',
+            },
+            {
+              label: 'Límites de daños',
+              value:
+                'La ley limita algunos daños, como los no económicos en casos de negligencia médica y los daños ejemplares (punitivos).',
+            },
+          ],
+        },
+        {
+          title: 'Cómo se prueba la negligencia',
+          text: [
+            'Para obtener compensación hay que demostrar, con una preponderancia de la evidencia, que la otra parte fue negligente y que esa negligencia causó tu lesión. Eso significa probar cuatro elementos:',
+          ],
+          list: [
+            'Tenía el deber de actuar con cuidado',
+            'No cumplió con ese deber',
+            'Su falta causó tu lesión',
+            'Sufriste daños reales',
+          ],
+          note: 'El responsable puede ser un conductor, una empresa de transporte, un propietario, un empleador, un fabricante o un proveedor médico.',
         },
         {
           title: 'Compensación que puedes recibir',
           text: [
-            'El valor de tu caso depende de los daños físicos, económicos, mentales y emocionales que has tenido que cargar. Pueden incluir:',
+            'El valor de tu caso depende de la gravedad de la lesión, su efecto en tu trabajo y tu vida diaria, y la conducta del responsable. Puede incluir:',
           ],
           rows: [
             {
               label: 'Gastos médicos',
               value:
-                'Costos pasados y futuros de atención relacionada con la lesión.',
+                'Costos pasados y futuros de atención relacionada con la lesión, incluida la rehabilitación.',
             },
             {
               label: 'Pérdida de ingresos',
               value:
                 'Lo que dejaste de ganar y cualquier reducción de salario si ya no puedes hacer tu trabajo.',
+            },
+            {
+              label: 'Daños a la propiedad',
+              value: 'Reparación o reposición de tu vehículo u otros bienes.',
             },
             {
               label: 'Dolor y sufrimiento',
@@ -521,62 +634,176 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
                 'Cuando la lesión afecta tus relaciones personales, en general con tu cónyuge e hijos.',
             },
             {
-              label: 'Daños punitivos',
+              label: 'Muerte por negligencia',
               value:
-                'Buscan castigar y disuadir conductas indebidas; la mayoría de los estados los limita.',
+                'La familia puede reclamar, entre otros, los gastos funerarios y la pérdida de apoyo y compañía.',
+            },
+            {
+              label: 'Daños ejemplares',
+              value:
+                'Buscan castigar conductas graves, como la negligencia grave o la malicia. Texas los limita y exige pruebas claras y convincentes.',
             },
           ],
         },
         {
-          title: 'Qué hacer después de una lesión',
+          title: 'Cómo te ayudamos',
           list: [
-            'Busca atención médica',
-            'Documenta cómo te lesionaste',
-            'Presenta un informe del incidente a tu aseguradora',
-            'Intenta establecer quién tuvo la culpa',
-            'Reúne los datos de los testigos',
-            'Continúa tu tratamiento médico según lo necesites',
-            'Documenta el proceso, incluida la atención médica y el trato con aseguradoras',
-            'Contacta a Aguirre Law Group',
+            'Investigamos el accidente y conservamos la evidencia',
+            'Reunimos registros médicos, reportes y testigos',
+            'Calculamos tus daños presentes y futuros',
+            'Tratamos con las aseguradoras por ti',
+            'Cuidamos los plazos y el papeleo',
+            'Si no hay una oferta justa, llevamos tu caso a juicio',
           ],
-          note: 'Actuar con rapidez aumenta tus probabilidades de resolver tu reclamo antes.',
+          note: 'La mayoría de los casos se resuelve con un acuerdo antes de llegar a juicio, pero preparamos cada caso como si fuera a llegar.',
         },
       ],
     },
     en: {
       tagline: 'Don’t face a life-changing injury alone.',
       intro: [
-        'If you or a loved one were injured in a car accident, work-related accident, slip and fall, or other incident caused by another party, you may be able to file a personal injury lawsuit. We help victims obtain the justice and compensation they need to get their life back on track.',
+        'If you or a loved one were injured in a car accident, work-related accident, slip and fall, or other incident caused by another party, you may be entitled to compensation. We help victims in Brownsville and the Rio Grande Valley obtain the justice and compensation they need to get their life back on track.',
+        'Insurance companies have lawyers and adjusters protecting their interests from day one. We investigate what happened, gather the evidence and negotiate for you, so you can focus on your recovery.',
       ],
       sections: [
         {
-          title: 'Types of cases',
-          text: [
-            'We have helped dozens of individuals and families with cases including:',
-          ],
+          title: 'Cases we handle',
           list: [
             'Car accidents',
-            'Work-related accidents',
+            'Truck and 18-wheeler accidents',
+            'Motorcycle accidents',
+            'Pedestrian and bicycle accidents',
+            'Work and construction accidents',
             'Slip and falls',
+            'Premises liability',
             'Dog bites',
-            'Negligence',
+            'Defective products',
             'Medical malpractice',
+            'Nursing home neglect',
+            'Wrongful death',
           ],
+        },
+        {
+          title: 'Do you have a case?',
+          text: [
+            'In the consultation we look at three questions. If the answer to all three is yes, you likely have a claim.',
+          ],
+          rows: [
+            {
+              label: 'Liability',
+              value:
+                'Did another person or company act negligently, failing to use the reasonable care they owed, and did that cause your injury?',
+            },
+            {
+              label: 'Damages',
+              value:
+                'Did the injury cause medical bills, lost wages, pain or other losses that can be shown?',
+            },
+            {
+              label: 'Resources',
+              value:
+                'Is there insurance or a responsible party able to pay? Sometimes it’s your own policy, such as uninsured motorist coverage.',
+            },
+          ],
+        },
+        {
+          title: 'What to do after an accident',
+          rows: [
+            {
+              label: 'Get medical care',
+              value:
+                'Call 911 if anyone is hurt and get checked even if you feel fine. Some injuries, like head, neck or back injuries, show symptoms days later.',
+            },
+            {
+              label: 'Report the accident',
+              value:
+                'To the police after a crash, or to your supervisor if it happened at work. Ask for the police report number.',
+            },
+            {
+              label: 'Document the scene',
+              value:
+                'Take photos of the vehicles, the location, the signs and your injuries. Write down names, phone numbers and insurance details for the other driver and any witnesses.',
+            },
+            {
+              label: 'Keep every document',
+              value:
+                'Police or incident reports, medical records and bills, proof of missed work and all correspondence with insurance companies.',
+            },
+            {
+              label: 'Follow your treatment',
+              value:
+                'Keep your appointments and follow medical advice. Gaps in treatment are often used to reduce the value of a claim.',
+            },
+            {
+              label: 'Watch what you say',
+              value:
+                'Don’t admit fault, don’t post about the accident on social media and don’t give a recorded statement to the other driver’s insurer without guidance.',
+            },
+            {
+              label: 'Talk to a lawyer',
+              value:
+                'Before you sign anything or accept an offer. Once you accept a settlement, you generally can’t claim more.',
+            },
+          ],
+          note: 'Acting quickly helps preserve the evidence and increases your chances of resolving your claim sooner.',
+        },
+        {
+          title: 'Texas laws that affect your case',
+          rows: [
+            {
+              label: 'Deadline to file',
+              value:
+                'Generally, two years from the date of the injury. There are exceptions, for example for minors, and claims against the government may require formal notice within just a few months.',
+            },
+            {
+              label: 'Proportionate responsibility',
+              value:
+                'If you share part of the fault, your compensation is reduced by your percentage. If your responsibility is greater than 50%, you cannot recover damages.',
+            },
+            {
+              label: 'At-fault state',
+              value:
+                'In Texas, the party who caused the accident pays, usually through their insurer. Your own policy may help through coverages like PIP or uninsured/underinsured motorist (UM/UIM).',
+            },
+            {
+              label: 'Damage caps',
+              value:
+                'The law limits some damages, such as non-economic damages in medical malpractice cases and exemplary (punitive) damages.',
+            },
+          ],
+        },
+        {
+          title: 'How negligence is proven',
+          text: [
+            'To recover compensation, you must show by a preponderance of the evidence that the other party was negligent and that their negligence caused your injury. That means proving four elements:',
+          ],
+          list: [
+            'They had a duty to act with care',
+            'They breached that duty',
+            'The breach caused your injury',
+            'You suffered real damages',
+          ],
+          note: 'The responsible party may be a driver, a trucking company, a property owner, an employer, a manufacturer or a medical provider.',
         },
         {
           title: 'Compensation you can receive',
           text: [
-            'The value of your case depends on the physical, monetary, mental, and emotional damages you have had to carry. They can include:',
+            'The value of your case depends on how serious the injury is, its effect on your work and daily life, and the conduct of the responsible party. It can include:',
           ],
           rows: [
             {
               label: 'Medical expenses',
-              value: 'Past and future costs of care related to the injury.',
+              value:
+                'Past and future costs of care related to the injury, including rehabilitation.',
             },
             {
               label: 'Loss of earnings',
               value:
                 'What you lost while out of work and any reduction in wages if you can no longer perform your job.',
+            },
+            {
+              label: 'Property damage',
+              value: 'Repair or replacement of your vehicle or other property.',
             },
             {
               label: 'Pain and suffering',
@@ -603,25 +830,28 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
                 'When the injury harms personal relationships, generally with your spouse and children.',
             },
             {
-              label: 'Punitive damages',
+              label: 'Wrongful death',
               value:
-                'Meant to punish and deter improper behavior; most states limit them.',
+                'The family may recover funeral expenses and the loss of support and companionship, among others.',
+            },
+            {
+              label: 'Exemplary damages',
+              value:
+                'Meant to punish serious conduct, such as gross negligence or malice. Texas caps them and requires clear and convincing evidence.',
             },
           ],
         },
         {
-          title: 'What to do after an injury',
+          title: 'How we help',
           list: [
-            'Seek medical attention',
-            'Document how you were injured',
-            'Submit an incident report to your insurance company',
-            'Try to establish who was at fault',
-            'Gather contact information from witnesses',
-            'Continue medical treatment as needed',
-            'Document the process, including medical care and insurance dealings',
-            'Contact Aguirre Law Group',
+            'We investigate the accident and preserve the evidence',
+            'We gather medical records, reports and witnesses',
+            'We calculate your present and future damages',
+            'We deal with the insurance companies for you',
+            'We handle the deadlines and paperwork',
+            'If there’s no fair offer, we take your case to trial',
           ],
-          note: 'Acting quickly increases your chances of resolving your claim sooner.',
+          note: 'Most cases are resolved through a settlement before trial, but we prepare every case as if it will get there.',
         },
       ],
     },

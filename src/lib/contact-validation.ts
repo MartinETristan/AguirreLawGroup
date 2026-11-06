@@ -6,7 +6,6 @@ export type ContactError =
   | 'nameInvalid'
   | 'phoneRequired'
   | 'phoneInvalid'
-  | 'emailRequired'
   | 'emailInvalid'
   | 'areaRequired'
 
@@ -42,7 +41,8 @@ export function validateContactField(
       if (!value) return 'phoneRequired'
       return isPhone(value) ? undefined : 'phoneInvalid'
     case 'email':
-      return validateEmail(value)
+      // Opcional: solo se valida si se escribió algo.
+      return !value || EMAIL.test(value) ? undefined : 'emailInvalid'
     case 'area':
       return value ? undefined : 'areaRequired'
   }

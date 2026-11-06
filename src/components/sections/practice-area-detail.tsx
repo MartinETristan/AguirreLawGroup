@@ -9,6 +9,7 @@ import { GoldCard, GoldDiamond } from '@/components/shared/gold'
 import { HoverArrow } from '@/components/shared/hover-arrow'
 import { Section as PageSection } from '@/components/shared/section'
 import { Button } from '@/components/ui/button'
+import { areaFaqs } from '@/content/faq'
 import { areaPages } from '@/content/practice-area-pages'
 import { practiceAreas } from '@/content/practice-areas'
 import { currentLanguage } from '@/i18n'
@@ -65,6 +66,7 @@ function Section({ section }: { section: AreaSection }) {
 export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
   const { t, i18n } = useTranslation()
   const page = areaPages[area][currentLanguage(i18n.resolvedLanguage)]
+  const faq = areaFaqs[area]
 
   return (
     <PageSection
@@ -101,12 +103,12 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
           <Section key={section.title} section={section} />
         ))}
 
-        {area === 'criminal-law' && (
+        {faq && (
           <Reveal className="flex flex-col gap-1 border-t border-border pt-6">
             <h2 className="pb-2 font-heading text-[28px] leading-tight text-satin">
               {t('faq.title')}
             </h2>
-            <FaqList />
+            <FaqList items={faq} />
           </Reveal>
         )}
 

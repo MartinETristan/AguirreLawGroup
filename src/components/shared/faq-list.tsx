@@ -2,8 +2,8 @@ import { ChevronDownIcon } from 'lucide-react'
 import { useId, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { faq } from '@/content/faq'
 import { currentLanguage } from '@/i18n'
+import type { FaqItem as FaqEntry } from '@/content/faq'
 import { cn } from '@/lib/utils'
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -46,13 +46,13 @@ function FaqItem({ question, answer }: { question: string; answer: string }) {
   )
 }
 
-export function FaqList() {
+export function FaqList({ items }: { items: Array<FaqEntry> }) {
   const { i18n } = useTranslation()
   const lang = currentLanguage(i18n.resolvedLanguage)
 
   return (
     <div className="flex flex-col">
-      {faq.map((item) => (
+      {items.map((item) => (
         <FaqItem
           key={item.id}
           question={item.question[lang]}

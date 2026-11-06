@@ -22,7 +22,7 @@ const es = {
     login: 'Iniciar sesión',
   },
   hero: {
-    heading: 'Abogados de defensa criminal y lesiones personales en Brownsville, Texas',
+    heading: 'Abogados de lesiones personales y defensa criminal en Brownsville, Texas',
     stats: {
       sinceLabel: 'Ejerciendo en el Valle del Río Grande',
       cases: 'Cientos',
@@ -88,9 +88,9 @@ const es = {
     ],
   },
   attorney: {
-    photoAlt: '{{name}}, abogado de defensa criminal y lesiones personales en Brownsville, Texas',
-    role: 'Abogado de defensa criminal y lesiones personales',
-    bio: 'Ejerce en el Valle del Río Grande desde {{year}}, hace {{years}} años, con enfoque en casos penales y de lesiones personales.',
+    photoAlt: '{{name}}, abogado de lesiones personales y defensa criminal en Brownsville, Texas',
+    role: 'Abogado de lesiones personales y defensa criminal',
+    bio: 'Ejerce en el Valle del Río Grande desde {{year}}, hace {{years}} años, con enfoque en casos de lesiones personales y penales.',
     bio2: 'Defiende a personas acusadas de DWI, posesión de drogas, evasión fiscal, robo, agresión, extorsión y otros delitos menores y graves en Brownsville, Texas.',
     personal:
       'Cuando no está defendiendo los derechos de sus clientes, disfruta pasar tiempo con su esposa y sus dos hijos.',
@@ -109,8 +109,59 @@ const es = {
     hero: {
       call: 'Llamar',
     },
+    injury: {
+      eyebrow: 'Lesiones personales',
+      title: '¿Te lesionaste por culpa de otro?',
+      lead: 'Si un accidente te dejó con lesiones, gastos médicos y días sin trabajar, no tienes que enfrentar solo a la aseguradora. Investigamos qué pasó, documentamos tus daños y peleamos por una compensación justa mientras tú te recuperas.',
+      cases: [
+        'Accidentes de auto',
+        'Accidentes de camión',
+        'Accidentes de motocicleta',
+        'Accidentes laborales',
+        'Resbalones y caídas',
+        'Mordeduras de perro',
+        'Negligencia médica',
+        'Muerte por negligencia',
+      ],
+      stepsTitle: 'Después de un accidente.',
+      steps: [
+        {
+          title: 'Llama al 911 y busca atención médica',
+          text: 'Aunque te sientas bien: algunas lesiones, como las de cabeza o espalda, dan síntomas días después.',
+        },
+        {
+          title: 'Documenta la escena',
+          text: 'Fotos de los vehículos, el lugar y tus lesiones; nombres y teléfonos de testigos y del otro conductor.',
+        },
+        {
+          title: 'Guarda cada papel',
+          text: 'Reporte policial, registros y recibos médicos, y todo lo que te envíe la aseguradora.',
+        },
+        {
+          title: 'Habla con un abogado antes de firmar',
+          text: 'No des una declaración grabada ni aceptes una oferta de la aseguradora sin orientación.',
+        },
+      ],
+      claimTitle: 'Lo que puedes reclamar.',
+      claimSheet: 'Reclamo por lesiones',
+      claim: [
+        { label: 'Gastos médicos', detail: 'Pasados y futuros, incluida la rehabilitación.' },
+        { label: 'Salarios perdidos', detail: 'Y la capacidad de ganar que la lesión te quitó.' },
+        { label: 'Dolor y sufrimiento', detail: 'Físico y emocional, hoy y en adelante.' },
+        { label: 'Discapacidad y desfiguración', detail: 'Cuando la lesión limita tu vida diaria.' },
+        { label: 'Daños a tu propiedad', detail: 'Reparación o reposición de tu vehículo.' },
+        { label: 'Pérdida de consorcio', detail: 'El daño a tu relación con tu familia.' },
+      ],
+      facts: [
+        { value: '2 años', label: 'Plazo general en Texas para presentar tu demanda.' },
+        { value: '50%', label: 'Si tu parte de culpa no lo supera, aún puedes recibir compensación.' },
+        { value: 'Gratis', label: 'La consulta inicial para evaluar tu caso.' },
+      ],
+      more: 'Guía completa de lesiones personales',
+    },
     areas: {
-      title: '¿Qué estás enfrentando?',
+      title: 'También te defendemos.',
+      lead: '¿Enfrentas un cargo? Defensa criminal en Brownsville, del arresto al juicio.',
       items: {
         'criminal-law': 'Delitos menores y graves.',
         dwi: 'Primera ofensa o reincidencia.',
@@ -147,7 +198,7 @@ const es = {
     ctaText: 'Cuéntanos qué pasó y evaluamos tu caso.',
     otherAreas: 'Otras áreas',
     disclaimer:
-      'Información general sobre la ley de Texas; no constituye asesoría legal. Las sanciones varían según cada caso y pueden cambiar con la ley.',
+      'Información general sobre la ley de Texas; no constituye asesoría legal. Cada caso es distinto y la ley puede cambiar.',
   },
   faq: {
     title: 'Preguntas frecuentes.',
@@ -161,7 +212,7 @@ const es = {
     form: {
       name: 'Nombre completo',
       phone: 'Teléfono',
-      email: 'Correo electrónico',
+      email: 'Correo electrónico (opcional)',
       caseType: 'Tipo de caso',
       caseTypePlaceholder: 'Selecciona una opción',
       other: 'Otro',
@@ -178,7 +229,6 @@ const es = {
         phoneRequired: 'Escribe tu teléfono.',
         phoneInvalid:
           'Escribe un teléfono de 10 dígitos o, si es internacional, con su código de país (+52…).',
-        emailRequired: 'Escribe tu correo electrónico.',
         emailInvalid: 'Escribe un correo válido, como nombre@ejemplo.com.',
         areaRequired: 'Selecciona el tipo de caso.',
       },
@@ -210,7 +260,7 @@ const es = {
     },
   },
   cta: {
-    title: '¿Enfrentas un cargo o sufriste una lesión?',
+    title: '¿Sufriste una lesión o enfrentas un cargo?',
     text: 'Contáctanos hoy para solicitar una evaluación inicial de tu caso.',
   },
   footer: {

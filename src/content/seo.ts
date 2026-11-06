@@ -39,14 +39,14 @@ export const legacyRedirects: Record<string, string> = {
 export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
   '/': {
     es: {
-      title: 'Abogados en Brownsville, TX',
+      title: 'Abogados de lesiones personales en Brownsville, TX',
       description:
-        'Abogados de defensa criminal y lesiones personales en Brownsville, Texas, y el Valle del Río Grande. Agenda tu consulta gratuita.',
+        'Abogados de lesiones personales y defensa criminal en Brownsville, Texas, y el Valle del Río Grande. Accidentes de auto, camión, laborales y caídas. Consulta gratuita.',
     },
     en: {
-      title: 'Attorneys in Brownsville, TX',
+      title: 'Personal injury attorneys in Brownsville, TX',
       description:
-        'Criminal defense and personal injury attorneys in Brownsville, Texas, and the Rio Grande Valley. Schedule your free consultation.',
+        'Personal injury and criminal defense attorneys in Brownsville, Texas, and the Rio Grande Valley. Car, truck and work accidents and falls. Free consultation.',
     },
   },
   '/about-us': {
@@ -164,12 +164,12 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
     es: {
       title: 'Abogado de lesiones personales en Brownsville, TX',
       description:
-        'Accidentes de auto, laborales, caídas y más en Brownsville y el Valle del Río Grande. Agenda tu consulta gratuita.',
+        'Accidentes de auto, camión y moto, laborales, caídas y muerte por negligencia en Brownsville y el Valle del Río Grande. Qué hacer, leyes de Texas y consulta gratuita.',
     },
     en: {
       title: 'Personal injury attorney in Brownsville, TX',
       description:
-        'Car and work accidents, falls and more in Brownsville and the Rio Grande Valley. Schedule your free consultation.',
+        'Car, truck and motorcycle accidents, work injuries, falls and wrongful death in Brownsville and the Rio Grande Valley. What to do, Texas law and a free consultation.',
     },
   },
   'theft-property': {

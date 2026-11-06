@@ -4,7 +4,10 @@ import { useTranslation } from 'react-i18next'
 import { Reveal, Stagger, StaggerItem } from '@/components/motion/reveal'
 import { HoverArrow } from '@/components/shared/hover-arrow'
 import { Section } from '@/components/shared/section'
-import { SectionHeading } from '@/components/shared/section-heading'
+import {
+  CenteredHeading,
+  SectionHeading,
+} from '@/components/shared/section-heading'
 import { TextLink } from '@/components/shared/text-link'
 import { practiceAreas } from '@/content/practice-areas'
 import { site } from '@/content/site'
@@ -14,7 +17,7 @@ type PracticeAreasProps = {
   /** Muestra solo las primeras N áreas y un enlace a la página completa. */
   limit?: number
   headingAs?: 'h1' | 'h2'
-  /** Versión del landing: solo palabras clave por área. */
+  /** Versión del landing: solo las áreas penales, como secundarias y con palabras clave. */
   condensed?: boolean
 }
 
@@ -24,6 +27,41 @@ const cellTitleClass =
   'flex items-start justify-between gap-3 text-[17px] leading-snug font-semibold text-foreground'
 const cellArrowClass = 'mt-1 size-4 shrink-0 text-link'
 
+/** Versión del landing: las áreas penales quedan como secundarias, en lista compacta bajo un título centrado. */
+function CriminalAreas() {
+  const { t } = useTranslation()
+  const areas = practiceAreas.filter((slug) => slug !== 'personal-injury')
+
+  return (
+    <Section className="flex flex-col gap-10">
+      <CenteredHeading
+        title={t('landing.areas.title')}
+        lead={t('landing.areas.lead')}
+      />
+
+      <Stagger as="ul" className="grid gap-x-8 sm:grid-cols-2 lg:grid-cols-3">
+        {areas.map((slug) => (
+          <StaggerItem as="li" key={slug} className="border-b border-border">
+            <Link
+              to="/practice-areas/$area"
+              params={{ area: slug }}
+              className="group flex flex-col gap-0.5 py-3.5 focus-visible:-outline-offset-2"
+            >
+              <span className="flex items-center justify-between gap-3 text-[15px] leading-snug font-semibold text-foreground transition-colors group-hover:text-link">
+                {t(`areas.items.${slug}.title`)}
+                <HoverArrow className="size-4 shrink-0 text-link" />
+              </span>
+              <span className="text-sm leading-normal text-muted-foreground">
+                {t(`landing.areas.items.${slug}`)}
+              </span>
+            </Link>
+          </StaggerItem>
+        ))}
+      </Stagger>
+    </Section>
+  )
+}
+
 export function PracticeAreas({
   limit,
   headingAs = 'h2',
@@ -32,13 +70,12 @@ export function PracticeAreas({
   const { t } = useTranslation()
   const areas = limit ? practiceAreas.slice(0, limit) : practiceAreas
 
+  if (condensed) return <CriminalAreas />
+
   return (
     <Section bordered={false} className="flex flex-col gap-8">
       <div className="flex flex-wrap items-end justify-between gap-4">
-        <SectionHeading
-          as={headingAs}
-          title={condensed ? t('landing.areas.title') : t('areas.title')}
-        />
+        <SectionHeading as={headingAs} title={t('areas.title')} />
         {limit && (
           <Reveal delay={0.2}>
             <TextLink>
@@ -65,9 +102,7 @@ export function PracticeAreas({
                 <HoverArrow className={cellArrowClass} />
               </h3>
               <p className="text-sm leading-normal text-muted-foreground">
-                {condensed
-                  ? t(`landing.areas.items.${slug}`)
-                  : t(`areas.items.${slug}.text`)}
+                {t(`areas.items.${slug}.text`)}
               </p>
             </Link>
           </StaggerItem>
@@ -79,11 +114,9 @@ export function PracticeAreas({
                 {t('areas.other.title')}
                 <HoverArrow className={cellArrowClass} />
               </h3>
-              {!condensed && (
-                <p className="text-sm leading-normal text-muted-foreground">
-                  {t('areas.other.text')}
-                </p>
-              )}
+              <p className="text-sm leading-normal text-muted-foreground">
+                {t('areas.other.text')}
+              </p>
               <span className="mt-auto pt-1 text-sm font-semibold text-link">
                 {site.phone.display}
               </span>

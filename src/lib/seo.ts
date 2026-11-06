@@ -1,4 +1,4 @@
-import { faq } from '../content/faq.ts'
+import { areaFaqs } from '../content/faq.ts'
 import { practiceAreas } from '../content/practice-areas.ts'
 import { areaCopy, legalPageTitles, pageCopy } from '../content/seo.ts'
 import { site } from '../content/site.ts'
@@ -159,8 +159,9 @@ function pageSchemas(path: string, lang: Language, copy: SeoCopy) {
     })
   }
 
-  // Las preguntas frecuentes solo se muestran en esta área
-  if (slug === 'criminal-law') {
+  // Solo las áreas con preguntas frecuentes en la página llevan `FAQPage`
+  const faq = slug && areaFaqs[slug]
+  if (faq) {
     schemas.push({
       '@type': 'FAQPage',
       url,
