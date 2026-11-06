@@ -1,3 +1,4 @@
+import type { PracticeArea } from './practice-areas'
 import type { Language } from '@/i18n'
 
 export type FaqItem = {
@@ -7,7 +8,7 @@ export type FaqItem = {
 }
 
 /** Preguntas de la página "Criminal Law FAQ" de aguirre-lawgroup.com. */
-export const faq: Array<FaqItem> = [
+const criminalFaq: Array<FaqItem> = [
   {
     id: 'innocent',
     question: {
@@ -64,3 +65,94 @@ export const faq: Array<FaqItem> = [
     },
   },
 ]
+
+/**
+ * Preguntas de lesiones personales, adaptadas a la ley de Texas a partir de la estructura
+ * de stevedimopoulos.com. Revisión pendiente del abogado: plazos, regla del 50% y honorarios
+ * (no se afirma que el cobro sea por contingencia porque no está confirmado).
+ */
+const injuryFaq: Array<FaqItem> = [
+  {
+    id: 'deadline',
+    question: {
+      es: '¿Cuánto tiempo tengo para presentar una demanda?',
+      en: 'How long do I have to file a lawsuit?',
+    },
+    answer: {
+      es: 'En Texas, por lo general, dos años desde la fecha de la lesión. Hay excepciones, y si el responsable es una ciudad, un condado u otra entidad de gobierno, puede exigirse un aviso formal en solo unos meses. Mientras antes nos contactes, más evidencia podemos conservar.',
+      en: 'In Texas, generally two years from the date of the injury. There are exceptions, and if the responsible party is a city, county or other government entity, formal notice may be required within just a few months. The sooner you contact us, the more evidence we can preserve.',
+    },
+  },
+  {
+    id: 'worth',
+    question: {
+      es: '¿Cuánto vale mi caso?',
+      en: 'How much is my case worth?',
+    },
+    answer: {
+      es: 'Depende de la gravedad de la lesión, los gastos médicos presentes y futuros, el tiempo sin trabajar, el efecto en tu vida diaria y la conducta del responsable. Ningún abogado puede prometerte una cifra, pero en la consulta te explicamos qué daños puedes reclamar.',
+      en: 'It depends on how serious the injury is, present and future medical costs, time off work, the effect on your daily life and the conduct of the responsible party. No lawyer can promise you a number, but in the consultation we explain which damages you can claim.',
+    },
+  },
+  {
+    id: 'shared-fault',
+    question: {
+      es: '¿Qué pasa si yo también tuve parte de la culpa?',
+      en: 'What if I was partly at fault?',
+    },
+    answer: {
+      es: 'Texas aplica la responsabilidad proporcional: tu compensación se reduce según tu porcentaje de culpa. Si tu responsabilidad no supera el 50%, aún puedes recibir compensación; si la supera, no. Las aseguradoras suelen exagerar la culpa de la víctima, por eso conviene que alguien defienda tu versión.',
+      en: 'Texas uses proportionate responsibility: your compensation is reduced by your percentage of fault. If your responsibility is 50% or less, you can still recover; if it is greater, you cannot. Insurers often exaggerate the victim’s fault, so it helps to have someone defending your side of the story.',
+    },
+  },
+  {
+    id: 'insurance',
+    question: {
+      es: '¿Debo hablar con la aseguradora del otro conductor?',
+      en: 'Should I talk to the other driver’s insurance company?',
+    },
+    answer: {
+      es: 'Debes reportar el accidente a tu propia aseguradora, pero no estás obligado a dar una declaración grabada a la del otro conductor. Sus ajustadores trabajan para pagar lo menos posible. Antes de firmar o aceptar una oferta, consúltanos.',
+      en: 'You should report the accident to your own insurer, but you are not required to give a recorded statement to the other driver’s. Their adjusters work to pay as little as possible. Before signing or accepting an offer, talk to us.',
+    },
+  },
+  {
+    id: 'uninsured',
+    question: {
+      es: '¿Y si el responsable no tiene seguro?',
+      en: 'What if the responsible driver has no insurance?',
+    },
+    answer: {
+      es: 'Si tu póliza incluye cobertura de conductor sin seguro o con seguro insuficiente (UM/UIM), puedes reclamar a tu propia aseguradora. En Texas esa cobertura viene incluida salvo que la hayas rechazado por escrito. Revisamos tu póliza para encontrar todas las vías de compensación.',
+      en: 'If your policy includes uninsured/underinsured motorist (UM/UIM) coverage, you can make a claim with your own insurer. In Texas that coverage is included unless you rejected it in writing. We review your policy to find every path to compensation.',
+    },
+  },
+  {
+    id: 'trial',
+    question: {
+      es: '¿Mi caso tendrá que ir a juicio?',
+      en: 'Will my case have to go to trial?',
+    },
+    answer: {
+      es: 'La mayoría de los casos de lesiones personales se resuelve con un acuerdo antes del juicio. Aun así, preparamos cada caso como si fuera a llegar a la corte, y si la aseguradora no hace una oferta justa, estamos listos para litigar.',
+      en: 'Most personal injury cases are resolved through a settlement before trial. Even so, we prepare every case as if it will reach the courtroom, and if the insurer won’t make a fair offer, we are ready to litigate.',
+    },
+  },
+  {
+    id: 'consultation',
+    question: {
+      es: '¿Cuánto cuesta la consulta?',
+      en: 'How much does the consultation cost?',
+    },
+    answer: {
+      es: 'La consulta inicial es gratuita. En ella evaluamos tu caso y te explicamos con claridad cómo trabajaríamos y cuáles serían los honorarios antes de que firmes cualquier acuerdo.',
+      en: 'The initial consultation is free. We evaluate your case and clearly explain how we would work together and what the fees would be before you sign any agreement.',
+    },
+  },
+]
+
+/** Preguntas frecuentes por área; solo las áreas listadas aquí muestran la sección. */
+export const areaFaqs: Partial<Record<PracticeArea, Array<FaqItem>>> = {
+  'personal-injury': injuryFaq,
+  'criminal-law': criminalFaq,
+}

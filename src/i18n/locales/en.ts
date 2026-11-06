@@ -24,7 +24,7 @@ const en: Translation = {
     login: 'Log in',
   },
   hero: {
-    heading: 'Criminal defense and personal injury attorneys in Brownsville, Texas',
+    heading: 'Personal injury and criminal defense attorneys in Brownsville, Texas',
     stats: {
       sinceLabel: 'Practicing in the Rio Grande Valley',
       cases: 'Hundreds',
@@ -44,6 +44,10 @@ const en: Translation = {
       title: 'Don’t see your case?',
       text: 'Tell us what happened and we’ll guide you at no cost.',
     },
+    groups: {
+      injury: 'Personal Injury',
+      criminal: 'Criminal Defense',
+    },
     items: {
       'criminal-law': {
         title: 'Criminal Law',
@@ -60,6 +64,42 @@ const en: Translation = {
       'personal-injury': {
         title: 'Personal Injury',
         text: 'Car and work accidents, slip and falls, and more. Don’t let your pain go ignored.',
+      },
+      'car-accidents': {
+        title: 'Car Accidents',
+        text: 'Rear-end, head-on, hit-and-run crashes and more. We pursue what the other insurer owes you.',
+      },
+      'drunk-driving-accidents': {
+        title: 'Drunk Driving Accidents',
+        text: 'Your own civil claim against the driver and, sometimes, whoever served them.',
+      },
+      'truck-accidents': {
+        title: 'Truck Accidents',
+        text: 'Semis and 18-wheelers. We act fast to preserve the truck’s records.',
+      },
+      'motorcycle-accidents': {
+        title: 'Motorcycle Accidents',
+        text: 'Riding doesn’t make you to blame. We show who caused the crash.',
+      },
+      'pedestrian-accidents': {
+        title: 'Pedestrian Accidents',
+        text: 'Crosswalks, parking lots and school zones. We find every coverage.',
+      },
+      'bicycle-accidents': {
+        title: 'Bicycle Accidents',
+        text: 'In Texas a bicycle has the same rights as any vehicle.',
+      },
+      'uber-lyft-accidents': {
+        title: 'Uber & Lyft Accidents',
+        text: 'Passengers and third parties. We identify which policy pays.',
+      },
+      'tour-bus-accidents': {
+        title: 'Tour Bus Accidents',
+        text: 'Tour, charter and school buses and shuttles, often with many injured.',
+      },
+      'uninsured-motorists': {
+        title: 'Uninsured & Underinsured Drivers',
+        text: 'Your UM/UIM policy can cover what the at-fault driver can’t pay.',
       },
       'theft-property': {
         title: 'Theft & Property Crimes',
@@ -90,9 +130,9 @@ const en: Translation = {
     ],
   },
   attorney: {
-    photoAlt: '{{name}}, criminal defense and personal injury attorney in Brownsville, Texas',
-    role: 'Criminal defense and personal injury attorney',
-    bio: 'Practicing law in the Rio Grande Valley since {{year}}, {{years}} years ago, with a focus on criminal and personal injury cases.',
+    photoAlt: '{{name}}, personal injury and criminal defense attorney in Brownsville, Texas',
+    role: 'Personal injury and criminal defense attorney',
+    bio: 'Practicing law in the Rio Grande Valley since {{year}}, {{years}} years ago, with a focus on personal injury and criminal cases.',
     bio2: 'He defends individuals charged with DWI, drug possession, tax evasion, theft, assault, extortion, and other misdemeanors or felonies in Brownsville, Texas.',
     personal:
       'When not advocating for the rights of his clients, he enjoys spending time with his wife and two children.',
@@ -111,8 +151,59 @@ const en: Translation = {
     hero: {
       call: 'Call',
     },
+    injury: {
+      eyebrow: 'Personal injury',
+      title: 'Hurt because of someone else?',
+      lead: 'If an accident left you with injuries, medical bills and missed work, you don’t have to face the insurance company alone. We investigate what happened, document your damages and fight for fair compensation while you recover.',
+      cases: [
+        'Car accidents',
+        'Truck accidents',
+        'Motorcycle accidents',
+        'Work-related accidents',
+        'Slip and falls',
+        'Dog bites',
+        'Medical malpractice',
+        'Wrongful death',
+      ],
+      stepsTitle: 'After an accident.',
+      steps: [
+        {
+          title: 'Call 911 and get medical care',
+          text: 'Even if you feel fine: some injuries, like head or back injuries, show symptoms days later.',
+        },
+        {
+          title: 'Document the scene',
+          text: 'Photos of the vehicles, the location and your injuries; names and numbers of witnesses and the other driver.',
+        },
+        {
+          title: 'Keep every document',
+          text: 'The police report, medical records and bills, and everything the insurance company sends you.',
+        },
+        {
+          title: 'Talk to a lawyer before you sign',
+          text: 'Don’t give a recorded statement or accept an insurance offer without guidance.',
+        },
+      ],
+      claimTitle: 'What you can claim.',
+      claimSheet: 'Injury claim',
+      claim: [
+        { label: 'Medical expenses', detail: 'Past and future, including rehabilitation.' },
+        { label: 'Lost wages', detail: 'And the earning capacity the injury took from you.' },
+        { label: 'Pain and suffering', detail: 'Physical and emotional, now and going forward.' },
+        { label: 'Impairment and disfigurement', detail: 'When the injury limits your daily life.' },
+        { label: 'Property damage', detail: 'Repair or replacement of your vehicle.' },
+        { label: 'Loss of consortium', detail: 'The harm to your relationship with your family.' },
+      ],
+      facts: [
+        { value: '2 years', label: 'General deadline in Texas to file your lawsuit.' },
+        { value: '50%', label: 'If your share of fault doesn’t exceed it, you can still recover.' },
+        { value: 'Free', label: 'The initial consultation to evaluate your case.' },
+      ],
+      more: 'Full personal injury guide',
+    },
     areas: {
-      title: 'What are you facing?',
+      title: 'We also defend you.',
+      lead: 'Facing a charge? Criminal defense in Brownsville, from arrest to trial.',
       items: {
         'criminal-law': 'Misdemeanors and felonies.',
         dwi: 'First offense or repeat.',
@@ -149,7 +240,7 @@ const en: Translation = {
     ctaText: 'Tell us what happened and we’ll evaluate your case.',
     otherAreas: 'Other areas',
     disclaimer:
-      'General information about Texas law; not legal advice. Penalties vary by case and may change with the law.',
+      'General information about Texas law; not legal advice. Every case is different and the law may change.',
   },
   faq: {
     title: 'Frequently asked questions.',
@@ -163,7 +254,7 @@ const en: Translation = {
     form: {
       name: 'Full name',
       phone: 'Phone',
-      email: 'Email',
+      email: 'Email (optional)',
       caseType: 'Case type',
       caseTypePlaceholder: 'Select an option',
       other: 'Other',
@@ -180,7 +271,6 @@ const en: Translation = {
         phoneRequired: 'Enter your phone number.',
         phoneInvalid:
           'Enter a 10-digit phone number or, if international, include the country code (+52…).',
-        emailRequired: 'Enter your email address.',
         emailInvalid: 'Enter a valid email, like name@example.com.',
         areaRequired: 'Select your case type.',
       },
@@ -212,7 +302,7 @@ const en: Translation = {
     },
   },
   cta: {
-    title: 'Facing a charge or recovering from an injury?',
+    title: 'Recovering from an injury or facing a charge?',
     text: 'Contact us today to request an initial case evaluation.',
   },
   footer: {

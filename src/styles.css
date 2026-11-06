@@ -735,6 +735,7 @@ body,
   --color-gold-800: #7f5c19;
   --color-gold-900: #694c1a;
   --color-gold-950: #3c2a0b;
+  --color-gold-satin: #d6ae45; /* 8.1:1 sobre navy-900 */
 
   /* Neutros — grises con matiz azul marino (50 = Secundario #FAFAFA) */
   --color-ink-50: #fafafa;
@@ -778,6 +779,13 @@ body,
   --secondary-foreground: var(--color-ink-100);
   --complementary: var(--color-gold-400);
   --complementary-foreground: var(--color-ink-950);
+  --gold-satin-sheen: linear-gradient(
+    100deg,
+    #c79c33 0%,
+    #e4c46c 38%,
+    #d6ae45 55%,
+    #b98f2b 100%
+  );
   --muted: var(--color-navy-700);
   --muted-foreground: var(--color-navy-200);
   --accent: var(--color-navy-700);
@@ -813,6 +821,36 @@ body,
   }
 }
 
+/* Dorado satinado de los títulos, como el mosaico del Fontainebleau Las Vegas: un degradado suave
+   da el brillo que un color liso no tiene. El texto corrido queda en blanco (`foreground`).
+   El degradado va solo en el elemento que tiene el texto (sin hijos), nunca en un contenedor:
+   `background-clip: text` en un contenedor pinta el texto de sus hijos donde está en el layout,
+   sin seguir sus `transform`, y rompe `MaskLine` (aparece una copia fija del título). */
+@utility text-satin {
+  color: var(--color-gold-satin);
+
+  &:not(:has(*)),
+  & *:not(:has(*)) {
+    background-image: var(--gold-satin-sheen);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &::selection,
+  & *::selection {
+    -webkit-text-fill-color: var(--color-ink-950);
+  }
+
+  @media (forced-colors: active) {
+    &,
+    & * {
+      background-image: none;
+      -webkit-text-fill-color: currentColor;
+    }
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -837,4 +875,23 @@ body,
     -webkit-user-drag: none;
     -webkit-touch-callout: none;
   }
+}
+/* Fundido inferior del hero: máscara sobre las capas de imagen, no un degradado encima.
+   Un degradado superpuesto deja una línea de 1px en el borde: las capas con parallax se
+   componen aparte y su recorte se redondea distinto. Con la máscara las imágenes llegan
+   transparentes al borde. La curva es smoothstep: con una rampa lineal, el cambio brusco
+   de pendiente donde se vuelve sólido también se percibe como línea. */
+@utility hero-fade {
+  mask-image: linear-gradient(
+    to top,
+    transparent 10%,
+    rgb(0 0 0 / 0.043) 16.25%,
+    rgb(0 0 0 / 0.156) 22.5%,
+    rgb(0 0 0 / 0.316) 28.75%,
+    rgb(0 0 0 / 0.5) 35%,
+    rgb(0 0 0 / 0.684) 41.25%,
+    rgb(0 0 0 / 0.844) 47.5%,
+    rgb(0 0 0 / 0.957) 53.75%,
+    black 60%
+  );
 }

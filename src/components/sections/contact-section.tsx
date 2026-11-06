@@ -18,12 +18,14 @@ import { Input } from '@/components/ui/input'
 import {
   Select,
   SelectContent,
+  SelectGroup,
   SelectItem,
+  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
-import { practiceAreas } from '@/content/practice-areas'
+import { areaGroups, practiceAreas } from '@/content/practice-areas'
 import { fullAddress, site } from '@/content/site'
 import { useHideCallBar } from '@/lib/call-bar'
 import { contactFields, validateContactField } from '@/lib/contact-validation'
@@ -91,10 +93,10 @@ export function ContactSection({
   }
 
   // Un campo vacío no se marca al salir de él, solo al enviar; uno ya marcado se corrige al escribir.
-  const textFieldProps = (field: ContactField) => ({
+  const textFieldProps = (field: ContactField, required = true) => ({
     id: fieldId(field),
     name: field,
-    required: true,
+    required,
     'aria-invalid': Boolean(errors[field]) || undefined,
     'aria-describedby': errors[field] ? errorId(field) : undefined,
     onBlur: (event: FocusEvent<HTMLInputElement>) => {
@@ -145,7 +147,9 @@ export function ContactSection({
     const body = [
       `${t('contact.form.name')}: ${name}`,
       `${t('contact.form.phone')}: ${value('phone')}`,
-      `${t('contact.form.email')}: ${value('email')}`,
+      ...(value('email')
+        ? [`${t('contact.form.email')}: ${value('email')}`]
+        : []),
       `${t('contact.form.caseType')}: ${areaLabel}`,
       '',
       String(data.get('message') ?? ''),
@@ -219,7 +223,7 @@ export function ContactSection({
                 <Input
                   type="email"
                   autoComplete="email"
-                  {...textFieldProps('email')}
+                  {...textFieldProps('email', false)}
                 />
               </FormField>
             </StaggerItem>
@@ -248,10 +252,17 @@ export function ContactSection({
                     data-lenis-prevent
                     className="duration-200"
                   >
-                    {practiceAreas.map((slug) => (
-                      <SelectItem key={slug} value={slug}>
-                        {t(`areas.items.${slug}.title`)}
-                      </SelectItem>
+                    {areaGroups.map((group) => (
+                      <SelectGroup key={group.key}>
+                        <SelectLabel>
+                          {t(`areas.groups.${group.key}`)}
+                        </SelectLabel>
+                        {group.areas.map((slug) => (
+                          <SelectItem key={slug} value={slug}>
+                            {t(`areas.items.${slug}.title`)}
+                          </SelectItem>
+                        ))}
+                      </SelectGroup>
                     ))}
                     <SelectItem value="other">
                       {t('contact.form.other')}
@@ -261,10 +272,7 @@ export function ContactSection({
               </FormField>
             </StaggerItem>
             <StaggerItem className="col-span-full">
-              <FormField
-                id={`${id}-message`}
-                label={t('contact.form.message')}
-              >
+              <FormField id={`${id}-message`} label={t('contact.form.message')}>
                 <Textarea
                   id={`${id}-message`}
                   name="message"

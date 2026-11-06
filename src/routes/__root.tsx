@@ -116,7 +116,7 @@ function NotFound() {
 
   return (
     <Container className="flex flex-col items-start gap-5 py-20">
-      <h1 className="font-heading text-5xl text-foreground">
+      <h1 className="font-heading text-5xl text-satin">
         {t('notFound.title')}
       </h1>
       <p className="text-lg text-muted-foreground">{t('notFound.text')}</p>

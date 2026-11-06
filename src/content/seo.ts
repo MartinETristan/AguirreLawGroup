@@ -39,14 +39,14 @@ export const legacyRedirects: Record<string, string> = {
 export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
   '/': {
     es: {
-      title: 'Abogados en Brownsville, TX',
+      title: 'Abogados de lesiones personales en Brownsville, TX',
       description:
-        'Abogados de defensa criminal y lesiones personales en Brownsville, Texas, y el Valle del Río Grande. Agenda tu consulta gratuita.',
+        'Abogados de lesiones personales y defensa criminal en Brownsville, Texas, y el Valle del Río Grande. Accidentes de auto, camión, laborales y caídas. Consulta gratuita.',
     },
     en: {
-      title: 'Attorneys in Brownsville, TX',
+      title: 'Personal injury attorneys in Brownsville, TX',
       description:
-        'Criminal defense and personal injury attorneys in Brownsville, Texas, and the Rio Grande Valley. Schedule your free consultation.',
+        'Personal injury and criminal defense attorneys in Brownsville, Texas, and the Rio Grande Valley. Car, truck and work accidents and falls. Free consultation.',
     },
   },
   '/about-us': {
@@ -164,12 +164,120 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
     es: {
       title: 'Abogado de lesiones personales en Brownsville, TX',
       description:
-        'Accidentes de auto, laborales, caídas y más en Brownsville y el Valle del Río Grande. Agenda tu consulta gratuita.',
+        'Accidentes de auto, camión y moto, laborales, caídas y muerte por negligencia en Brownsville y el Valle del Río Grande. Qué hacer, leyes de Texas y consulta gratuita.',
     },
     en: {
       title: 'Personal injury attorney in Brownsville, TX',
       description:
-        'Car and work accidents, falls and more in Brownsville and the Rio Grande Valley. Schedule your free consultation.',
+        'Car, truck and motorcycle accidents, work injuries, falls and wrongful death in Brownsville and the Rio Grande Valley. What to do, Texas law and a free consultation.',
+    },
+  },
+  'car-accidents': {
+    es: {
+      title: 'Abogado de accidentes de auto en Brownsville, TX',
+      description:
+        'Choques por alcance, de frente y con fuga en Brownsville y el Valle del Río Grande. Leyes de Texas, seguros y consulta gratuita.',
+    },
+    en: {
+      title: 'Car accident attorney in Brownsville, TX',
+      description:
+        'Rear-end, head-on and hit-and-run crashes in Brownsville and the Rio Grande Valley. Texas law, insurance and a free consultation.',
+    },
+  },
+  'drunk-driving-accidents': {
+    es: {
+      title: 'Abogado de accidentes por conductor ebrio en Brownsville',
+      description:
+        'Reclamos contra conductores ebrios y bares en Brownsville, Texas: daños ejemplares, ley dram shop y consulta gratuita.',
+    },
+    en: {
+      title: 'Drunk driving accident attorney in Brownsville, TX',
+      description:
+        'Claims against drunk drivers and bars in Brownsville, Texas: exemplary damages, dram shop law and a free consultation.',
+    },
+  },
+  'truck-accidents': {
+    es: {
+      title: 'Abogado de accidentes de camión en Brownsville, TX',
+      description:
+        'Choques con tráileres y 18 ruedas en Brownsville y el Valle del Río Grande. Normas de la FMCSA, responsables y consulta gratuita.',
+    },
+    en: {
+      title: 'Truck accident attorney in Brownsville, TX',
+      description:
+        'Semi and 18-wheeler crashes in Brownsville and the Rio Grande Valley. FMCSA rules, liable parties and a free consultation.',
+    },
+  },
+  'motorcycle-accidents': {
+    es: {
+      title: 'Abogado de accidentes de moto en Brownsville, TX',
+      description:
+        'Accidentes de motocicleta en Brownsville, Texas: ley de cascos, culpa compartida y consulta gratuita.',
+    },
+    en: {
+      title: 'Motorcycle accident attorney in Brownsville, TX',
+      description:
+        'Motorcycle crashes in Brownsville, Texas: helmet law, shared fault and a free consultation.',
+    },
+  },
+  'pedestrian-accidents': {
+    es: {
+      title: 'Abogado de atropellos a peatones en Brownsville, TX',
+      description:
+        'Peatones atropellados en Brownsville, Texas: derecho de paso, coberturas PIP y UM/UIM y consulta gratuita.',
+    },
+    en: {
+      title: 'Pedestrian accident attorney in Brownsville, TX',
+      description:
+        'Pedestrians hit by cars in Brownsville, Texas: right of way, PIP and UM/UIM coverage and a free consultation.',
+    },
+  },
+  'bicycle-accidents': {
+    es: {
+      title: 'Abogado de accidentes de bicicleta en Brownsville, TX',
+      description:
+        'Ciclistas lesionados en Brownsville, Texas: tus derechos en la vía, culpa compartida y consulta gratuita.',
+    },
+    en: {
+      title: 'Bicycle accident attorney in Brownsville, TX',
+      description:
+        'Injured cyclists in Brownsville, Texas: your rights on the road, shared fault and a free consultation.',
+    },
+  },
+  'uber-lyft-accidents': {
+    es: {
+      title: 'Abogado de accidentes de Uber y Lyft en Brownsville',
+      description:
+        'Pasajeros y terceros lesionados en viajes de Uber o Lyft en Brownsville, Texas. Qué seguro responde y consulta gratuita.',
+    },
+    en: {
+      title: 'Uber & Lyft accident attorney in Brownsville, TX',
+      description:
+        'Passengers and others hurt in Uber or Lyft crashes in Brownsville, Texas. Which insurance pays and a free consultation.',
+    },
+  },
+  'tour-bus-accidents': {
+    es: {
+      title: 'Abogado de accidentes de autobús en Brownsville, TX',
+      description:
+        'Accidentes de autobuses turísticos, chárter, escolares y shuttles en Brownsville, Texas. Consulta gratuita.',
+    },
+    en: {
+      title: 'Tour bus accident attorney in Brownsville, TX',
+      description:
+        'Tour, charter, school bus and shuttle accidents in Brownsville, Texas. Free consultation.',
+    },
+  },
+  'uninsured-motorists': {
+    es: {
+      title: 'Abogado de conductores sin seguro en Brownsville, TX',
+      description:
+        'Reclamos UM/UIM cuando el responsable no tiene seguro, huyó o su cobertura no alcanza, en Brownsville, Texas.',
+    },
+    en: {
+      title: 'Uninsured motorist attorney in Brownsville, TX',
+      description:
+        'UM/UIM claims when the at-fault driver is uninsured, fled or lacks enough coverage, in Brownsville, Texas.',
     },
   },
   'theft-property': {

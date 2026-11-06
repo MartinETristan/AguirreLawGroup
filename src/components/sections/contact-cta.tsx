@@ -17,7 +17,7 @@ export function ContactCta() {
       className="flex flex-wrap items-center justify-between gap-6 py-10 sm:py-10"
     >
       <div className="flex max-w-2xl flex-col gap-2">
-        <h2 className="font-heading text-[clamp(28px,3vw,36px)] leading-[1.1] text-foreground">
+        <h2 className="font-heading text-[clamp(28px,3vw,36px)] leading-[1.1] text-satin">
           <MaskLine>{t('cta.title')}</MaskLine>
         </h2>
         <Reveal delay={0.15}>

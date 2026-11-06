@@ -9,8 +9,9 @@ import { GoldCard, GoldDiamond } from '@/components/shared/gold'
 import { HoverArrow } from '@/components/shared/hover-arrow'
 import { Section as PageSection } from '@/components/shared/section'
 import { Button } from '@/components/ui/button'
+import { areaFaqs } from '@/content/faq'
 import { areaPages } from '@/content/practice-area-pages'
-import { practiceAreas } from '@/content/practice-areas'
+import { areaGroupOf } from '@/content/practice-areas'
 import { currentLanguage } from '@/i18n'
 import type { AreaSection } from '@/content/practice-area-pages'
 import type { PracticeArea } from '@/content/practice-areas'
@@ -18,7 +19,7 @@ import type { PracticeArea } from '@/content/practice-areas'
 function Section({ section }: { section: AreaSection }) {
   return (
     <Reveal className="flex flex-col gap-3 border-t border-border pt-6">
-      <h2 className="font-heading text-[28px] leading-tight text-foreground">
+      <h2 className="font-heading text-[28px] leading-tight text-satin">
         {section.title}
       </h2>
       {section.text?.map((paragraph) => (
@@ -65,6 +66,7 @@ function Section({ section }: { section: AreaSection }) {
 export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
   const { t, i18n } = useTranslation()
   const page = areaPages[area][currentLanguage(i18n.resolvedLanguage)]
+  const faq = areaFaqs[area]
 
   return (
     <PageSection
@@ -80,7 +82,7 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
             <ArrowLeftIcon className="size-4" aria-hidden="true" />
             {t('areaPage.back')}
           </Link>
-          <h1 className="font-heading text-[clamp(36px,4.6vw,56px)] leading-[1.06] text-foreground">
+          <h1 className="font-heading text-[clamp(36px,4.6vw,56px)] leading-[1.06] text-satin">
             <MaskLine delay={0.1}>{t(`areas.items.${area}.title`)}</MaskLine>
           </h1>
           <Reveal delay={0.2}>
@@ -101,12 +103,12 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
           <Section key={section.title} section={section} />
         ))}
 
-        {area === 'criminal-law' && (
+        {faq && (
           <Reveal className="flex flex-col gap-1 border-t border-border pt-6">
-            <h2 className="pb-2 font-heading text-[28px] leading-tight text-foreground">
+            <h2 className="pb-2 font-heading text-[28px] leading-tight text-satin">
               {t('faq.title')}
             </h2>
-            <FaqList />
+            <FaqList items={faq} />
           </Reveal>
         )}
 
@@ -138,8 +140,8 @@ export function PracticeAreaDetail({ area }: { area: PracticeArea }) {
           <h2 className="pb-1 text-[13px] text-muted-foreground">
             {t('areaPage.otherAreas')}
           </h2>
-          {practiceAreas
-            .filter((slug) => slug !== area)
+          {areaGroupOf(area)
+            .areas.filter((slug) => slug !== area)
             .map((slug) => (
               <Link
                 key={slug}
