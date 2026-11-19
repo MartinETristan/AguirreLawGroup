@@ -8,7 +8,7 @@ import { localizePath } from '../src/i18n/paths.ts'
 import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo.ts'
 import type { Language } from '../src/i18n/index.ts'
 
-const languages: Array<Language> = ['es', 'en']
+const languages: Array<Language> = ['en', 'es']
 
 function escapeHtml(value: string) {
   return value

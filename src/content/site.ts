@@ -4,23 +4,23 @@
  * aquí; los textos traducibles viven en `src/i18n/locales`.
  */
 export const site = {
-  name: 'Aguirre Law Group',
-  // Logo del navbar: The Law Gun en blanco, recortado y a 40 px de alto a 1x
+  name: 'The LawGun',
+  // Logo del navbar: The Law Gun en dorado liso, recortado y a 40 px de alto a 1x
   logo: {
-    src: '/TheLawGun/thelawgun-white-nav-80.webp',
+    src: '/TheLawGun/thelawgun-gold-nav-80.webp',
     srcSet:
-      '/TheLawGun/thelawgun-white-nav-40.webp 1x, /TheLawGun/thelawgun-white-nav-80.webp 2x, /TheLawGun/thelawgun-white-nav-120.webp 3x',
+      '/TheLawGun/thelawgun-gold-nav-40.webp 1x, /TheLawGun/thelawgun-gold-nav-80.webp 2x, /TheLawGun/thelawgun-gold-nav-120.webp 3x',
     width: 149,
     height: 40,
     alt: 'The Law Gun',
   },
-  url: 'https://www.aguirre-lawgroup.com',
+  url: 'https://thelawgun.com',
 
   phone: {
     display: '(956) 477-7777',
     href: 'tel:+19564777777',
   },
-  email: 'appointment@aguirre-lawgroup.com',
+  email: 'appointment@thelawgun.com',
 
   address: {
     street: '811 E Madison St',
@@ -39,6 +39,31 @@ export const site = {
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=811+E+Madison+St+Brownsville+TX+78520',
   },
+
+  /** Oficinas. La principal es `address` (mapa y datos estructurados); las demás son con cita. */
+  offices: [
+    {
+      id: 'brownsville',
+      city: 'Brownsville',
+      kind: 'main',
+      street: '811 E. Madison St.',
+      region: 'Brownsville, TX',
+    },
+    {
+      id: 'mcallen',
+      city: 'McAllen',
+      kind: 'appointment',
+      street: '200 S. 10th St., Suite 905',
+      region: 'McAllen, TX 78521',
+    },
+    {
+      id: 'harlingen',
+      city: 'Harlingen',
+      kind: 'appointment',
+      street: '314 E. Tyler Ave., Suite B',
+      region: 'Harlingen, TX 78550',
+    },
+  ],
 
   hours: {
     open: '8:30 a.m.',

@@ -92,7 +92,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
     es: {
       tagline: 'Defensa firme para personas acusadas en Brownsville.',
       intro: [
-        'Dirigida por el abogado Javier Aguirre, Aguirre Law Group representa a personas acusadas en Brownsville y en todo el condado de Cameron. No dejes que un error te persiga el resto de tu vida.',
+        'Dirigida por el abogado Javier Aguirre, The LawGun representa a personas acusadas en Brownsville y en todo el condado de Cameron. No dejes que un error te persiga el resto de tu vida.',
       ],
       sections: [
         {
@@ -152,7 +152,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
     en: {
       tagline: 'Tough defense for the criminally charged in Brownsville.',
       intro: [
-        'Led by attorney Javier Aguirre, Aguirre Law Group represents accused individuals in Brownsville and throughout Cameron County. Don’t let a mistake haunt you for the rest of your life.',
+        'Led by attorney Javier Aguirre, The LawGun represents accused individuals in Brownsville and throughout Cameron County. Don’t let a mistake haunt you for the rest of your life.',
       ],
       sections: [
         {
@@ -328,7 +328,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
     es: {
       tagline: 'Una acusación seria exige una defensa decidida.',
       intro: [
-        'Los delitos de drogas conllevan sanciones muy severas y pueden presentarse a nivel estatal o federal. Por su gravedad, contacta a Aguirre Law Group de inmediato si te arrestaron por un caso de drogas.',
+        'Los delitos de drogas conllevan sanciones muy severas y pueden presentarse a nivel estatal o federal. Por su gravedad, contacta a The LawGun de inmediato si te arrestaron por un caso de drogas.',
         'En Texas, las sustancias controladas se clasifican en grupos de sanción según su potencial de abuso y su peligrosidad.',
       ],
       sections: [
@@ -387,7 +387,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
           ],
         },
         {
-          title: 'Por qué Aguirre Law Group',
+          title: 'Por qué The LawGun',
           text: [
             'Estas acusaciones pueden arruinar tu vida, tu reputación y tu capacidad de trabajar. Tienes derechos constitucionales que no pueden violarse. Investigamos a fondo las circunstancias de tu cargo y lo analizamos en busca de puntos débiles y acciones ilegales que hayan afectado tus derechos.',
           ],
@@ -397,7 +397,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
     en: {
       tagline: 'Serious accusations require an aggressive defense.',
       intro: [
-        'Drug crimes carry extremely severe penalties and can be charged at the state or federal level. Because of their seriousness, contact Aguirre Law Group immediately after an arrest for a drug case.',
+        'Drug crimes carry extremely severe penalties and can be charged at the state or federal level. Because of their seriousness, contact The LawGun immediately after an arrest for a drug case.',
         'In Texas, controlled substances are placed into penalty groups based on their potential for abuse and harmfulness.',
       ],
       sections: [
@@ -456,7 +456,7 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
           ],
         },
         {
-          title: 'Why Aguirre Law Group',
+          title: 'Why The LawGun',
           text: [
             'These accusations can ruin your life, your reputation, and your ability to work. You have Constitutional rights that cannot be violated. We thoroughly investigate the circumstances of your charge and analyze it for weak points and illegal actions that infringed on your rights.',
           ],
@@ -478,7 +478,6 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
             'Accidentes de auto',
             'Accidentes de camión y 18 ruedas',
             'Accidentes de motocicleta',
-            'Atropellos a peatones y ciclistas',
             'Accidentes laborales y de construcción',
             'Resbalones y caídas',
             'Responsabilidad de propietarios (premisas)',
@@ -674,7 +673,6 @@ export const areaPages: Record<PracticeArea, Record<Language, AreaPage>> = {
             'Car accidents',
             'Truck and 18-wheeler accidents',
             'Motorcycle accidents',
-            'Pedestrian and bicycle accidents',
             'Work and construction accidents',
             'Slip and falls',
             'Premises liability',

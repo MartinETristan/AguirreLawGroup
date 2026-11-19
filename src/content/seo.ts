@@ -53,12 +53,12 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
     es: {
       title: 'Nosotros: abogados en Brownsville, TX',
       description:
-        'Conoce a Aguirre Law Group y al abogado Javier Aguirre, con práctica en casos penales y de lesiones personales en el Valle del Río Grande.',
+        'Conoce a The LawGun y al abogado Javier Aguirre, con práctica en casos penales y de lesiones personales en el Valle del Río Grande.',
     },
     en: {
       title: 'About Us: attorneys in Brownsville, TX',
       description:
-        'Meet Aguirre Law Group and attorney Javier Aguirre, practicing criminal defense and personal injury law in the Rio Grande Valley.',
+        'Meet The LawGun and attorney Javier Aguirre, practicing criminal defense and personal injury law in the Rio Grande Valley.',
     },
   },
   '/practice-areas': {
@@ -77,12 +77,12 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
     es: {
       title: 'La firma: defensa legal en Brownsville, TX',
       description:
-        'Cómo trabaja Aguirre Law Group: estudiamos la evidencia y preparamos la estrategia de tu defensa en Brownsville y el Valle del Río Grande.',
+        'Cómo trabaja The LawGun: estudiamos la evidencia y preparamos la estrategia de tu defensa en Brownsville y el Valle del Río Grande.',
     },
     en: {
       title: 'The firm: legal defense in Brownsville, TX',
       description:
-        'How Aguirre Law Group works: we study the evidence and build your defense strategy in Brownsville and the Rio Grande Valley.',
+        'How The LawGun works: we study the evidence and build your defense strategy in Brownsville and the Rio Grande Valley.',
     },
   },
   '/attorney': {
@@ -101,24 +101,24 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
     es: {
       title: 'Testimonios de clientes en Brownsville, TX',
       description:
-        'Lo que dicen los clientes de Aguirre Law Group, abogados en Brownsville, Texas.',
+        'Lo que dicen los clientes de The LawGun, abogados en Brownsville, Texas.',
     },
     en: {
       title: 'Client testimonials in Brownsville, TX',
       description:
-        'What clients say about Aguirre Law Group, attorneys in Brownsville, Texas.',
+        'What clients say about The LawGun, attorneys in Brownsville, Texas.',
     },
   },
   '/contact-us': {
     es: {
       title: 'Contacto: consulta gratuita en Brownsville, TX',
       description:
-        'Contacta a Aguirre Law Group en 811 E Madison St, Brownsville, TX. Agenda tu consulta gratuita sobre defensa criminal o lesiones personales.',
+        'Contacta a The LawGun en 811 E Madison St, Brownsville, TX. Agenda tu consulta gratuita sobre defensa criminal o lesiones personales.',
     },
     en: {
       title: 'Contact: free consultation in Brownsville, TX',
       description:
-        'Contact Aguirre Law Group at 811 E Madison St, Brownsville, TX. Schedule your free criminal defense or personal injury consultation.',
+        'Contact The LawGun at 811 E Madison St, Brownsville, TX. Schedule your free criminal defense or personal injury consultation.',
     },
   },
 }
@@ -218,30 +218,6 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
       title: 'Motorcycle accident attorney in Brownsville, TX',
       description:
         'Motorcycle crashes in Brownsville, Texas: helmet law, shared fault and a free consultation.',
-    },
-  },
-  'pedestrian-accidents': {
-    es: {
-      title: 'Abogado de atropellos a peatones en Brownsville, TX',
-      description:
-        'Peatones atropellados en Brownsville, Texas: derecho de paso, coberturas PIP y UM/UIM y consulta gratuita.',
-    },
-    en: {
-      title: 'Pedestrian accident attorney in Brownsville, TX',
-      description:
-        'Pedestrians hit by cars in Brownsville, Texas: right of way, PIP and UM/UIM coverage and a free consultation.',
-    },
-  },
-  'bicycle-accidents': {
-    es: {
-      title: 'Abogado de accidentes de bicicleta en Brownsville, TX',
-      description:
-        'Ciclistas lesionados en Brownsville, Texas: tus derechos en la vía, culpa compartida y consulta gratuita.',
-    },
-    en: {
-      title: 'Bicycle accident attorney in Brownsville, TX',
-      description:
-        'Injured cyclists in Brownsville, Texas: your rights on the road, shared fault and a free consultation.',
     },
   },
   'uber-lyft-accidents': {

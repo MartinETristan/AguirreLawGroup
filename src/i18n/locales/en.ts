@@ -2,6 +2,8 @@ import type { Translation } from './es'
 
 const en: Translation = {
   common: {
+    officeMain: 'Principal office',
+    officeAppointment: 'By appointment',
     freeConsultation: 'Free consultation',
     scheduleConsultation: 'Schedule your free consultation',
     call: 'Call {{phone}}',
@@ -81,14 +83,6 @@ const en: Translation = {
         title: 'Motorcycle Accidents',
         text: 'Riding doesn’t make you to blame. We show who caused the crash.',
       },
-      'pedestrian-accidents': {
-        title: 'Pedestrian Accidents',
-        text: 'Crosswalks, parking lots and school zones. We find every coverage.',
-      },
-      'bicycle-accidents': {
-        title: 'Bicycle Accidents',
-        text: 'In Texas a bicycle has the same rights as any vehicle.',
-      },
       'uber-lyft-accidents': {
         title: 'Uber & Lyft Accidents',
         text: 'Passengers and third parties. We identify which policy pays.',
@@ -120,7 +114,7 @@ const en: Translation = {
     lead: 'Whether you are facing a personal injury that has changed your life or an arrest that puts your future at stake, you need an attorney who will do everything in their power to defend your well-being, rights, and freedom.',
     evidence:
       'We have the insight to find weaknesses and mistakes in the prosecution’s case. We thoroughly study the evidence and devise the best strategy for your defense.',
-    reasonsTitle: 'When you choose Aguirre Law Group, you are choosing:',
+    reasonsTitle: 'When you choose The LawGun, you are choosing:',
     reasons: [
       'A law firm that prioritizes your rights and freedom above anything else.',
       'A dedicated attorney who is thoroughly familiar with the Texas criminal justice system.',
@@ -159,11 +153,9 @@ const en: Translation = {
         'Car accidents',
         'Truck accidents',
         'Motorcycle accidents',
-        'Work-related accidents',
         'Slip and falls',
         'Dog bites',
-        'Medical malpractice',
-        'Wrongful death',
+        'Drunk driving accidents',
       ],
       stepsTitle: 'After an accident.',
       steps: [
@@ -307,7 +299,7 @@ const en: Translation = {
   },
   footer: {
     motto: 'Reliable. Devoted. Respected.',
-    office: 'Office',
+    office: 'Offices',
     contact: 'Contact',
     navigation: 'Navigation',
     social: 'Social media',

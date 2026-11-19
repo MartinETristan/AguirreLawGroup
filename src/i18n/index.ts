@@ -5,7 +5,7 @@ import en from './locales/en'
 import es from './locales/es'
 import { stripLanguagePrefix } from './paths'
 
-export const languages = ['es', 'en'] as const
+export const languages = ['en', 'es'] as const
 export type Language = (typeof languages)[number]
 
 const resources = {
