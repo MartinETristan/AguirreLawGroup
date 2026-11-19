@@ -11,16 +11,9 @@ type StaticPath =
   | '/attorney'
   | '/testimonials'
   | '/contact-us'
-
-/**
- * Títulos de pestaña de las páginas legales. Siguen con `noindex` y fuera del sitemap
- * mientras estén vacías: al tener su texto, pasarlas a `pageCopy`.
- */
-export const legalPageTitles = {
-  '/privacy-policy': { es: 'Aviso de privacidad', en: 'Privacy Policy' },
-  '/terms': { es: 'Términos', en: 'Terms' },
-  '/legal-disclaimer': { es: 'Aviso legal', en: 'Legal Disclaimer' },
-} satisfies Record<string, Record<Language, string>>
+  | '/privacy-policy'
+  | '/terms'
+  | '/legal-disclaimer'
 
 /** URLs del sitio anterior que Google ya conoce (su sitemap) y que cambiaron de ruta. */
 export const legacyRedirects: Record<string, string> = {
@@ -119,6 +112,42 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
       title: 'Contact: free consultation in Brownsville, TX',
       description:
         'Contact The LawGun at 811 E Madison St, Brownsville, TX. Schedule your free criminal defense or personal injury consultation.',
+    },
+  },
+  '/privacy-policy': {
+    es: {
+      title: 'Aviso de privacidad',
+      description:
+        'Cómo The LawGun recopila, usa y protege tu información personal, incluidos los mensajes de texto, al visitar este sitio o contactarnos.',
+    },
+    en: {
+      title: 'Privacy Policy',
+      description:
+        'How The LawGun collects, uses and protects your personal information, including text messaging, when you visit this site or contact us.',
+    },
+  },
+  '/terms': {
+    es: {
+      title: 'Términos de uso',
+      description:
+        'Términos que rigen el uso del sitio web de The LawGun, abogados de defensa criminal y lesiones personales en Brownsville, Texas.',
+    },
+    en: {
+      title: 'Terms of Use',
+      description:
+        'Terms governing the use of The LawGun website, criminal defense and personal injury attorneys in Brownsville, Texas.',
+    },
+  },
+  '/legal-disclaimer': {
+    es: {
+      title: 'Aviso legal',
+      description:
+        'Aviso legal de The LawGun: la información del sitio no es asesoría legal y contactarnos no crea una relación abogado-cliente.',
+    },
+    en: {
+      title: 'Legal Disclaimer',
+      description:
+        'The LawGun legal disclaimer: the information on this site is not legal advice and contacting us does not create an attorney-client relationship.',
     },
   },
 }

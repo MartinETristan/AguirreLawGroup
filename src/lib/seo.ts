@@ -1,6 +1,6 @@
 import { areaFaqs } from '../content/faq.ts'
 import { practiceAreas } from '../content/practice-areas.ts'
-import { areaCopy, legalPageTitles, pageCopy } from '../content/seo.ts'
+import { areaCopy, pageCopy } from '../content/seo.ts'
 import { site } from '../content/site.ts'
 import { testimonials } from '../content/testimonials.ts'
 import { localizePath } from '../i18n/paths.ts'
@@ -182,10 +182,7 @@ export function getPageSeo(path: string, lang: Language): PageSeo {
 
   if (!copy) {
     return {
-      title:
-        path in legalPageTitles
-          ? `${legalPageTitles[path as keyof typeof legalPageTitles][lang]} | ${site.name}`
-          : site.name,
+      title: site.name,
       description: pageCopy['/'][lang].description,
       tags: [
         { tag: 'meta', attrs: { name: 'robots', content: 'noindex' } },

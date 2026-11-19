@@ -2,7 +2,7 @@ import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import type { Connect, Plugin, ResolvedConfig } from 'vite'
 
-import { legacyRedirects, legalPageTitles } from '../src/content/seo.ts'
+import { legacyRedirects } from '../src/content/seo.ts'
 import { fullAddress, site } from '../src/content/site.ts'
 import { localizePath } from '../src/i18n/paths.ts'
 import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo.ts'
@@ -229,12 +229,12 @@ export function seo(): Array<Plugin> {
         for (const [from, target] of Object.entries(legacyRedirects)) {
           await write(htmlFile(from), renderRedirect(target))
         }
-        // `/login`, las páginas legales aún vacías y las rutas inexistentes llevan `noindex`
+        // `/login` y las rutas inexistentes llevan `noindex`
         await write(
           '404.html',
           renderPage(template, '/404', 'en', fontPreloads),
         )
-        for (const path of ['/login', ...Object.keys(legalPageTitles)]) {
+        for (const path of ['/login']) {
           for (const lang of languages) {
             await write(
               htmlFile(localizePath(path, lang)),

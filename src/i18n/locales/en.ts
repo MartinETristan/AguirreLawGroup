@@ -311,6 +311,12 @@ const en: Translation = {
       disclaimer: 'Legal Disclaimer',
     },
   },
+  legalPage: {
+    updated: 'Last updated: {{date}}',
+    address: 'Address',
+    phone: 'Telephone',
+    email: 'Email',
+  },
   notFound: {
     title: 'Page not found.',
     text: 'The page you’re looking for doesn’t exist or has moved.',

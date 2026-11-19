@@ -309,6 +309,12 @@ const es = {
       disclaimer: 'Aviso legal',
     },
   },
+  legalPage: {
+    updated: 'Última actualización: {{date}}',
+    address: 'Dirección',
+    phone: 'Teléfono',
+    email: 'Correo electrónico',
+  },
   notFound: {
     title: 'Página no encontrada.',
     text: 'La página que buscas no existe o cambió de dirección.',
