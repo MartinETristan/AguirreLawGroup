@@ -42,8 +42,9 @@ export function OfficeMap() {
         <SectionHeading title={t('contact.map.title')} />
         <p className="text-[15px] text-muted-foreground">
           {address}
-          {office.kind === 'appointment' &&
-            ` · ${t('common.officeAppointment')}`}
+          {office.kind === 'appointment'
+            ? ` · ${t('common.officeAppointment')}`
+            : ` · ${t('common.hours', site.hours)}`}
         </p>
       </div>
 
