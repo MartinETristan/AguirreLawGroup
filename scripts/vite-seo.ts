@@ -1,9 +1,10 @@
+import { execSync } from 'node:child_process'
 import { mkdir, readFile, readdir, writeFile } from 'node:fs/promises'
 import { dirname, join } from 'node:path'
 import type { Connect, Plugin, ResolvedConfig } from 'vite'
 
 import { legacyRedirects } from '../src/content/seo.ts'
-import { fullAddress, site } from '../src/content/site.ts'
+import { fullAddress, officeAddress, site } from '../src/content/site.ts'
 import { localizePath } from '../src/i18n/paths.ts'
 import { alternatesFor, getPageSeo, indexablePaths } from '../src/lib/seo.ts'
 import type { Language } from '../src/i18n/index.ts'
@@ -32,16 +33,28 @@ function renderHead(path: string, lang: Language) {
   return [`<title>${escapeHtml(page.title)}</title>`, ...tags].join('\n    ')
 }
 
-/** Contenido mínimo para rastreadores que no ejecutan JavaScript. */
+/**
+ * Contenido para rastreadores que no ejecutan JavaScript (varios de IA lo hacen): el cuerpo lo
+ * pinta React sin SSR, así que esto es lo único que leen. Título, resumen, oficinas y enlaces.
+ */
 function renderNoscript(path: string, lang: Language) {
   const page = getPageSeo(path, lang)
-  const links = indexablePaths()
-    .map((target) => {
-      const label = getPageSeo(target, lang).title
-      return `<li><a href="${localizePath(target, lang)}">${escapeHtml(label)}</a></li>`
-    })
+  const link = (target: string) =>
+    `<li><a href="${localizePath(target, lang)}">${escapeHtml(getPageSeo(target, lang).title)}</a></li>`
+  const paths = indexablePaths()
+  const areas = paths.filter((target) => target.startsWith('/practice-areas/'))
+  const pages = paths.filter((target) => !target.startsWith('/practice-areas/'))
+  const offices = site.offices
+    .map(
+      (office) =>
+        `<li>${escapeHtml(office.city)}: ${escapeHtml(officeAddress(office))}${office.kind === 'appointment' ? (lang === 'es' ? ' (con cita)' : ' (by appointment)') : ''}</li>`,
+    )
     .join('')
-  return `<noscript><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(site.name)}, ${escapeHtml(fullAddress)}. <a href="${site.phone.href}">${escapeHtml(site.phone.display)}</a></p><ul>${links}</ul></noscript>`
+  const labels =
+    lang === 'es'
+      ? { areas: 'Áreas de práctica', offices: 'Oficinas', call: 'Llámanos' }
+      : { areas: 'Practice areas', offices: 'Offices', call: 'Call us' }
+  return `<noscript><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.description)}</p><p>${escapeHtml(site.name)} · ${escapeHtml(labels.call)}: <a href="${site.phone.href}">${escapeHtml(site.phone.display)}</a> · <a href="mailto:${site.email}">${escapeHtml(site.email)}</a></p><h2>${labels.offices}</h2><ul>${offices}</ul><nav><ul>${pages.map(link).join('')}</ul><h2>${labels.areas}</h2><ul>${areas.map(link).join('')}</ul></nav></noscript>`
 }
 
 /** El fondo del hero es el LCP de la portada; sin esto el navegador no lo ve hasta ejecutar React. */
@@ -97,7 +110,21 @@ function urlFor(path: string, lang: Language) {
   return alternatesFor(path).find((item) => item.hreflang === lang)?.href
 }
 
+/** Fecha del último commit: `lastmod` honesto, que cambia solo cuando el sitio cambia. */
+function lastModified() {
+  try {
+    return execSync('git log -1 --format=%cI', {
+      stdio: ['ignore', 'pipe', 'ignore'],
+    })
+      .toString()
+      .slice(0, 10)
+  } catch {
+    return new Date().toISOString().slice(0, 10)
+  }
+}
+
 function renderSitemap(paths: Array<string>) {
+  const lastmod = lastModified()
   const entries = paths.flatMap((path) =>
     languages.map((lang) => {
       const alternates = alternatesFor(path)
@@ -108,7 +135,7 @@ function renderSitemap(paths: Array<string>) {
             `    <xhtml:link rel="alternate" hreflang="${item.hreflang}" href="${item.href}" />`,
         )
         .join('\n')
-      return `  <url>\n    <loc>${loc}</loc>\n${links}\n  </url>`
+      return `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n${links}\n  </url>`
     }),
   )
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -133,11 +160,20 @@ function renderLlmsTxt(paths: Array<string>) {
 
 > ${getPageSeo('/', 'en').description}
 
-Address: ${fullAddress}. Phone: ${site.phone.display}. Email: ${site.email}. Hours: Monday to Friday, ${site.hours.open} to ${site.hours.close}.
+Attorney: ${site.attorney.name}, practicing in the Rio Grande Valley since ${site.attorney.practicingSince}.
+Address: ${fullAddress}. Phone: ${site.phone.display}. Email: ${site.email}. Hours: Monday to Friday, ${site.hours.open} to ${site.hours.close}
+Also known as: Aguirre Law Group.
+
+## Offices
+
+${site.offices.map((office) => `- ${office.city}: ${officeAddress(office)}${office.kind === 'appointment' ? ' (by appointment)' : ' (main office)'}`).join('\n')}
 
 ## Pages
 
-${list(paths.filter((path) => !isArea(path)), 'en')}
+${list(
+  paths.filter((path) => !isArea(path)),
+  'en',
+)}
 
 ## Practice areas
 

@@ -3,6 +3,18 @@ import type { Language } from '@/i18n'
 
 export type SeoCopy = { title: string; description: string }
 
+/** Primer elemento de las migas de pan (`BreadcrumbList`). */
+export const breadcrumbHome: Record<Language, string> = {
+  es: 'Inicio',
+  en: 'Home',
+}
+
+/** Texto alternativo de la imagen social (`og:image`, `twitter:image`). */
+export const imageAlt: Record<Language, string> = {
+  es: 'The LawGun: abogados de lesiones personales y defensa criminal en Brownsville, Texas, con Javier Aguirre',
+  en: 'The LawGun: personal injury and criminal defense attorneys in Brownsville, Texas, with Javier Aguirre',
+}
+
 type StaticPath =
   | '/'
   | '/about-us'
@@ -32,26 +44,26 @@ export const legacyRedirects: Record<string, string> = {
 export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
   '/': {
     es: {
-      title: 'Abogados de lesiones personales en Brownsville, TX',
+      title: 'Abogados de lesiones personales en Brownsville',
       description:
-        'Abogados de lesiones personales y defensa criminal en Brownsville, Texas, y el Valle del Río Grande. Accidentes de auto, camión, laborales y caídas. Consulta gratuita.',
+        'Abogados de lesiones personales y defensa criminal en Brownsville, McAllen y Harlingen, Texas. Accidentes de auto, camión y laborales. Consulta gratuita.',
     },
     en: {
       title: 'Personal injury attorneys in Brownsville, TX',
       description:
-        'Personal injury and criminal defense attorneys in Brownsville, Texas, and the Rio Grande Valley. Car, truck and work accidents and falls. Free consultation.',
+        'Personal injury and criminal defense attorneys in Brownsville, McAllen and Harlingen, Texas. Car, truck and work accidents. Free consultation.',
     },
   },
   '/about-us': {
     es: {
       title: 'Nosotros: abogados en Brownsville, TX',
       description:
-        'Conoce a The LawGun y al abogado Javier Aguirre, con práctica en casos penales y de lesiones personales en el Valle del Río Grande.',
+        'Conoce a The LawGun y a Javier Aguirre: defensa penal y lesiones personales en el Valle del Río Grande, con oficinas en Brownsville, McAllen y Harlingen.',
     },
     en: {
       title: 'About Us: attorneys in Brownsville, TX',
       description:
-        'Meet The LawGun and attorney Javier Aguirre, practicing criminal defense and personal injury law in the Rio Grande Valley.',
+        'Meet The LawGun and attorney Javier Aguirre: criminal defense and personal injury in the Rio Grande Valley, with offices in Brownsville, McAllen and Harlingen.',
     },
   },
   '/practice-areas': {
@@ -106,12 +118,12 @@ export const pageCopy: Record<StaticPath, Record<Language, SeoCopy>> = {
     es: {
       title: 'Contacto: consulta gratuita en Brownsville, TX',
       description:
-        'Contacta a The LawGun en 811 E Madison St, Brownsville, TX. Agenda tu consulta gratuita sobre defensa criminal o lesiones personales.',
+        'Oficina en 811 E Madison St, Brownsville, y citas en McAllen y Harlingen. Agenda tu consulta gratuita sobre defensa criminal o lesiones personales.',
     },
     en: {
       title: 'Contact: free consultation in Brownsville, TX',
       description:
-        'Contact The LawGun at 811 E Madison St, Brownsville, TX. Schedule your free criminal defense or personal injury consultation.',
+        'Office at 811 E Madison St, Brownsville, and appointments in McAllen and Harlingen. Schedule your free criminal defense or personal injury consultation.',
     },
   },
   '/privacy-policy': {
@@ -191,19 +203,19 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'personal-injury': {
     es: {
-      title: 'Abogado de lesiones personales en Brownsville, TX',
+      title: 'Abogado de lesiones personales en Brownsville',
       description:
-        'Accidentes de auto, camión y moto, laborales, caídas y muerte por negligencia en Brownsville y el Valle del Río Grande. Qué hacer, leyes de Texas y consulta gratuita.',
+        'Accidentes de auto, camión y moto, laborales, caídas y muerte por negligencia en Brownsville y el Valle del Río Grande. Leyes de Texas y consulta gratuita.',
     },
     en: {
       title: 'Personal injury attorney in Brownsville, TX',
       description:
-        'Car, truck and motorcycle accidents, work injuries, falls and wrongful death in Brownsville and the Rio Grande Valley. What to do, Texas law and a free consultation.',
+        'Car, truck and motorcycle accidents, work injuries, falls and wrongful death in Brownsville and the Rio Grande Valley. Texas law and a free consultation.',
     },
   },
   'car-accidents': {
     es: {
-      title: 'Abogado de accidentes de auto en Brownsville, TX',
+      title: 'Abogado de accidentes de auto en Brownsville',
       description:
         'Choques por alcance, de frente y con fuga en Brownsville y el Valle del Río Grande. Leyes de Texas, seguros y consulta gratuita.',
     },
@@ -215,19 +227,19 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'drunk-driving-accidents': {
     es: {
-      title: 'Abogado de accidentes por conductor ebrio en Brownsville',
+      title: 'Accidentes por conductor ebrio en Brownsville',
       description:
         'Reclamos contra conductores ebrios y bares en Brownsville, Texas: daños ejemplares, ley dram shop y consulta gratuita.',
     },
     en: {
-      title: 'Drunk driving accident attorney in Brownsville, TX',
+      title: 'Drunk driving accident attorney in Brownsville',
       description:
         'Claims against drunk drivers and bars in Brownsville, Texas: exemplary damages, dram shop law and a free consultation.',
     },
   },
   'truck-accidents': {
     es: {
-      title: 'Abogado de accidentes de camión en Brownsville, TX',
+      title: 'Abogado de accidentes de camión en Brownsville',
       description:
         'Choques con tráileres y 18 ruedas en Brownsville y el Valle del Río Grande. Normas de la FMCSA, responsables y consulta gratuita.',
     },
@@ -239,7 +251,7 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'motorcycle-accidents': {
     es: {
-      title: 'Abogado de accidentes de moto en Brownsville, TX',
+      title: 'Abogado de accidentes de moto en Brownsville',
       description:
         'Accidentes de motocicleta en Brownsville, Texas: ley de cascos, culpa compartida y consulta gratuita.',
     },
@@ -251,19 +263,19 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'uber-lyft-accidents': {
     es: {
-      title: 'Abogado de accidentes de Uber y Lyft en Brownsville',
+      title: 'Accidentes de Uber y Lyft en Brownsville, TX',
       description:
         'Pasajeros y terceros lesionados en viajes de Uber o Lyft en Brownsville, Texas. Qué seguro responde y consulta gratuita.',
     },
     en: {
-      title: 'Uber & Lyft accident attorney in Brownsville, TX',
+      title: 'Uber & Lyft accident attorney in Brownsville',
       description:
         'Passengers and others hurt in Uber or Lyft crashes in Brownsville, Texas. Which insurance pays and a free consultation.',
     },
   },
   'tour-bus-accidents': {
     es: {
-      title: 'Abogado de accidentes de autobús en Brownsville, TX',
+      title: 'Abogado de accidentes de autobús en Brownsville',
       description:
         'Accidentes de autobuses turísticos, chárter, escolares y shuttles en Brownsville, Texas. Consulta gratuita.',
     },
@@ -275,7 +287,7 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'uninsured-motorists': {
     es: {
-      title: 'Abogado de conductores sin seguro en Brownsville, TX',
+      title: 'Conductores sin seguro: abogado en Brownsville',
       description:
         'Reclamos UM/UIM cuando el responsable no tiene seguro, huyó o su cobertura no alcanza, en Brownsville, Texas.',
     },
@@ -311,7 +323,7 @@ export const areaCopy: Record<PracticeArea, Record<Language, SeoCopy>> = {
   },
   'white-collar': {
     es: {
-      title: 'Abogado de delitos de cuello blanco en Brownsville',
+      title: 'Abogado de cuello blanco en Brownsville',
       description:
         'Defensa por fraude, malversación, extorsión y lavado de dinero en Brownsville, Texas, incluso con intervención federal.',
     },
