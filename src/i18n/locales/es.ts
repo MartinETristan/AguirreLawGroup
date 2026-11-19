@@ -268,6 +268,7 @@ const es = {
     map: {
       title: 'Nuestra oficina.',
       label: 'Mapa con la ubicación de la oficina: {{address}}',
+      offices: 'Elige una oficina',
       directions: 'Cómo llegar',
       loading: 'Cargando el mapa',
       unavailable: 'No se pudo cargar el mapa. Usa “Cómo llegar” para ver la ruta.',

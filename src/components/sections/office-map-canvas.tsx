@@ -1,4 +1,10 @@
-import { Map as MapLibreMap, Marker, MercatorCoordinate } from 'maplibre-gl'
+import {
+  Map as MapLibreMap,
+  Marker,
+  MercatorCoordinate,
+  setWorkerUrl,
+} from 'maplibre-gl'
+import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url'
 import { MapPinIcon, MinusIcon, PlusIcon } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
@@ -7,31 +13,53 @@ import type { ReactNode } from 'react'
 
 import { Button } from '@/components/ui/button'
 import { ButtonGroup } from '@/components/ui/button-group'
-import cityLimits from '@/content/brownsville-limits.json'
 import { site } from '@/content/site'
+import type { Office } from '@/content/site'
 import { OFFICE_MAP_STYLE_URL } from '@/lib/office-map'
 import { cn } from '@/lib/utils'
 
 import 'maplibre-gl/dist/maplibre-gl.css'
 
-const { geo, mapBounds } = site.address
+// MapLibre 6 busca su worker junto a su propio módulo. Vite pre-empaqueta ese módulo en desarrollo y ahí
+// no hay worker («Worker failed to load»), y en el build tampoco lo emite: se declara el archivo
+// (autocontenido, sin imports) para que Vite lo sirva y lo copie.
+setWorkerUrl(workerUrl)
+
 const OFFICE_ZOOM = 16
 const MAX_ZOOM = 18
 // `MapLibre` mide el mundo en múltiplos de 512 px por cada nivel de zoom.
 const WORLD_SIZE = 512
 const ZOOM_TOLERANCE = 0.01
-// Los límites son un rectángulo y dejan ver Matamoros: lo que queda fuera de la ciudad se atenúa.
-const OUTSIDE_RING = [
-  [-98.5, 25],
-  [-96.5, 25],
-  [-96.5, 27],
-  [-98.5, 27],
-  [-98.5, 25],
-]
+// Mitad del lado del cuadrado que se deja ver alrededor de cada oficina.
+const MAP_HALF_SIDE_METERS = 8000
+
+type Bounds = [[number, number], [number, number]]
+
+/**
+ * Límites del mapa: un cuadrado perfecto (en la proyección del mapa) con la oficina en el centro.
+ * Al estar centrados en ella, alejar el zoom nunca desplaza la vista hacia un lado.
+ */
+function officeBounds({ geo }: Office): Bounds {
+  const center = MercatorCoordinate.fromLngLat(geo)
+  const half = MAP_HALF_SIDE_METERS * center.meterInMercatorCoordinateUnits()
+  // En coordenadas de Mercator la `y` crece hacia el sur
+  const southWest = new MercatorCoordinate(
+    center.x - half,
+    center.y + half,
+  ).toLngLat()
+  const northEast = new MercatorCoordinate(
+    center.x + half,
+    center.y - half,
+  ).toLngLat()
+  return [
+    [southWest.lng, southWest.lat],
+    [northEast.lng, northEast.lat],
+  ]
+}
 
 /** Zoom mínimo con el que el visor cabe dentro de los límites, para no ver nada fuera de ellos. */
-function minZoomInsideBounds(width: number, height: number) {
-  const [[west, south], [east, north]] = mapBounds
+function minZoomInsideBounds(bounds: Bounds, width: number, height: number) {
+  const [[west, south], [east, north]] = bounds
   const southWest = MercatorCoordinate.fromLngLat([west, south])
   const northEast = MercatorCoordinate.fromLngLat([east, north])
   const fit = Math.max(
@@ -41,10 +69,20 @@ function minZoomInsideBounds(width: number, height: number) {
   return Math.ceil(Math.log2(fit / WORLD_SIZE) * 100) / 100
 }
 
-export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
+export function OfficeMapCanvas({
+  office,
+  loading,
+}: {
+  office: Office
+  loading: ReactNode
+}) {
   const { t } = useTranslation()
   const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<MapLibreMap>(null)
+  const markerRef = useRef<Marker>(null)
+  // El mapa se crea una sola vez; la oficina que se elige después llega por este ref y el efecto de abajo.
+  const officeRef = useRef(office)
+  officeRef.current = office
   const [markerElement] = useState(() => document.createElement('div'))
   const [status, setStatus] = useState<'loading' | 'ready' | 'failed'>(
     'loading',
@@ -63,10 +101,10 @@ export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
       map = new MapLibreMap({
         container,
         style: OFFICE_MAP_STYLE_URL,
-        center: geo,
+        center: officeRef.current.geo,
         zoom: OFFICE_ZOOM,
         maxZoom: MAX_ZOOM,
-        maxBounds: mapBounds,
+        maxBounds: officeBounds(officeRef.current),
         renderWorldCopies: false,
         // Las etiquetas aparecen de inmediato en vez de desvanecerse
         fadeDuration: 0,
@@ -80,7 +118,7 @@ export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
         locale: {
           'AttributionControl.ToggleAttribution': t('contact.map.attribution'),
           'Map.Title': t('contact.map.label', {
-            address: site.address.street,
+            address: officeRef.current.street,
           }),
           'Marker.Title': site.name,
           'CooperativeGesturesHandler.MobileHelpText': t(
@@ -98,7 +136,11 @@ export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
 
     function syncMinZoom() {
       map.setMinZoom(
-        minZoomInsideBounds(container!.clientWidth, container!.clientHeight),
+        minZoomInsideBounds(
+          officeBounds(officeRef.current),
+          container!.clientWidth,
+          container!.clientHeight,
+        ),
       )
     }
     function syncZoomLimit() {
@@ -115,46 +157,60 @@ export function OfficeMapCanvas({ loading }: { loading: ReactNode }) {
     })
     map.on('zoomend', syncZoomLimit)
     // El estilo oscuro de OpenFreeMap pide iconos que su sprite no trae (p. ej. `wood-pattern` en
-    // `landcover_wood`); un píxel transparente los cubre y evita el aviso en consola.
-    map.on('styleimagemissing', ({ id }) => {
+    // `landcover_wood`); un píxel transparente los cubre y evita el aviso en consola. Desde MapLibre 6
+    // el evento `styleimagemissing` llega tarde (no puede resolver la imagen): se usa el resolver.
+    map.setMissingStyleImageResolver((id) => {
       if (!map.hasImage(id))
         map.addImage(id, { width: 1, height: 1, data: new Uint8Array(4) })
     })
-    map.on('load', () => {
-      map.addSource('outside-city', {
-        type: 'geojson',
-        data: {
-          type: 'Feature',
-          properties: {},
-          // Un rectángulo mayor que los límites con la ciudad como hueco
-          geometry: {
-            type: 'Polygon',
-            coordinates: [OUTSIDE_RING, cityLimits],
-          },
-        },
-      })
-      map.addLayer({
-        id: 'outside-city',
-        type: 'fill',
-        source: 'outside-city',
-        paint: { 'fill-color': '#000', 'fill-opacity': 0.72 },
-      })
-      setStatus('ready')
-    })
+    map.on('load', () => setStatus('ready'))
     // Un tile suelto puede fallar sin impedir la carga: `load` corrige este estado si llega a ocurrir.
     map.on('error', () => {
       setStatus((current) => (current === 'loading' ? 'failed' : current))
     })
 
-    new Marker({ element: markerElement, anchor: 'bottom' })
-      .setLngLat(geo)
+    markerRef.current = new Marker({ element: markerElement, anchor: 'bottom' })
+      .setLngLat(officeRef.current.geo)
       .addTo(map)
 
     return () => {
       map.remove()
       mapRef.current = null
+      markerRef.current = null
     }
   }, [markerElement, t])
+
+  // Al cambiar de oficina el mapa viaja hasta ella. Mientras vuela los límites de la anterior no
+  // aplican (la nueva oficina cae fuera de ellos), así que se retiran y se fijan al aterrizar.
+  const appliedOfficeId = useRef(office.id)
+  useEffect(() => {
+    const map = mapRef.current
+    if (!map || appliedOfficeId.current === office.id) return
+    appliedOfficeId.current = office.id
+
+    markerRef.current?.setLngLat(office.geo)
+
+    const container = map.getContainer()
+    const bounds = officeBounds(office)
+    function lockBounds() {
+      map!.setMaxBounds(bounds)
+      map!.setMinZoom(
+        minZoomInsideBounds(
+          bounds,
+          container.clientWidth,
+          container.clientHeight,
+        ),
+      )
+    }
+
+    map.setMaxBounds(null)
+    map.setMinZoom(0)
+    map.once('moveend', lockBounds)
+    const target = { center: office.geo, zoom: OFFICE_ZOOM }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      map.jumpTo(target)
+    else map.flyTo({ ...target, essential: false })
+  }, [office])
 
   return (
     <>

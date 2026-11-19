@@ -270,6 +270,7 @@ const en: Translation = {
     map: {
       title: 'Our office.',
       label: 'Map showing the office location: {{address}}',
+      offices: 'Choose an office',
       directions: 'Get directions',
       loading: 'Loading map',
       unavailable: 'The map could not be loaded. Use “Get directions” to see the route.',
