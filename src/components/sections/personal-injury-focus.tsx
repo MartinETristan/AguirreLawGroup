@@ -29,7 +29,7 @@ export function PersonalInjuryFocus() {
 
       <Stagger
         as="ul"
-        className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-border bg-border min-[420px]:grid-cols-2 lg:grid-cols-4"
+        className="grid grid-cols-1 gap-px overflow-hidden rounded-lg border border-border bg-border min-[420px]:grid-cols-2 lg:grid-cols-3"
       >
         {cases.map((item) => (
           <StaggerItem

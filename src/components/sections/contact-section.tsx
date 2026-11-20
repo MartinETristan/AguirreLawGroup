@@ -26,7 +26,7 @@ import {
 } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { areaGroups, practiceAreas } from '@/content/practice-areas'
-import { fullAddress, site } from '@/content/site'
+import { site } from '@/content/site'
 import { useHideCallBar } from '@/lib/call-bar'
 import { contactFields, validateContactField } from '@/lib/contact-validation'
 import type { PracticeArea } from '@/content/practice-areas'
@@ -71,14 +71,29 @@ export function ContactSection({
         </a>
       ),
     },
-    {
-      icon: <MapPinIcon />,
-      content: (
-        <a href={site.address.mapsUrl} target="_blank" rel="noreferrer">
-          {fullAddress}
-        </a>
-      ),
-    },
+    ...site.offices.map((office) => {
+      const address = `${office.street}, ${office.region}`
+      const label = `${office.city} · ${t(
+        office.kind === 'main'
+          ? 'common.officeMain'
+          : 'common.officeAppointment',
+      )}`
+      return {
+        icon: <MapPinIcon />,
+        content: (
+          <span className="flex flex-col">
+            <span className="font-semibold">{label}</span>
+            {office.kind === 'main' ? (
+              <a href={site.address.mapsUrl} target="_blank" rel="noreferrer">
+                {address}
+              </a>
+            ) : (
+              <span>{address}</span>
+            )}
+          </span>
+        ),
+      }
+    }),
     { icon: <ClockIcon />, content: t('common.hours', site.hours) },
   ]
 

@@ -10,8 +10,6 @@ export const injuryAreas = [
   'drunk-driving-accidents',
   'truck-accidents',
   'motorcycle-accidents',
-  'pedestrian-accidents',
-  'bicycle-accidents',
   'uber-lyft-accidents',
   'tour-bus-accidents',
   'uninsured-motorists',

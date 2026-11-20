@@ -1,4 +1,30 @@
+# https://thelawgun.com
+# Todo el sitio es público e indexable. /login no se bloquea aquí a propósito: lleva
+# `noindex`, y Google solo lo respeta si puede rastrear la página.
+
 User-agent: *
 Allow: /
 
-Sitemap: https://www.aguirre-lawgroup.com/sitemap.xml
+# Buscadores y asistentes de IA: la firma quiere aparecer en sus respuestas.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+Sitemap: https://thelawgun.com/sitemap.xml

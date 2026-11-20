@@ -43,17 +43,39 @@ export function SiteFooter() {
 
           <div className="flex flex-col gap-2 text-sm">
             <h2 className={headingClass}>{t('footer.office')}</h2>
-            <a
-              href={site.address.mapsUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="leading-relaxed text-ink-300 transition-colors hover:text-gold-300"
-            >
-              <span className="block">{site.address.street}</span>
-              <span className="block">
-                {site.address.city}, {site.address.state} {site.address.zip}
-              </span>
-            </a>
+            <ul className="flex flex-col gap-3">
+              {site.offices.map((office) => (
+                <li key={office.id} className="leading-relaxed text-ink-300">
+                  <span className="block font-semibold text-ink-50">
+                    {office.city}
+                    <span className="font-normal text-ink-400">
+                      {' · '}
+                      {t(
+                        office.kind === 'main'
+                          ? 'common.officeMain'
+                          : 'common.officeAppointment',
+                      )}
+                    </span>
+                  </span>
+                  {office.kind === 'main' ? (
+                    <a
+                      href={site.address.mapsUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="transition-colors hover:text-gold-300"
+                    >
+                      <span className="block">{office.street}</span>
+                      <span className="block">{office.region}</span>
+                    </a>
+                  ) : (
+                    <>
+                      <span className="block">{office.street}</span>
+                      <span className="block">{office.region}</span>
+                    </>
+                  )}
+                </li>
+              ))}
+            </ul>
             <span className="text-ink-300">
               {t('common.hours', site.hours)}
             </span>

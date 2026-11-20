@@ -16,8 +16,8 @@ const criminalFaq: Array<FaqItem> = [
       en: 'Do I need a lawyer even if I am innocent?',
     },
     answer: {
-      es: 'Es común que se acuse a personas de delitos que no cometieron, y un abogado es tu mejor línea de defensa. Además, quien cometió un delito puede ser acusado injustamente de otros. En Aguirre Law Group te ayudamos a responder a las acusaciones y a preparar un plan sólido.',
-      en: 'It is common for people to be charged with crimes they did not commit, and an attorney is your best line of defense. People who committed one crime may also be wrongfully accused of others. Aguirre Law Group can help you address the accusations and develop a strong plan.',
+      es: 'Es común que se acuse a personas de delitos que no cometieron, y un abogado es tu mejor línea de defensa. Además, quien cometió un delito puede ser acusado injustamente de otros. En The LawGun te ayudamos a responder a las acusaciones y a preparar un plan sólido.',
+      en: 'It is common for people to be charged with crimes they did not commit, and an attorney is your best line of defense. People who committed one crime may also be wrongfully accused of others. The LawGun can help you address the accusations and develop a strong plan.',
     },
   },
   {
@@ -49,8 +49,8 @@ const criminalFaq: Array<FaqItem> = [
       en: 'How much should I expect to pay for a lawyer?',
     },
     answer: {
-      es: 'Depende de la gravedad del cargo y de los hechos del caso. En Aguirre Law Group podemos darte una consulta para evaluar cuánto costará tu defensa.',
-      en: 'It depends on the severity of your charge and the facts of the case. Aguirre Law Group can provide a consultation to assess how much your defense will cost.',
+      es: 'Depende de la gravedad del cargo y de los hechos del caso. En The LawGun podemos darte una consulta para evaluar cuánto costará tu defensa.',
+      en: 'It depends on the severity of your charge and the facts of the case. The LawGun can provide a consultation to assess how much your defense will cost.',
     },
   },
   {

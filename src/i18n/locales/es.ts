@@ -1,5 +1,7 @@
 const es = {
   common: {
+    officeMain: 'Oficina principal',
+    officeAppointment: 'Con cita previa',
     freeConsultation: 'Consulta gratuita',
     scheduleConsultation: 'Agenda tu consulta gratuita',
     call: 'Llama al {{phone}}',
@@ -79,14 +81,6 @@ const es = {
         title: 'Accidentes de moto',
         text: 'Ir en moto no te hace culpable. Demostramos quién causó el choque.',
       },
-      'pedestrian-accidents': {
-        title: 'Atropellos a peatones',
-        text: 'Cruces, estacionamientos y zonas escolares. Buscamos todas las coberturas.',
-      },
-      'bicycle-accidents': {
-        title: 'Accidentes de bicicleta',
-        text: 'En Texas la bicicleta tiene los mismos derechos que un vehículo.',
-      },
       'uber-lyft-accidents': {
         title: 'Accidentes de Uber y Lyft',
         text: 'Pasajeros y terceros. Identificamos qué póliza responde en cada caso.',
@@ -118,7 +112,7 @@ const es = {
     lead: 'Ya sea que enfrentes una lesión que cambió tu vida o un arresto que pone en juego tu futuro, necesitas un abogado que haga todo lo posible por defender tu bienestar, tus derechos y tu libertad.',
     evidence:
       'Tenemos la visión para encontrar debilidades y errores en el caso de la fiscalía. Estudiamos a fondo la evidencia y diseñamos la mejor estrategia para tu defensa.',
-    reasonsTitle: 'Al elegir Aguirre Law Group, eliges:',
+    reasonsTitle: 'Al elegir The LawGun, eliges:',
     reasons: [
       'Una firma que antepone tus derechos y tu libertad a cualquier otra cosa.',
       'Un abogado dedicado que conoce a fondo el sistema de justicia penal de Texas.',
@@ -157,11 +151,9 @@ const es = {
         'Accidentes de auto',
         'Accidentes de camión',
         'Accidentes de motocicleta',
-        'Accidentes laborales',
         'Resbalones y caídas',
         'Mordeduras de perro',
-        'Negligencia médica',
-        'Muerte por negligencia',
+        'Accidentes por conductor ebrio',
       ],
       stepsTitle: 'Después de un accidente.',
       steps: [
@@ -276,6 +268,7 @@ const es = {
     map: {
       title: 'Nuestra oficina.',
       label: 'Mapa con la ubicación de la oficina: {{address}}',
+      offices: 'Elige una oficina',
       directions: 'Cómo llegar',
       loading: 'Cargando el mapa',
       unavailable: 'No se pudo cargar el mapa. Usa “Cómo llegar” para ver la ruta.',
@@ -305,7 +298,7 @@ const es = {
   },
   footer: {
     motto: 'Confiables. Dedicados. Respetados.',
-    office: 'Oficina',
+    office: 'Oficinas',
     contact: 'Contacto',
     navigation: 'Navegación',
     social: 'Redes sociales',
@@ -315,6 +308,12 @@ const es = {
       terms: 'Términos',
       disclaimer: 'Aviso legal',
     },
+  },
+  legalPage: {
+    updated: 'Última actualización: {{date}}',
+    address: 'Dirección',
+    phone: 'Teléfono',
+    email: 'Correo electrónico',
   },
   notFound: {
     title: 'Página no encontrada.',

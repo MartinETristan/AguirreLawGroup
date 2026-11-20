@@ -456,168 +456,6 @@ export const injuryAreaPages: Record<
     },
   },
 
-  'pedestrian-accidents': {
-    es: {
-      tagline: 'Caminar por tu ciudad no debería ponerte en peligro.',
-      intro: [
-        'Un peatón atropellado puede sufrir lesiones graves aunque el vehículo vaya despacio. Estos accidentes suelen ocurrir en cruces, estacionamientos, zonas escolares y calles sin banqueta.',
-        'Determinamos si el conductor no cedió el paso, iba distraído o a exceso de velocidad, y buscamos todas las coberturas disponibles, incluidas las de tu propia póliza.',
-      ],
-      sections: [
-        {
-          title: 'Dónde ocurren',
-          list: [
-            'Cruces peatonales',
-            'Intersecciones con semáforo',
-            'Estacionamientos',
-            'Zonas escolares',
-            'Calles sin banqueta o mal iluminadas',
-            'Entradas de casas y negocios',
-          ],
-        },
-        {
-          title: 'Leyes de Texas que afectan tu caso',
-          rows: [
-            {
-              label: 'Derecho de paso',
-              value:
-                'Los conductores deben ceder el paso a los peatones en los cruces peatonales y tener cuidado especial con niños y personas mayores.',
-            },
-            {
-              label: 'Fuera del cruce',
-              value:
-                'Si cruzabas por otro lugar, aún puedes reclamar, aunque la aseguradora alegará que compartes la culpa.',
-            },
-            {
-              label: 'Tu propia póliza',
-              value:
-                'Tu cobertura PIP y la de conductor sin seguro (UM/UIM) pueden protegerte también cuando vas a pie.',
-            },
-            deadline.es,
-          ],
-        },
-      ],
-    },
-    en: {
-      tagline: "Walking in your own city shouldn't put you in danger.",
-      intro: [
-        'A pedestrian hit by a car can suffer serious injuries even at low speed. These accidents often happen at crossings, parking lots, school zones and streets without sidewalks.',
-        'We determine whether the driver failed to yield, was distracted or was speeding, and we look for every available coverage, including your own policy.',
-      ],
-      sections: [
-        {
-          title: 'Where they happen',
-          list: [
-            'Crosswalks',
-            'Intersections with traffic lights',
-            'Parking lots',
-            'School zones',
-            'Streets without sidewalks or with poor lighting',
-            'Home and business driveways',
-          ],
-        },
-        {
-          title: 'Texas laws that affect your case',
-          rows: [
-            {
-              label: 'Right of way',
-              value:
-                'Drivers must yield to pedestrians in crosswalks and take special care around children and older adults.',
-            },
-            {
-              label: 'Outside a crosswalk',
-              value:
-                'If you crossed somewhere else, you can still bring a claim, though the insurer will argue you share the blame.',
-            },
-            {
-              label: 'Your own policy',
-              value:
-                'Your PIP and uninsured/underinsured motorist (UM/UIM) coverage may protect you on foot as well.',
-            },
-            deadline.en,
-          ],
-        },
-      ],
-    },
-  },
-
-  'bicycle-accidents': {
-    es: {
-      tagline: 'En Texas, la bicicleta tiene derecho a la calle.',
-      intro: [
-        'Un ciclista golpeado por un vehículo puede sufrir fracturas, lesiones en la cabeza y heridas que tardan meses en sanar. Muchos de estos choques ocurren porque el conductor no dejó espacio suficiente o no miró antes de girar o abrir la puerta.',
-        'Investigamos la escena, buscamos videos y testigos, y demostramos que el conductor no respetó tus derechos en la vía.',
-      ],
-      sections: [
-        {
-          title: 'Causas frecuentes',
-          list: [
-            'Rebases demasiado cerca',
-            'Giros a la derecha que cortan el paso',
-            'Puertas de autos estacionados',
-            'Conductores que no ceden el paso',
-            'Salidas de estacionamientos y entradas',
-            'Conductores distraídos',
-          ],
-        },
-        {
-          title: 'Leyes de Texas que afectan tu caso',
-          rows: [
-            {
-              label: 'Vehículo con derechos',
-              value:
-                'Un ciclista tiene los mismos derechos y deberes que el conductor de un vehículo, y puede usar el carril cuando no es seguro compartirlo.',
-            },
-            {
-              label: 'Luces de noche',
-              value:
-                'La ley exige luz blanca al frente y reflector o luz roja atrás. No llevarlas puede usarse para alegar que compartes la culpa.',
-            },
-            sharedFault.es,
-            deadline.es,
-          ],
-        },
-      ],
-    },
-    en: {
-      tagline: 'In Texas, a bicycle has a right to the road.',
-      intro: [
-        "A cyclist hit by a vehicle can suffer fractures, head injuries and wounds that take months to heal. Many of these crashes happen because the driver didn't leave enough room or didn't look before turning or opening a door.",
-        'We investigate the scene, look for video and witnesses, and show that the driver disregarded your rights on the road.',
-      ],
-      sections: [
-        {
-          title: 'Common causes',
-          list: [
-            'Passing too close',
-            'Right turns that cut the rider off',
-            'Parked car doors',
-            'Drivers who fail to yield',
-            'Cars leaving parking lots and driveways',
-            'Distracted drivers',
-          ],
-        },
-        {
-          title: 'Texas laws that affect your case',
-          rows: [
-            {
-              label: 'A vehicle with rights',
-              value:
-                "A cyclist has the same rights and duties as the driver of a vehicle, and may take the lane when it isn't safe to share it.",
-            },
-            {
-              label: 'Lights at night',
-              value:
-                'The law requires a white light in front and a red reflector or light in back. Riding without them may be used to argue you share the blame.',
-            },
-            sharedFault.en,
-            deadline.en,
-          ],
-        },
-      ],
-    },
-  },
-
   'uber-lyft-accidents': {
     es: {
       tagline: 'Saber qué seguro responde es la mitad del caso.',
@@ -651,7 +489,6 @@ export const injuryAreaPages: Record<
           list: [
             'Pasajeros del vehículo',
             'Ocupantes de otros vehículos',
-            'Peatones y ciclistas',
             'Conductores de la aplicación chocados por otro',
           ],
         },
@@ -698,7 +535,6 @@ export const injuryAreaPages: Record<
           list: [
             'Passengers in the vehicle',
             'Occupants of other vehicles',
-            'Pedestrians and cyclists',
             'Rideshare drivers hit by someone else',
           ],
         },
@@ -840,7 +676,7 @@ export const injuryAreaPages: Record<
             {
               label: 'Quiénes están cubiertos',
               value:
-                'Por lo general tú, tus familiares que viven contigo y los pasajeros de tu vehículo, también como peatones o ciclistas según la póliza.',
+                'Por lo general tú, tus familiares que viven contigo y los pasajeros de tu vehículo.',
             },
             deadline.es,
           ],
@@ -895,7 +731,7 @@ export const injuryAreaPages: Record<
             {
               label: "Who's covered",
               value:
-                'Usually you, relatives who live with you and passengers in your vehicle, also as pedestrians or cyclists depending on the policy.',
+                'Usually you, relatives who live with you and passengers in your vehicle.',
             },
             deadline.en,
           ],

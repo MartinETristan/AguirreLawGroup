@@ -1,6 +1,6 @@
 {
   "bundler": "vite",
-  "projectName": "aguirrelawgroup",
+  "projectName": "thelawgun",
   "mode": "file-router",
   "typescript": true,
   "packageManager": "pnpm",

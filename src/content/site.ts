@@ -4,23 +4,23 @@
  * aquí; los textos traducibles viven en `src/i18n/locales`.
  */
 export const site = {
-  name: 'Aguirre Law Group',
-  // Logo del navbar: The Law Gun en blanco, recortado y a 40 px de alto a 1x
+  name: 'The LawGun',
+  // Logo del navbar: The Law Gun en dorado liso, recortado y a 40 px de alto a 1x
   logo: {
-    src: '/TheLawGun/thelawgun-white-nav-80.webp',
+    src: '/TheLawGun/thelawgun-gold-nav-80.webp',
     srcSet:
-      '/TheLawGun/thelawgun-white-nav-40.webp 1x, /TheLawGun/thelawgun-white-nav-80.webp 2x, /TheLawGun/thelawgun-white-nav-120.webp 3x',
+      '/TheLawGun/thelawgun-gold-nav-40.webp 1x, /TheLawGun/thelawgun-gold-nav-80.webp 2x, /TheLawGun/thelawgun-gold-nav-120.webp 3x',
     width: 149,
     height: 40,
     alt: 'The Law Gun',
   },
-  url: 'https://www.aguirre-lawgroup.com',
+  url: 'https://thelawgun.com',
 
   phone: {
     display: '(956) 477-7777',
     href: 'tel:+19564777777',
   },
-  email: 'appointment@aguirre-lawgroup.com',
+  email: 'appointment@thelawgun.com',
 
   address: {
     street: '811 E Madison St',
@@ -29,16 +29,40 @@ export const site = {
     zip: '78520',
     // Geocodificado con OpenStreetMap (coincidencia exacta del número 811)
     geo: { lat: 25.9061, lng: -97.4980114 },
-    // Límites del mapa, [oeste, sur] y [este, norte]: la zona urbana de Brownsville y el puerto.
-    // El límite municipal de OpenStreetMap llega hasta 26.22 N por franjas anexadas que abarcan
-    // San Benito y Los Fresnos, y por eso aquí se recorta.
-    mapBounds: [
-      [-97.58, 25.84],
-      [-97.35, 26.0],
-    ] as [[number, number], [number, number]],
     mapsUrl:
       'https://www.google.com/maps/search/?api=1&query=811+E+Madison+St+Brownsville+TX+78520',
   },
+
+  /**
+   * Oficinas. La principal es `address` (datos estructurados); las demás son con cita. `geo` son las
+   * coordenadas del mapa de contacto, geocodificadas con OpenStreetMap.
+   */
+  offices: [
+    {
+      id: 'brownsville',
+      city: 'Brownsville',
+      kind: 'main',
+      street: '811 E. Madison St.',
+      region: 'Brownsville, TX 78520',
+      geo: { lat: 25.9061, lng: -97.4980114 },
+    },
+    {
+      id: 'mcallen',
+      city: 'McAllen',
+      kind: 'appointment',
+      street: '200 S. 10th St., Suite 905',
+      region: 'McAllen, TX 78521',
+      geo: { lat: 26.2019209, lng: -98.2313816 },
+    },
+    {
+      id: 'harlingen',
+      city: 'Harlingen',
+      kind: 'appointment',
+      street: '314 E. Tyler Ave., Suite B',
+      region: 'Harlingen, TX 78550',
+      geo: { lat: 26.1895472, lng: -97.6927948 },
+    },
+  ],
 
   hours: {
     open: '8:30 a.m.',
@@ -99,3 +123,13 @@ export const yearsPracticing =
   new Date().getFullYear() - site.attorney.practicingSince
 
 export const fullAddress = `${site.address.street}, ${site.address.city}, ${site.address.state} ${site.address.zip}`
+
+export type Office = (typeof site.offices)[number]
+export type OfficeId = Office['id']
+
+export const officeAddress = (office: Office) =>
+  `${office.street}, ${office.region}`
+
+/** Ruta en Google Maps hacia la oficina (abre la app en el móvil). */
+export const officeDirectionsUrl = (office: Office) =>
+  `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(officeAddress(office))}`

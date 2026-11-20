@@ -708,7 +708,7 @@ body,
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
-/* Paleta Aguirre Law Group — Azul marino + Blanco, con dorado complementario */
+/* Paleta The LawGun — Azul marino + Blanco, con dorado complementario */
 @theme {
   /* Primario — Azul (#3387E6 = 500) */
   --color-primary-50: #eef5fd;

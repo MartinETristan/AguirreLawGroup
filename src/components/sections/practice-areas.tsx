@@ -106,7 +106,8 @@ export function PracticeAreas({
                 </StaggerItem>
               ))}
               {isLast && (
-                <StaggerItem className="flex">
+                // Ocupa dos celdas: con 6 áreas penales, completa la última fila.
+                <StaggerItem className="flex sm:col-span-2">
                   <a
                     href={site.phone.href}
                     className={cn(cellClass, 'bg-secondary')}

@@ -1,4 +1,4 @@
-# AguirreLawGroup
+# TheLawGun
 
 SPA con React 19, Vite 8 y TanStack Router (rutas por archivos en `src/routes`).
 
