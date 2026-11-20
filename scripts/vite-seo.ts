@@ -202,6 +202,49 @@ async function renderFontPreloads(outDir: string) {
 }
 
 /**
+ * `.htaccess` para Hostinger (LiteSpeed/Apache): sin esto, `/contact-us` no encuentra `contact-us.html`
+ * y al recargar cualquier ruta que no sea `/` el host responde con su propio error.
+ */
+function renderHtaccess() {
+  const redirects = Object.entries(legacyRedirects)
+    .map(([from, target]) => `RewriteRule ^${from.slice(1)}/?$ ${target} [R=301,L]`)
+    .join('\n')
+  return `Options -MultiViews -Indexes
+# \`/es\` es a la vez \`es.html\` y la carpeta \`es/\`: sin esto el host redirige a \`/es/\`.
+DirectorySlash Off
+ErrorDocument 404 /404.html
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+# URLs del sitio anterior (Wix)
+${redirects}
+
+# \`/ruta.html\` y \`/index.html\` → URL limpia
+# Solo caracteres de ruta: sin \`\\\` ni \`%\`, \`/\\evil.com\` acabaría como redirect a otro dominio.
+RewriteCond %{THE_REQUEST} \\s/+(?:((?:[\\w.~-]+/)*[\\w.~-]+)/)?index\\.html[\\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+RewriteCond %{THE_REQUEST} \\s/+((?:[\\w.~-]+/)*[\\w.~-]+)\\.html[\\s?] [NC]
+RewriteRule ^ /%1 [R=301,L]
+
+# Barra final → sin barra (la URL canónica no la lleva)
+RewriteRule ^((?:[\\w.~-]+/)*[\\w.~-]+)/$ /$1 [R=301,L]
+
+# \`/ruta\` → \`ruta.html\`
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+)$ $1.html [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+<FilesMatch "\\.html$">
+Header set Cache-Control "no-cache"
+</FilesMatch>
+</IfModule>
+`
+}
+
+/**
  * En `pnpm dev` y `pnpm preview`, el fallback de SPA responde con HTML y estado 200 a cualquier
  * URL, y los agentes lo leen como un manifiesto roto. La firma no ofrece servicios para agentes:
  * `/.well-known/ai-catalog.json` debe dar 404, igual que en el host con `404.html`.
@@ -280,6 +323,7 @@ export function seo(): Array<Plugin> {
         }
         await write('sitemap.xml', renderSitemap(paths))
         await write('llms.txt', renderLlmsTxt(paths))
+        await write('.htaccess', renderHtaccess())
       },
     },
   ]
