@@ -3,7 +3,7 @@ import type { Translation } from './es'
 const en: Translation = {
   common: {
     officeMain: 'Principal office',
-    officeAppointment: 'By appointment',
+    officeAppointment: 'By appointments',
     freeConsultation: 'Free consultation',
     scheduleConsultation: 'Schedule your free consultation',
     call: 'Call {{phone}}',
@@ -152,10 +152,10 @@ const en: Translation = {
       cases: [
         'Car accidents',
         'Truck accidents',
-        'Motorcycle accidents',
+        'Wrongful death',
         'Slip and falls',
-        'Dog bites',
         'Drunk driving accidents',
+        'Motorcycle accidents',
       ],
       stepsTitle: 'After an accident.',
       steps: [
