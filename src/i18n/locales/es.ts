@@ -150,10 +150,10 @@ const es = {
       cases: [
         'Accidentes de auto',
         'Accidentes de camión',
-        'Accidentes de motocicleta',
+        'Muerte por negligencia',
         'Resbalones y caídas',
-        'Mordeduras de perro',
         'Accidentes por conductor ebrio',
+        'Accidentes de motocicleta',
       ],
       stepsTitle: 'Después de un accidente.',
       steps: [
